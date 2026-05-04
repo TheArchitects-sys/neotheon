@@ -99,6 +99,106 @@
     });
   });
 
+
+  const eventosTrack = document.getElementById('eventosTrack');
+  if(eventosTrack){
+    const slides = Array.from(eventosTrack.querySelectorAll('.evento-slide'));
+    const wrapper = eventosTrack.closest('.eventos-wrapper');
+    const prev = document.getElementById('evPrev');
+    const next = document.getElementById('evNext');
+    const dotsWrap = document.getElementById('evDots');
+    const prefersReducedCarousel = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let autoTimer = 0;
+    const delay = 5200;
+
+    const dots = slides.map((slide, i) => {
+      if(!dotsWrap) return null;
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ev-dot';
+      dot.setAttribute('aria-label', `Ir para o banner ${i + 1}`);
+      dot.addEventListener('click', () => {
+        goTo(i);
+        restartAuto();
+      });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function update(){
+      eventosTrack.style.transform = `translateX(-${current * 100}%)`;
+      slides.forEach((slide, i) => {
+        const active = i === current;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+        slide.setAttribute('tabindex', active ? '0' : '-1');
+      });
+      dots.forEach((dot, i) => {
+        if(!dot) return;
+        const active = i === current;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+    }
+
+    function goTo(index){
+      if(!slides.length) return;
+      current = (index + slides.length) % slides.length;
+      update();
+    }
+
+    function startAuto(){
+      if(prefersReducedCarousel || slides.length < 2) return;
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), delay);
+    }
+
+    function stopAuto(){
+      clearInterval(autoTimer);
+      autoTimer = 0;
+    }
+
+    function restartAuto(){
+      stopAuto();
+      startAuto();
+    }
+
+    if(slides.length < 2){
+      prev && (prev.style.display = 'none');
+      next && (next.style.display = 'none');
+      dotsWrap && (dotsWrap.style.display = 'none');
+    }else{
+      prev && prev.addEventListener('click', () => { goTo(current - 1); restartAuto(); });
+      next && next.addEventListener('click', () => { goTo(current + 1); restartAuto(); });
+      wrapper && wrapper.addEventListener('mouseenter', stopAuto);
+      wrapper && wrapper.addEventListener('mouseleave', startAuto);
+      wrapper && wrapper.addEventListener('focusin', stopAuto);
+      wrapper && wrapper.addEventListener('focusout', () => {
+        setTimeout(() => {
+          if(!wrapper.contains(document.activeElement)) startAuto();
+        }, 0);
+      });
+
+      let touchStartX = null;
+      wrapper && wrapper.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].clientX;
+        stopAuto();
+      }, {passive:true});
+      wrapper && wrapper.addEventListener('touchend', e => {
+        if(touchStartX !== null){
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if(Math.abs(dx) > 45) goTo(current + (dx < 0 ? 1 : -1));
+        }
+        touchStartX = null;
+        startAuto();
+      }, {passive:true});
+    }
+
+    update();
+    startAuto();
+  }
+
   const canvas = document.getElementById('cosmos');
   if(canvas){
     canvas.setAttribute('aria-hidden','true');

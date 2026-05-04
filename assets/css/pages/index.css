@@ -531,7 +531,7 @@ section::before{
   color:var(--gold);font-size:1.2rem;
   width:48px;height:48px;
   display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all 0.3s;user-select:none;
+  cursor:pointer;transition:all 0.3s;user-select:none;font-family:inherit;padding:0;
 }
 .ev-arrow:hover{background:rgba(212,175,55,0.18);border-color:var(--gold);}
 .ev-arrow.left{left:1.2rem;}
@@ -546,7 +546,7 @@ section::before{
   width:6px;height:6px;border-radius:50%;
   background:rgba(212,175,55,0.36);
   border:1px solid rgba(212,175,55,0.48);
-  cursor:pointer;transition:all 0.3s;
+  cursor:pointer;transition:all 0.3s;appearance:none;padding:0;
 }
 .ev-dot.active{background:var(--gold);width:20px;border-radius:3px;}
 
