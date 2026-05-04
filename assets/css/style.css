@@ -94,14 +94,15 @@ main,section,.hero,.hero-banner{max-width:100%;overflow-x:clip}.hero,.hero-banne
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
 
 
-/* Fallback: nunca deixar a tela de carregamento presa */
-.neotheon-loader[aria-hidden="true"]{
+/* Loader preservado, com saída garantida */
+.neotheon-loader[aria-hidden="true"],
+#neotheon-loader[aria-hidden="true"],
+body.neotheon-ready .neotheon-loader,
+body.neotheon-ready #neotheon-loader{
   opacity:0!important;
   visibility:hidden!important;
   pointer-events:none!important;
 }
-body.neotheon-ready .neotheon-loader{
-  opacity:0!important;
-  visibility:hidden!important;
-  pointer-events:none!important;
+body.neotheon-ready{
+  overflow:auto!important;
 }

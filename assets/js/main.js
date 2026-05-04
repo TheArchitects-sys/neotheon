@@ -6,11 +6,11 @@
   const loader=document.getElementById('neotheon-loader');
   const finishLoading=()=>{body.classList.add('neotheon-ready');body.classList.remove('neotheon-loading');if(loader){setTimeout(()=>loader.setAttribute('aria-hidden','true'),650)}};
   if(document.readyState === 'complete' || document.readyState === 'interactive'){
-    setTimeout(finishLoading, 250);
+    setTimeout(finishLoading, 1400);
   }else{
-    window.addEventListener('load',()=>setTimeout(finishLoading,250),{once:true});
+    window.addEventListener('load',()=>setTimeout(finishLoading,1400),{once:true});
   }
-  setTimeout(finishLoading,1200);
+  setTimeout(finishLoading,2600);
 
   const nav=document.querySelector('nav');
   let backdrop=document.querySelector('.nav-backdrop');
@@ -37,16 +37,16 @@
 })();
 
 
-/* Failsafe anti-loop do loader */
+/* finishNeotheonLoaderGlobalPatch — mantém o loader bonito, mas impede loop infinito */
 setTimeout(function(){
   document.body.classList.add('neotheon-ready');
   document.body.classList.remove('neotheon-loading');
-  var l=document.getElementById('neotheon-loader');
-  if(l){
-    l.setAttribute('aria-hidden','true');
-    l.style.opacity='0';
-    l.style.visibility='hidden';
-    l.style.pointerEvents='none';
-    setTimeout(function(){ l.style.display='none'; }, 350);
+  var loader = document.getElementById('neotheon-loader') || document.querySelector('.neotheon-loader');
+  if(loader){
+    loader.setAttribute('aria-hidden','true');
+    loader.style.opacity='0';
+    loader.style.visibility='hidden';
+    loader.style.pointerEvents='none';
+    setTimeout(function(){ loader.style.display='none'; }, 700);
   }
-}, 1600);
+}, 2600);
