@@ -92,3 +92,16 @@ main,section,.hero,.hero-banner{max-width:100%;overflow-x:clip}.hero,.hero-banne
 @media (max-width:420px){.nav-links{width:92vw!important}.nav-logo{max-width:50vw}.hero-title,.hero-title-main,h1{font-size:clamp(1.8rem,13vw,2.6rem)!important}.page-title{padding-top:calc(var(--nav-h) + 2rem)!important}}
 @media (hover:none){.nav-links li:hover .nav-dropdown{transform:none!important}.nav-discord::before{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+
+/* Fallback: nunca deixar a tela de carregamento presa */
+.neotheon-loader[aria-hidden="true"]{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+body.neotheon-ready .neotheon-loader{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}

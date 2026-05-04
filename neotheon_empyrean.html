@@ -1608,5 +1608,20 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
 </script>
 
+
+<script>
+setTimeout(function(){
+  document.body.classList.add('neotheon-ready');
+  document.body.classList.remove('neotheon-loading');
+  var l=document.getElementById('neotheon-loader');
+  if(l){
+    l.setAttribute('aria-hidden','true');
+    l.style.opacity='0';
+    l.style.visibility='hidden';
+    l.style.pointerEvents='none';
+  }
+}, 1800);
+</script>
+
 </body>
 </html>

@@ -5,8 +5,12 @@
   body.classList.add('neotheon-loading');
   const loader=document.getElementById('neotheon-loader');
   const finishLoading=()=>{body.classList.add('neotheon-ready');body.classList.remove('neotheon-loading');if(loader){setTimeout(()=>loader.setAttribute('aria-hidden','true'),650)}};
-  window.addEventListener('load',()=>setTimeout(finishLoading,250),{once:true});
-  setTimeout(finishLoading,2200);
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){
+    setTimeout(finishLoading, 250);
+  }else{
+    window.addEventListener('load',()=>setTimeout(finishLoading,250),{once:true});
+  }
+  setTimeout(finishLoading,1200);
 
   const nav=document.querySelector('nav');
   let backdrop=document.querySelector('.nav-backdrop');
@@ -31,3 +35,18 @@
   document.querySelectorAll('a[href="#"]').forEach(a=>{const label=(a.textContent||'').toLowerCase();if(label.includes('discord')||label.includes('comunidade')){a.href='https://yoble.com.br/Community/305387';a.target='_blank';a.rel='noopener noreferrer'}else{a.classList.add('is-disabled');a.setAttribute('aria-disabled','true');a.setAttribute('tabindex','-1')}});
   const c=document.getElementById('cosmos');if(c)c.setAttribute('aria-hidden','true');
 })();
+
+
+/* Failsafe anti-loop do loader */
+setTimeout(function(){
+  document.body.classList.add('neotheon-ready');
+  document.body.classList.remove('neotheon-loading');
+  var l=document.getElementById('neotheon-loader');
+  if(l){
+    l.setAttribute('aria-hidden','true');
+    l.style.opacity='0';
+    l.style.visibility='hidden';
+    l.style.pointerEvents='none';
+    setTimeout(function(){ l.style.display='none'; }, 350);
+  }
+}, 1600);
