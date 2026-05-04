@@ -44,7 +44,7 @@ body{
 /* grain overlay */
 body::before{
   content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events:none;z-index:1;opacity:0.55;
 }
 
@@ -658,45 +658,138 @@ footer{
   .welcome-banner{padding:2.2rem 1.4rem;}
 }
 
+
+/* ── MOBILE NAV ── */
+.mobile-nav-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.35);
+  color: var(--gold-light, #f1d27a);
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  z-index: 250;
+}
+.mobile-nav-toggle .bar {
+  display: block;
+  width: 1.1rem;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: background 0.25s;
+}
+.mobile-nav-toggle .bar::before,
+.mobile-nav-toggle .bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 1.1rem;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.25s, top 0.25s;
+}
+.mobile-nav-toggle .bar::before { top: -0.36rem; }
+.mobile-nav-toggle .bar::after  { top:  0.36rem; }
+nav.nav-open .mobile-nav-toggle .bar { background: transparent; }
+nav.nav-open .mobile-nav-toggle .bar::before { top: 0; transform: rotate(45deg); }
+nav.nav-open .mobile-nav-toggle .bar::after  { top: 0; transform: rotate(-45deg); }
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 180;
+  background: rgba(4,3,10,0.7);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s, visibility 0.28s;
+}
+body.mobile-menu-open .nav-backdrop { opacity: 1; visibility: visible; pointer-events: auto; }
+body.mobile-menu-open { overflow: hidden; }
+
+@media (max-width: 980px) {
+  nav {
+    padding: 1rem 1.25rem;
+    flex-wrap: nowrap;
+  }
+  .mobile-nav-toggle { display: inline-flex; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 1rem;
+    right: 1rem;
+    z-index: 500;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0 !important;
+    background: linear-gradient(180deg, rgba(20,18,36,0.99), rgba(4,3,10,0.99));
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 0 0 16px 16px;
+    padding: 0.5rem 1.25rem 1.25rem !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.28s, transform 0.28s, visibility 0.28s;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+  nav.nav-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .nav-links > li {
+    width: 100%;
+    border-bottom: 1px solid rgba(212,175,55,0.08);
+  }
+  .nav-links > li:last-child { border-bottom: none; }
+  .nav-links a {
+    display: block;
+    padding: 1rem 0.25rem !important;
+    font-size: 0.8rem !important;
+  }
+  .nav-dropdown {
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    backdrop-filter: none;
+    padding: 0 0 0.5rem 1rem !important;
+  }
+  .nav-dropdown a {
+    padding: 0.6rem 0 !important;
+    border: 0 !important;
+    color: rgba(245,241,230,0.65) !important;
+    font-size: 0.72rem !important;
+  }
+  .nav-arrow { display: none; }
+  .nav-discord { display: none; }
+  .hero, .hero-banner { padding-top: 7rem !important; min-height: 80vh !important; }
+  section { padding: 3rem 1.25rem !important; }
+  .ato-card { grid-template-columns: 1fr !important; }
+  .ato-img { min-height: 220px; }
+  .gods-grid { grid-template-columns: repeat(auto-fill, minmax(160px,1fr)) !important; }
+  .missoes-grid { grid-template-columns: 1fr !important; }
+  .info-flow { padding: 0 0.5rem; }
+}
+
+@media (max-width: 640px) {
+  .nav-logo { font-size: 1.05rem !important; }
+  .hero-title, .hero-title-main { font-size: clamp(2.2rem,11vw,4rem) !important; letter-spacing: 0.04em !important; }
+  .section-divider { gap: 0.6rem; }
+}
 </style>
-<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link href="assets/style.css" rel="stylesheet"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
-
-<script>
-(function(){
-  function finishNeotheonLoader(){
-    document.body.classList.add('neotheon-ready');
-    document.body.classList.remove('neotheon-loading');
-
-    var loader = document.getElementById('neotheon-loader') || document.querySelector('.neotheon-loader');
-    if(loader){
-      loader.setAttribute('aria-hidden','true');
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      loader.style.pointerEvents = 'none';
-      setTimeout(function(){
-        loader.style.display = 'none';
-      }, 700);
-    }
-  }
-
-  // Mantém a tela por um tempo curto para preservar a estética.
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      setTimeout(finishNeotheonLoader, 1400);
-    });
-  } else {
-    setTimeout(finishNeotheonLoader, 1400);
-  }
-
-  // Segurança absoluta: nunca trava.
-  setTimeout(finishNeotheonLoader, 2600);
-})();
-</script>
-
 <div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
   <div class="loader-orbit" aria-hidden="true">
     <span class="loader-ring r1"></span>
@@ -709,7 +802,31 @@ footer{
 </div>
 <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
 <canvas aria-hidden="true" id="cosmos"></canvas>
-<span aria-hidden="true" id="conteudo"></span>
+<nav>
+<a class="nav-logo" href="#">NEOTHEON</a>
+<ul class="nav-links">
+<li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+<li><a href="neotheon_regras.html">Regras</a></li>
+<li><a href="neotheon_individualidades.html">Individualidades</a></li>
+<li><a href="neotheon_missoes.html">Missões</a></li>
+<li><a href="neotheon_fichas.html">Fichas</a></li>
+<li>
+<a href="neotheon_empyrean.html">Empyrean <span class="nav-arrow">▼</span></a>
+<div class="nav-dropdown">
+<a href="neotheon_empyrean_missoes.html">Empyrean: Missões</a>
+</div>
+</li>
+<li>
+<a href="neotheon_fate.html">Fate <span class="nav-arrow">▼</span></a>
+<div class="nav-dropdown">
+<a href="neotheon_fate_missoes.html">Fate: Missões</a>
+</div>
+</li>
+<li><a href="neotheon_banner.html">Banner Ativo</a></li>
+<li><a href="neotheon_mesticos.html">Mestiço</a></li>
+</ul>
+<a class="nav-discord" href="#">Discord ↗</a>
+</nav><span aria-hidden="true" id="conteudo"></span>
 <!-- HERO -->
 <div class="hero">
 <div class="glow-purple"></div>
@@ -764,13 +881,13 @@ footer{
 <div class="eventos-track" id="eventosTrack">
 <!-- ═══ EVENTO 1 ═══
            Para usar imagem: remova a div.evento-placeholder e descomente a tag img
-           Troque href="index.html" pelo link da página do evento -->
-<a class="evento-slide" href="index.html">
+           Troque href="#" pelo link da página do evento -->
+<a class="evento-slide" href="#">
 <div class="evento-placeholder">
 <div class="evento-placeholder-icon">🌑</div>
 <div class="evento-placeholder-text">Adicione a imagem do Evento 1</div>
 </div>
-<!-- <img src="assets/img/imagem-evento-1.jpg" alt="Nome do Evento 1"> -->
+<!-- <img src="imagem-evento-1.jpg" alt="Nome do Evento 1"> -->
 <div class="evento-overlay">
 <span class="evento-tag">Evento Sazonal · Ativo agora</span>
 <div class="evento-title">Nome do Evento 1</div>
@@ -779,12 +896,12 @@ footer{
 </div>
 </a>
 <!-- ═══ EVENTO 2 ═══ -->
-<a class="evento-slide" href="index.html">
+<a class="evento-slide" href="#">
 <div class="evento-placeholder">
 <div class="evento-placeholder-icon">🔥</div>
 <div class="evento-placeholder-text">Adicione a imagem do Evento 2</div>
 </div>
-<!-- <img src="assets/img/imagem-evento-2.jpg" alt="Nome do Evento 2"> -->
+<!-- <img src="imagem-evento-2.jpg" alt="Nome do Evento 2"> -->
 <div class="evento-overlay">
 <span class="evento-tag">Evento Especial · Tempo limitado</span>
 <div class="evento-title">Nome do Evento 2</div>
@@ -793,12 +910,12 @@ footer{
 </div>
 </a>
 <!-- ═══ EVENTO 3 ═══ -->
-<a class="evento-slide" href="index.html">
+<a class="evento-slide" href="#">
 <div class="evento-placeholder">
 <div class="evento-placeholder-icon">⚡</div>
 <div class="evento-placeholder-text">Adicione a imagem do Evento 3</div>
 </div>
-<!-- <img src="assets/img/imagem-evento-3.jpg" alt="Nome do Evento 3"> -->
+<!-- <img src="imagem-evento-3.jpg" alt="Nome do Evento 3"> -->
 <div class="evento-overlay">
 <span class="evento-tag">Raid · Exclusivo</span>
 <div class="evento-title">Nome do Evento 3</div>
@@ -826,7 +943,7 @@ footer{
 <!-- CARD 1 — Primeiros Passos
          Imagem: coloque o arquivo como "rc-primeiros-passos.jpg" na mesma pasta do HTML
          Dimensões ideais: 480x640px -->
-<a class="resource-card reveal" href="index.html" style="transition-delay:.05s">
+<a class="resource-card reveal" href="#" style="transition-delay:.05s">
 <div class="rc-img" style="background-image:url('https://i.postimg.cc/ZKHZFKzr/ron-dark-gothic-London-streets-at-night-fog-mysterious-doorwa-adfb0908-27c2-4489-a67e-488f627dd8f4-1.png')"></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
@@ -837,7 +954,7 @@ footer{
 </a>
 <!-- CARD 2 — Loja Divina
          Imagem: "rc-loja-divina.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="index.html" style="transition-delay:.1s">
+<a class="resource-card reveal" href="#" style="transition-delay:.1s">
 <div class="rc-img" style="background-image:url('https://i.postimg.cc/nzb6f6fg/imagem-2026-04-14-221918767.png')"></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
@@ -848,7 +965,7 @@ footer{
 </a>
 <!-- CARD 3 — Seres Fantásticos
          Imagem: "rc-seres-fantasticos.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="index.html" style="transition-delay:.15s">
+<a class="resource-card reveal" href="#" style="transition-delay:.15s">
 <div class="rc-img" style="background-image:url('https://i.postimg.cc/X77tWftW/imagem-2026-04-14-222027514.png')"></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
@@ -859,7 +976,7 @@ footer{
 </a>
 <!-- CARD 4 — Guia de Materiais
          Imagem: "rc-guia-materiais.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="index.html" style="transition-delay:.2s">
+<a class="resource-card reveal" href="#" style="transition-delay:.2s">
 <div class="rc-img" style="background-image:url('https://i.postimg.cc/50Skdy3H/imagem-2026-04-14-222144989.png')"></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
@@ -870,7 +987,7 @@ footer{
 </a>
 <!-- CARD 5 — Eventos Sazonais
          Imagem: "rc-eventos-sazonais.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="index.html" style="transition-delay:.25s">
+<a class="resource-card reveal" href="#" style="transition-delay:.25s">
 <div class="rc-img" style="background-image:url('https://i.postimg.cc/cH0XmZSL/imagem-2026-04-14-222335169.png')"></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
@@ -909,7 +1026,7 @@ footer{
          Dimensões: 400x600px (proporção 2:3, retrato)
          Dica: use fundo escuro/neutro na geração para integrar bem -->
 <div class="destaque-card reveal" style="transition-delay:.05s">
-<div class="dest-img" style="background-image:url('assets/img/dest-cadete.jpg')"></div>
+<div class="dest-img" style="background-image:url('dest-cadete.jpg')"></div>
 <div class="dest-placeholder">
 <div class="dest-placeholder-icon">⚔</div>
 <div class="dest-placeholder-text">Foto do Personagem</div>
@@ -924,7 +1041,7 @@ footer{
 <!-- DESTAQUE 2 — Especialista
          Foto: "dest-especialista.jpg" — 400x600px -->
 <div class="destaque-card reveal" style="transition-delay:.1s">
-<div class="dest-img" style="background-image:url('assets/img/dest-especialista.jpg')"></div>
+<div class="dest-img" style="background-image:url('dest-especialista.jpg')"></div>
 <div class="dest-placeholder">
 <div class="dest-placeholder-icon">🌟</div>
 <div class="dest-placeholder-text">Foto do Personagem</div>
@@ -940,7 +1057,7 @@ footer{
 <!-- DESTAQUE 3 — Instrutor
          Foto: "dest-instrutor.jpg" — 400x600px -->
 <div class="destaque-card reveal" style="transition-delay:.15s">
-<div class="dest-img" style="background-image:url('assets/img/dest-instrutor.jpg')"></div>
+<div class="dest-img" style="background-image:url('dest-instrutor.jpg')"></div>
 <div class="dest-placeholder">
 <div class="dest-placeholder-icon">🔱</div>
 <div class="dest-placeholder-text">Foto do Personagem</div>
@@ -956,7 +1073,7 @@ footer{
 <!-- DESTAQUE 4 — Deus (Mestre de Mesa)
          Foto: "dest-deus.jpg" — 400x600px -->
 <div class="destaque-card reveal" style="transition-delay:.2s">
-<div class="dest-img" style="background-image:url('assets/img/dest-deus.jpg')"></div>
+<div class="dest-img" style="background-image:url('dest-deus.jpg')"></div>
 <div class="dest-placeholder">
 <div class="dest-placeholder-icon">👁</div>
 <div class="dest-placeholder-text">Foto do Personagem</div>
@@ -986,8 +1103,8 @@ footer{
 <!-- ENDGAME CARD 1 — Abismo Espiral
          Imagem: "eg-abismo-espiral.jpg" na mesma pasta — 600x640px
          Midjourney: dark spiral abyss, endless chasm, horror, fantasy RPG, dramatic lighting --ar 3:4 -->
-<a class="endgame-card reveal" href="index.html" style="transition-delay:.05s">
-<div class="eg-img" style="background-image:url('assets/img/eg-abismo-espiral.jpg')"></div>
+<a class="endgame-card reveal" href="#" style="transition-delay:.05s">
+<div class="eg-img" style="background-image:url('eg-abismo-espiral.jpg')"></div>
 <div class="eg-grad"></div>
 <div class="eg-content">
 <div class="endgame-tag">▲ Zona de Risco</div>
@@ -998,8 +1115,8 @@ footer{
 <!-- ENDGAME CARD 2 — Universo Simulado
          Imagem: "eg-universo-simulado.jpg" — 600x640px
          Midjourney: dark simulated reality glitch, digital divine technology, sci-fi mystical --ar 3:4 -->
-<a class="endgame-card reveal" href="index.html" style="transition-delay:.1s">
-<div class="eg-img" style="background-image:url('assets/img/eg-universo-simulado.jpg')"></div>
+<a class="endgame-card reveal" href="#" style="transition-delay:.1s">
+<div class="eg-img" style="background-image:url('eg-universo-simulado.jpg')"></div>
 <div class="eg-grad"></div>
 <div class="eg-content">
 <div class="endgame-tag">▲ Simulacro</div>
@@ -1010,8 +1127,8 @@ footer{
 <!-- ENDGAME CARD 3 — Berçário Abissal
          Imagem: "eg-bercario-abissal.jpg" — 600x640px
          Midjourney: abyssal creature nursery, dark eggs hatching monsters, horror fantasy --ar 3:4 -->
-<a class="endgame-card reveal" href="index.html" style="transition-delay:.15s">
-<div class="eg-img" style="background-image:url('assets/img/eg-bercario-abissal.jpg')"></div>
+<a class="endgame-card reveal" href="#" style="transition-delay:.15s">
+<div class="eg-img" style="background-image:url('eg-bercario-abissal.jpg')"></div>
 <div class="eg-grad"></div>
 <div class="eg-content">
 <div class="endgame-tag">▲ Origem Abissal</div>
@@ -1022,8 +1139,8 @@ footer{
 <!-- ENDGAME CARD 4 — Reino do Caos
          Imagem: "eg-reino-do-caos.jpg" — 600x640px
          Midjourney: primordial chaos realm, reality dissolving, dark god, apocalyptic fantasy --ar 3:4 -->
-<a class="endgame-card reveal" href="index.html" style="transition-delay:.2s">
-<div class="eg-img" style="background-image:url('assets/img/eg-reino-do-caos.jpg')"></div>
+<a class="endgame-card reveal" href="#" style="transition-delay:.2s">
+<div class="eg-img" style="background-image:url('eg-reino-do-caos.jpg')"></div>
 <div class="eg-grad"></div>
 <div class="eg-content">
 <div class="endgame-tag">▲ Caos Primordial</div>
@@ -1036,6 +1153,18 @@ footer{
 <footer>
 <div class="footer-logo">NEOTHEON</div>
 <p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="neotheon_ambientacao.html">Ambientação</a>
+<a href="neotheon_regras.html">Regras &amp; Sistemas</a>
+<a href="neotheon_missoes.html">Missões Fixas</a>
+<a href="neotheon_fichas.html">Fichas</a>
+<a href="neotheon_empyrean.html">Empyrean</a>
+<a href="neotheon_empyrean_missoes.html">Empyrean: Missões</a>
+<a href="neotheon_fate.html">Fate / Guerra de Londres</a>
+<a href="neotheon_fate_missoes.html">Fate: Missões</a>
+<a href="neotheon_banner.html">Banner Ativo</a>
+<a href="neotheon_mesticos.html">Mestiço</a>
+</nav>
 <div class="footer-disclaimer">
     Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
     Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
@@ -1189,7 +1318,37 @@ const io=new IntersectionObserver(entries=>{
 },{threshold:0.07});
 document.querySelectorAll('.reveal,.reveal-left').forEach(el=>io.observe(el));
 </script>
+<script defer="True" src="assets/main.js"></script>
+<script>
+/* ── MOBILE HAMBURGER ── */
+(function(){
+  var nav = document.querySelector('nav');
+  if(!nav || nav.querySelector('.mobile-nav-toggle')) return;
+  var btn = document.createElement('button');
+  btn.className = 'mobile-nav-toggle';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Abrir menu');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.innerHTML = '<span class="bar"></span><span style="font-size:.65rem;letter-spacing:.1em">MENU</span>';
+  var discord = nav.querySelector('.nav-discord');
+  nav.insertBefore(btn, discord || null);
 
-<script src="assets/js/main.js"></script>
+  var backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  document.body.appendChild(backdrop);
+
+  function setOpen(open){
+    nav.classList.toggle('nav-open', open);
+    document.body.classList.toggle('mobile-menu-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+  btn.addEventListener('click', function(){ setOpen(!nav.classList.contains('nav-open')); });
+  backdrop.addEventListener('click', function(){ setOpen(false); });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setOpen(false); });
+  window.addEventListener('resize', function(){ if(window.innerWidth > 980) setOpen(false); });
+})();
+</script>
+
 </body>
 </html>

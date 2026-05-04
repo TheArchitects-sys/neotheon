@@ -15,7 +15,7 @@
   --silver:#cfc7b4;--bone:#f5f1e6;--whisper:#9a927f;--purple:#6a3cc9;
   --dragon:#b63a32;--mist:#26214a;}
 body{background:var(--void);color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.55;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.55;}
 #cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
 
 /* NAV */
@@ -767,45 +767,10 @@ body{background:radial-gradient(circle at 50% 18%,#1a1730 0%,#0b0a14 62%);}
   }
 }
 
+.mobile-nav-toggle{display:none;align-items:center;gap:.55rem;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.35);color:var(--gold-light,#f1d27a);font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.55rem .9rem;cursor:pointer;z-index:250;}.mobile-nav-toggle .bar{display:block;width:1.1rem;height:1px;background:currentColor;position:relative;transition:background .25s;}.mobile-nav-toggle .bar::before,.mobile-nav-toggle .bar::after{content:'';position:absolute;left:0;width:1.1rem;height:1px;background:currentColor;transition:transform .25s,top .25s;}.mobile-nav-toggle .bar::before{top:-.36rem}.mobile-nav-toggle .bar::after{top:.36rem}nav.nav-open .mobile-nav-toggle .bar{background:transparent}nav.nav-open .mobile-nav-toggle .bar::before{top:0;transform:rotate(45deg)}nav.nav-open .mobile-nav-toggle .bar::after{top:0;transform:rotate(-45deg)}.nav-backdrop{position:fixed;inset:0;z-index:180;background:rgba(4,3,10,.7);backdrop-filter:blur(4px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s,visibility .28s;}body.mobile-menu-open .nav-backdrop{opacity:1;visibility:visible;pointer-events:auto;}body.mobile-menu-open{overflow:hidden;}@media(max-width:980px){nav{padding:1rem 1.25rem;flex-wrap:nowrap;}.mobile-nav-toggle{display:inline-flex;}.nav-links{position:fixed;top:70px;left:1rem;right:1rem;z-index:500;display:flex!important;flex-direction:column;gap:0!important;background:linear-gradient(180deg,rgba(20,18,36,.99),rgba(4,3,10,.99));border:1px solid rgba(212,175,55,.2);border-radius:0 0 16px 16px;padding:.5rem 1.25rem 1.25rem!important;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .28s,transform .28s,visibility .28s;max-height:calc(100vh - 80px);overflow-y:auto;}nav.nav-open .nav-links{opacity:1;visibility:visible;transform:translateY(0);}.nav-links>li{width:100%;border-bottom:1px solid rgba(212,175,55,.08);}.nav-links>li:last-child{border-bottom:none;}.nav-links a{display:block;padding:1rem .25rem!important;font-size:.8rem!important;}.nav-dropdown{position:static!important;transform:none!important;opacity:1!important;visibility:visible!important;min-width:0;background:transparent;border:0;backdrop-filter:none;padding:0 0 .5rem 1rem!important;}.nav-dropdown a{padding:.6rem 0!important;border:0!important;color:rgba(245,241,230,.65)!important;font-size:.72rem!important;}.nav-arrow{display:none;}.nav-discord{display:none;}.hero,.hero-banner{padding-top:7rem!important;min-height:80vh!important;}section{padding:3rem 1.25rem!important;}.ato-card{grid-template-columns:1fr!important;}.missoes-grid{grid-template-columns:1fr!important;}}@media(max-width:640px){.nav-logo{font-size:1.05rem!important;}.hero-title,.hero-title-main{font-size:clamp(2.2rem,11vw,4rem)!important;letter-spacing:.04em!important;}}
 </style>
-<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON — Empyrean"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link href="assets/style.css" rel="stylesheet"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON — Empyrean"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
-
-<script>
-(function(){
-  function finishNeotheonLoader(){
-    document.body.classList.add('neotheon-ready');
-    document.body.classList.remove('neotheon-loading');
-
-    var loader = document.getElementById('neotheon-loader') || document.querySelector('.neotheon-loader');
-    if(loader){
-      loader.setAttribute('aria-hidden','true');
-      loader.style.opacity = '0';
-      loader.style.visibility = 'hidden';
-      loader.style.pointerEvents = 'none';
-      setTimeout(function(){
-        loader.style.display = 'none';
-      }, 700);
-    }
-  }
-
-  // Mantém a tela por um tempo curto para preservar a estética.
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      setTimeout(finishNeotheonLoader, 1400);
-    });
-  } else {
-    setTimeout(finishNeotheonLoader, 1400);
-  }
-
-  // Segurança absoluta: nunca trava.
-  setTimeout(finishNeotheonLoader, 2600);
-})();
-</script>
-
 <div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
   <div class="loader-orbit" aria-hidden="true">
     <span class="loader-ring r1"></span>
@@ -818,7 +783,32 @@ body{background:radial-gradient(circle at 50% 18%,#1a1730 0%,#0b0a14 62%);}
 </div>
 <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
 <canvas aria-hidden="true" id="cosmos"></canvas>
-<span aria-hidden="true" id="conteudo"></span>
+<nav>
+<a class="nav-logo" href="index.html">NEOTHEON</a>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+<li><a href="neotheon_regras.html">Regras</a></li>
+<li><a href="neotheon_individualidades.html">Individualidades</a></li>
+<li><a href="neotheon_missoes.html">Missões</a></li>
+<li><a href="neotheon_fichas.html">Fichas</a></li>
+<li>
+<a class="active" href="neotheon_empyrean.html">Empyrean <span class="nav-arrow">▼</span></a>
+<div class="nav-dropdown">
+<a href="neotheon_empyrean_missoes.html">Empyrean: Missões</a>
+</div>
+</li>
+<li>
+<a href="neotheon_fate.html">Fate <span class="nav-arrow">▼</span></a>
+<div class="nav-dropdown">
+<a href="neotheon_fate_missoes.html">Fate: Missões</a>
+</div>
+</li>
+<li><a href="neotheon_banner.html">Banner Ativo</a></li>
+<li><a href="neotheon_mesticos.html">Mestiço</a></li>
+</ul>
+<a class="nav-discord" href="#">Discord ↗</a>
+</nav><span aria-hidden="true" id="conteudo"></span>
 <!-- HERO BANNER -->
 <div class="hero-banner hero-banner-clean">
 <div class="hero-banner-content">
@@ -1561,6 +1551,17 @@ body{background:radial-gradient(circle at 50% 18%,#1a1730 0%,#0b0a14 62%);}
 <footer>
 <div class="footer-logo">NEOTHEON</div>
 <p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="neotheon_ambientacao.html">Ambientação</a>
+<a href="neotheon_regras.html">Regras &amp; Sistemas</a>
+<a href="neotheon_individualidades.html">Individualidades</a>
+<a href="neotheon_missoes.html">Missões Fixas</a>
+<a href="neotheon_empyrean_missoes.html">Empyrean: Missões</a>
+<a href="neotheon_fate.html">Fate / Guerra de Londres</a>
+<a href="neotheon_banner.html">Banner Ativo</a>
+<a href="neotheon_mesticos.html">Mestiço</a>
+</nav>
 <div class="footer-disclaimer">
     Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
     Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
@@ -1595,7 +1596,8 @@ function toggleS(id){
 const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*50);io.unobserve(e.target);}});},{threshold:0.05});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
-
-<script src="assets/js/main.js"></script>
+<script defer="True" src="assets/main.js"></script><script>
+(function(){var nav=document.querySelector('nav');if(!nav||nav.querySelector('.mobile-nav-toggle'))return;var btn=document.createElement('button');btn.className='mobile-nav-toggle';btn.type='button';btn.setAttribute('aria-label','Abrir menu');btn.setAttribute('aria-expanded','false');btn.innerHTML='<span class="bar"></span><span style="font-size:.65rem;letter-spacing:.1em">MENU</span>';var discord=nav.querySelector('.nav-discord');nav.insertBefore(btn,discord||null);var backdrop=document.createElement('div');backdrop.className='nav-backdrop';document.body.appendChild(backdrop);function setOpen(open){nav.classList.toggle('nav-open',open);document.body.classList.toggle('mobile-menu-open',open);btn.setAttribute('aria-expanded',String(open));}btn.addEventListener('click',function(){setOpen(!nav.classList.contains('nav-open'));});backdrop.addEventListener('click',function(){setOpen(false);});nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false);});});document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});window.addEventListener('resize',function(){if(window.innerWidth>980)setOpen(false);});})();
+</script>
 </body>
 </html>
