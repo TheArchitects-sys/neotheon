@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Individualidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0b0a14;--deep:#141224;--veil:#1c1833;
+  --blood:#9e2a2a;--ember:#d6452f;
+  --gold:#d4af37;--gold-light:#f1d27a;--gold-dim:#8c6a2b;
+  --silver:#cfc7b4;--bone:#f5f1e6;--whisper:#9a927f;--purple:#6a3cc9;--mist:#26214a;}
+body{background:var(--void);color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.55;}
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid rgba(212,175,55,0.1);background:rgba(11,10,20,0.92);backdrop-filter:blur(10px);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.4rem;letter-spacing:0.15em;color:var(--gold);text-decoration:none;text-shadow:0 0 30px rgba(212,175,55,0.4);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;color:var(--whisper);text-decoration:none;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+.nav-discord{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;color:var(--gold);border:1px solid var(--gold-dim);padding:0.45rem 1.1rem;text-decoration:none;text-transform:uppercase;transition:all 0.3s;position:relative;overflow:hidden;}
+.nav-discord::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.3s;z-index:-1;}
+.nav-discord:hover{color:var(--void);}
+.nav-discord:hover::before{transform:translateX(0);}
+.nav-links li{position:relative;}
+.nav-dropdown{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(11,10,20,0.97);border:1px solid rgba(212,175,55,0.18);min-width:200px;opacity:0;visibility:hidden;transition:opacity 0.25s,transform 0.25s,visibility 0.25s;z-index:300;backdrop-filter:blur(12px);}
+.nav-links li:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nav-dropdown a{display:block;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;padding:0.85rem 1.4rem;border-bottom:1px solid rgba(212,175,55,0.08);transition:color 0.2s,background 0.2s;}
+.nav-dropdown a:last-child{border-bottom:none;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(212,175,55,0.05);}
+.nav-arrow{display:inline-block;margin-left:0.3em;font-size:0.5rem;vertical-align:middle;opacity:0.5;transition:transform 0.25s;}
+.nav-links li:hover .nav-arrow{transform:rotate(180deg);}
+
+/* HERO */
+.hero{position:relative;z-index:2;min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;overflow:hidden;}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(106,60,201,0.22) 0%,transparent 65%);pointer-events:none;}
+.fog-base{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(11,10,20,0.98),transparent);pointer-events:none;}
+.penta{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(460px,80vw);height:min(460px,80vw);opacity:0.03;animation:spin 200s linear infinite;pointer-events:none;}
+@keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg);}}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.sigil-row{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.s-line{width:70px;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.45));}
+.s-line.r{background:linear-gradient(to left,transparent,rgba(212,175,55,0.45));}
+.s-sym{color:var(--gold);font-size:1.1rem;animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:900;line-height:1.1;color:var(--gold-light);text-shadow:0 0 80px rgba(212,175,55,0.3),0 2px 4px rgba(0,0,0,0.9);letter-spacing:0.05em;margin-bottom:1rem;opacity:0;animation:fadeUp 1.2s 0.6s ease forwards;}
+.hero-sub{font-family:'Cinzel',serif;font-size:clamp(0.75rem,1.5vw,0.95rem);letter-spacing:0.25em;color:var(--whisper);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.8s ease forwards;}
+.hero-lore{max-width:680px;font-size:clamp(1rem,2vw,1.2rem);line-height:1.9;font-style:italic;color:var(--silver);opacity:0;animation:fadeUp 1s 1s ease forwards;}
+.hero-lore strong{color:var(--gold-light);font-style:normal;}
+
+/* DIVIDERS */
+.section-divider{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0 2rem;}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.15),transparent);max-width:350px;}
+.div-icon{color:rgba(212,175,55,0.35);font-size:1.1rem;}
+
+/* SECTIONS */
+section{position:relative;z-index:2;padding:4rem 2rem;max-width:1200px;margin:0 auto;}
+.section-tag{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(212,175,55,0.45);margin-bottom:0.8rem;display:block;}
+.section-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,4vw,2.3rem);color:var(--gold-light);margin-bottom:1rem;line-height:1.1;}
+.section-desc{font-size:1.05rem;font-style:italic;color:var(--whisper);line-height:1.75;margin-bottom:2.5rem;max-width:700px;}
+
+/* CATEGORIA HEADER */
+.cat-header{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-bottom:2rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(212,175,55,0.15);
+}
+.cat-title{font-family:'Cinzel Decorative',serif;font-size:1.3rem;color:var(--gold-light);}
+.cat-line{flex:1;height:1px;background:linear-gradient(to right,rgba(212,175,55,0.2),transparent);}
+
+/* GODS GRID */
+.gods-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1px;
+  background:rgba(212,175,55,0.07);
+  margin-bottom:3rem;
+}
+.god-card{
+  position:relative;background:var(--deep);
+  overflow:hidden;display:flex;flex-direction:column;
+  min-height:320px;text-decoration:none;
+  transition:box-shadow 0.4s;
+}
+.god-card:hover{box-shadow:inset 0 0 40px rgba(106,60,201,0.15);}
+.god-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center top;
+  filter:brightness(0.38) saturate(0.7);
+  transition:filter 0.5s,transform 0.6s;
+}
+.god-card:hover .god-img{filter:brightness(0.55) saturate(1);transform:scale(1.05);}
+.god-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,1) 0%,rgba(11,10,20,0.6) 40%,rgba(11,10,20,0.05) 80%);
+  transition:background 0.4s;
+}
+.god-card:hover .god-grad{background:linear-gradient(to top,rgba(11,10,20,0.98) 0%,rgba(106,60,201,0.4) 50%,rgba(11,10,20,0.05) 85%);}
+.god-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;background:linear-gradient(to right,transparent,rgba(212,175,55,0.6),transparent);transform:scaleX(0);transition:transform 0.45s;}
+.god-card:hover::before{transform:scaleX(1);}
+.god-content{position:relative;z-index:2;margin-top:auto;padding:1.5rem 1.2rem;}
+.god-name{font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.3rem;line-height:1.2;}
+.god-title{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,175,55,0.45);margin-bottom:0.5rem;}
+.god-domain{font-size:0.82rem;font-style:italic;color:var(--whisper);line-height:1.5;}
+.god-link{
+  display:inline-block;margin-top:0.8rem;
+  font-family:'Cinzel',serif;font-size:0.55rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(212,175,55,0.35);
+  transition:color 0.3s;
+}
+.god-card:hover .god-link{color:var(--gold);}
+/* card sem link (sem lista ainda) */
+.god-card.no-link{cursor:default;}
+.god-card.no-link:hover .god-link{color:rgba(212,175,55,0.25);}
+.god-soon{
+  position:absolute;top:0.8rem;right:0.8rem;z-index:4;
+  font-family:'Cinzel',serif;font-size:0.5rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(212,175,55,0.4);
+  border:1px solid rgba(212,175,55,0.15);
+  padding:0.2rem 0.5rem;
+}
+
+/* INFO BLOCKS */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(212,175,55,0.07);margin-bottom:2rem;}
+.info-block{background:var(--deep);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:background 0.3s;}
+.info-block:hover{background:var(--veil);}
+.info-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.5),transparent);transform:scaleX(0);transition:transform 0.4s;}
+.info-block:hover::before{transform:scaleX(1);}
+.info-block-icon{font-size:1.5rem;margin-bottom:0.8rem;}
+.info-block-title{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.6rem;}
+.info-block-text{font-size:0.95rem;font-style:italic;color:var(--whisper);line-height:1.7;}
+.info-block-text strong{color:var(--bone);font-style:normal;}
+
+/* CLASSES GRID */
+.classes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(212,175,55,0.07);margin-bottom:2rem;}
+.class-card{background:var(--deep);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:background 0.4s;}
+.class-card:hover{background:var(--veil);}
+.class-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform 0.4s;}
+.class-card:hover::before{transform:scaleX(1);}
+.class-card.destruicao::before{background:linear-gradient(to right,transparent,rgba(224,80,80,0.8),transparent);}
+.class-card.destino::before{background:linear-gradient(to right,transparent,rgba(29,158,117,0.8),transparent);}
+.class-card.morte::before{background:linear-gradient(to right,transparent,rgba(107,47,160,0.8),transparent);}
+.class-card.sonho::before{background:linear-gradient(to right,transparent,rgba(55,138,221,0.8),transparent);}
+.class-card.desespero::before{background:linear-gradient(to right,transparent,rgba(160,40,24,0.8),transparent);}
+.class-card.desejo::before{background:linear-gradient(to right,transparent,rgba(186,117,23,0.8),transparent);}
+.class-card.delirio::before{background:linear-gradient(to right,transparent,rgba(212,175,55,0.8),transparent);}
+.class-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.class-name{font-family:'Cinzel Decorative',serif;font-size:1rem;margin-bottom:0.4rem;}
+.class-card.destruicao .class-name{color:rgba(224,80,80,0.9);}
+.class-card.destino .class-name{color:rgba(29,158,117,0.9);}
+.class-card.morte .class-name{color:rgba(160,100,220,0.9);}
+.class-card.sonho .class-name{color:rgba(55,138,221,0.9);}
+.class-card.desespero .class-name{color:rgba(220,90,70,0.9);}
+.class-card.desejo .class-name{color:rgba(239,159,39,0.9);}
+.class-card.delirio .class-name{color:rgba(212,175,55,0.9);}
+.class-focus{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--whisper);margin-bottom:0.6rem;}
+.class-desc{font-size:0.9rem;font-style:italic;color:var(--silver);line-height:1.65;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:1px;background:rgba(212,175,55,0.07);}
+.faq-item{background:var(--deep);padding:1.5rem 2rem;transition:background 0.3s;}
+.faq-item:hover{background:var(--veil);}
+.faq-q{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.08em;color:var(--gold-light);margin-bottom:0.6rem;}
+.faq-a{font-size:0.95rem;font-style:italic;color:var(--whisper);line-height:1.7;}
+.faq-a strong{color:var(--bone);font-style:normal;}
+
+/* FOOTER */
+footer{position:relative;z-index:2;text-align:center;padding:3rem 2rem 2rem;border-top:1px solid rgba(212,175,55,0.08);}
+.footer-logo{font-family:'Cinzel Decorative',serif;font-size:1.8rem;color:rgba(212,175,55,0.08);letter-spacing:0.2em;margin-bottom:1rem;}
+.footer-text{font-size:0.85rem;font-style:italic;color:var(--whisper);}
+.footer-nav{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;transition:color 0.3s;}
+.footer-nav a:hover{color:var(--gold);}
+.footer-disclaimer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(212,175,55,0.05);font-family:'Cinzel',serif;font-size:0.56rem;letter-spacing:0.12em;color:rgba(212,175,55,0.18);text-transform:uppercase;line-height:1.9;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+
+/* ─────────────────────────────────────────────
+   NEOTHEON — PALETA CLARA PREMIUM (v2)
+   Aplicada para clarear o site mantendo a estética sombria.
+───────────────────────────────────────────── */
+body{
+  background:
+    radial-gradient(circle at 50% 18%, rgba(38,33,74,0.72) 0%, rgba(28,24,51,0.38) 32%, rgba(11,10,20,1) 72%),
+    var(--void) !important;
+}
+body::before{opacity:0.38 !important;}
+nav{
+  background:rgba(11,10,20,0.84) !important;
+  border-bottom:1px solid rgba(212,175,55,0.18) !important;
+  box-shadow:0 10px 40px rgba(0,0,0,0.24);
+}
+.nav-dropdown{
+  background:rgba(20,18,36,0.96) !important;
+  border-color:rgba(212,175,55,0.22) !important;
+  box-shadow:0 16px 50px rgba(0,0,0,0.34);
+}
+.nav-dropdown a:hover{background:rgba(212,175,55,0.08) !important;}
+.nav-logo,.hero-title,.hero-title-main,.section-title{
+  text-shadow:0 0 46px rgba(212,175,55,0.24),0 2px 4px rgba(0,0,0,0.65) !important;
+}
+.hero-glow,.glow-purple{
+  background:radial-gradient(ellipse,rgba(106,60,201,0.24) 0%,rgba(106,60,201,0.10) 34%,transparent 68%) !important;
+}
+.hero-blood,.glow-blood{
+  background:radial-gradient(ellipse,rgba(158,42,42,0.16) 0%,transparent 72%) !important;
+}
+.fog-base{
+  background:linear-gradient(to top,rgba(11,10,20,0.94),rgba(11,10,20,0.54),transparent) !important;
+}
+.hero-banner-grad{
+  background:linear-gradient(to bottom,rgba(11,10,20,0.40) 0%,rgba(11,10,20,0.06) 42%,rgba(11,10,20,0.15) 62%,rgba(11,10,20,0.96) 100%) !important;
+}
+.hero-bg-img,.hero-banner-img{filter:brightness(0.44) saturate(0.88) !important;}
+.hero-banner:hover .hero-banner-img{filter:brightness(0.50) saturate(0.95) !important;}
+section{background:linear-gradient(180deg,rgba(255,255,255,0.012),rgba(255,255,255,0)) !important;}
+.section-divider .div-line,.div-line{
+  background:linear-gradient(to right,transparent,rgba(212,175,55,0.24),transparent) !important;
+}
+.div-icon{color:rgba(212,175,55,0.48) !important;}
+.section-tag,.hero-eyebrow,.evento-tag,.endgame-tag,.ato-num,.destaque-rank,.god-title,.dragon-cat-title,.info-tag,.stat-lbl{
+  color:rgba(212,175,55,0.68) !important;
+}
+.section-desc,.hero-sub,.hero-subtitle,.god-domain,.destaque-sub,.footer-text,.stat-bar-label,.stat-bar-val{
+  color:var(--whisper) !important;
+}
+.hero-lore,.section-intro,.amb-text,.intro-text p,.intro-quote p,.egide-block p,.resource-card-desc,.endgame-desc,.evento-desc,.of-desc,.ato-desc,.dragon-desc,.info-text,.acc-body,.acc-content,.mission-desc,.mission-card p,.rule-card p{
+  color:var(--silver) !important;
+}
+.intro-quote,.dragon-section,.welcome-banner,.note-box,.warning-box,.info-box,.callout,.system-box{
+  background:linear-gradient(135deg,rgba(38,33,74,0.52),rgba(158,42,42,0.13)) !important;
+  border-color:rgba(212,175,55,0.18) !important;
+  box-shadow:0 18px 55px rgba(0,0,0,0.20);
+}
+.resources-grid,.destaques-grid,.endgame-grid,.egide-grid,.oficios-grid,.gods-grid,.dragon-grid,.ato-grid,.accordion,.stat-banner{
+  background:rgba(212,175,55,0.10) !important;
+}
+.resource-card,.destaque-card,.endgame-card,.egide-block,.oficio-card,.god-card,.dragon-card,.ato-card,.stat-item,.acc-item,.mission-card,.rule-card,.info-card,.card{
+  background:rgba(20,18,36,0.88) !important;
+  border-color:rgba(212,175,55,0.12) !important;
+}
+.resource-card:hover,.destaque-card:hover,.endgame-card:hover,.oficio-card:hover,.god-card:hover,.dragon-card:hover,.ato-card:hover,.acc-item:hover,.mission-card:hover,.rule-card:hover{
+  background:rgba(28,24,51,0.94) !important;
+  box-shadow:inset 0 0 42px rgba(106,60,201,0.16),0 18px 48px rgba(0,0,0,0.24) !important;
+}
+.rc-img,.dest-img,.eg-img,.of-img,.god-img{filter:brightness(0.50) saturate(0.88) !important;}
+.resource-card:hover .rc-img,.destaque-card:hover .dest-img,.endgame-card:hover .eg-img,.oficio-card:hover .of-img,.god-card:hover .god-img{filter:brightness(0.68) saturate(1.04) !important;}
+.rc-grad,.dest-grad,.eg-grad,.of-grad,.god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.94) 0%,rgba(20,18,36,0.64) 42%,rgba(20,18,36,0.16) 100%) !important;
+}
+.resource-card:hover .rc-grad,.destaque-card:hover .dest-grad,.endgame-card:hover .eg-grad,.oficio-card:hover .of-grad,.god-card:hover .god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.92) 0%,rgba(106,60,201,0.32) 52%,rgba(20,18,36,0.10) 100%) !important;
+}
+.endgame-card .eg-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.95) 0%,rgba(158,42,42,0.30) 55%,rgba(20,18,36,0.14) 100%) !important;
+}
+.ato-img img{filter:brightness(0.62) saturate(0.88) !important;}
+.ato-card:hover .ato-img img{filter:brightness(0.78) saturate(1.05) !important;}
+.ato-img-grad{background:linear-gradient(to right,rgba(20,18,36,0.72),transparent) !important;}
+.ato-card:nth-child(even) .ato-img-grad{background:linear-gradient(to left,rgba(20,18,36,0.72),transparent) !important;}
+.eventos-wrapper{
+  background:rgba(20,18,36,0.92) !important;
+  border-color:rgba(212,175,55,0.36) !important;
+  box-shadow:0 0 60px rgba(212,175,55,0.10),0 0 0 1px rgba(212,175,55,0.10) !important;
+}
+.evento-overlay{background:linear-gradient(to top,rgba(11,10,20,0.90) 0%,rgba(20,18,36,0.36) 54%,transparent 100%) !important;}
+.evento-slide img{filter:brightness(0.82) saturate(0.95) !important;}
+.btn-primary,.evento-cta,.destaque-badge{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold)) !important;
+  color:var(--void) !important;
+}
+.btn-secondary,.ato-link,.nav-discord{
+  border-color:rgba(212,175,55,0.42) !important;
+  color:var(--gold) !important;
+}
+.btn-secondary:hover,.ato-link:hover,.nav-discord:hover{
+  background:rgba(212,175,55,0.10) !important;
+  border-color:var(--gold) !important;
+}
+.acc-header:hover,.acc-item.open .acc-header{background:rgba(212,175,55,0.075) !important;}
+.stat-bar-track{background:rgba(255,255,255,0.09) !important;}
+footer{background:rgba(11,10,20,0.42) !important;border-top-color:rgba(212,175,55,0.12) !important;}
+@media(max-width:900px){
+  nav{background:rgba(11,10,20,0.92) !important;}
+  .hero-bg-img,.hero-banner-img{filter:brightness(0.38) saturate(0.82) !important;}
+}
+
+
+
+/* AJUSTE DE IMAGENS DOS DEUSES */
+.god-img{
+  background-size:cover !important;
+  background-position:center top !important;
+  background-repeat:no-repeat !important;
+}
+</style>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON — Individualidades"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-container"></div>
+<div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
+  <div class="loader-orbit" aria-hidden="true">
+    <span class="loader-ring r1"></span>
+    <span class="loader-ring r2"></span>
+    <span class="loader-core">✦</span>
+  </div>
+  <div class="loader-title">NEOTHEON</div>
+  <div class="loader-subtitle">Abrindo o véu entre mundos</div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-glow"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewbox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">Os Celestiais Não Escolhem · São Parte de Você</div>
+<div class="sigil-row"><div class="s-line"></div><span class="s-sym">⛧</span><div class="s-line r"></div></div>
+<h1 class="hero-title">Individualidades</h1>
+<div class="hero-sub">Eles governam os céus, mares e o inferno — agora, governam você</div>
+<p class="hero-lore">Cada nome, cada fúria, cada maldição vive agora entre as vielas de Londres. Os poderes dos deuses correm em seu sangue — ou foram gravados em sua alma por pacto. <strong>Escolha com sabedoria.</strong></p>
+</div>
+<!-- COMO FUNCIONA -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+<span class="section-tag">Entenda o Sistema</span>
+<h2 class="section-title">Como Funcionam as Individualidades</h2>
+</div>
+<div class="info-grid reveal" style="transition-delay:.08s">
+<div class="info-block">
+<div class="info-block-icon">🧬</div>
+<div class="info-block-title">Semideuses</div>
+<div class="info-block-text">Filhos de um deus e um humano. Têm acesso às individualidades da lista do deus correspondente. Podem escolher <strong>3 individualidades por nível</strong> (até o nível 7 da lista).</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">🔮</div>
+<div class="info-block-title">Semideuses Bruxos / Arcanos</div>
+<div class="info-block-text">Filhos de deuses da magia. Têm acesso à lista de individualidades <strong>e</strong> à lista de magias da etnia. Escolhem <strong>2 individualidades + 2 magias por nível</strong>. Magias precisam de comando vocal.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">🤝</div>
+<div class="info-block-title">Afiliações Divinas</div>
+<div class="info-block-text">Personagens sem vínculo de sangue que aceitam um pacto com uma divindade. Recebem as individualidades dessa divindade, alterando seu código genético. Grupos divinos têm regras próprias.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">⚖️</div>
+<div class="info-block-title">Grupos Divinos</div>
+<div class="info-block-text">Organizações regidas por entidades específicas. Membros escolhem <strong>2 individualidades nos níveis 3, 5 e 7</strong> — a custo de <strong>1 individualidade da lista original</strong> em cada nível.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">⚡</div>
+<div class="info-block-title">Poderes de Continuidade</div>
+<div class="info-block-text">Poderes divididos em etapas (I, II, Final). Para ter "Umbracinese II" precisa ter escolhido "Umbracinese I" antes. <strong>Não é possível pular etapas.</strong></div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">📋</div>
+<div class="info-block-title">Regra de Ordem</div>
+<div class="info-block-text">Não é possível escolher individualidades de níveis anteriores ao que alcançou, nem escolher em ordem diferente da lista. As listas são divididas em <strong>7 níveis</strong>.</div>
+</div>
+</div>
+</section>
+<!-- TRÊS GRANDES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">⚡</span><div class="div-line"></div></div>
+<section>
+<div class="reveal">
+<span class="section-tag">Greco-Romanos</span>
+<h2 class="section-title">Os Três Grandes</h2>
+<p class="section-desc">Os mais poderosos do Olimpo. Seus filhos recebem +30 HP e +10% Taxa Crítica a mais que os demais semideuses.</p>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.08s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQsoMr1DLDPfpgOOa65HQbm8UOWXSALAkZHYBq_Ct_owT1dkqsM0NF3dx054qdkaFse86fRyphXS6dJ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUC2vzX1NQAVS-tQTLKEJzpjfJGg11Y0mdWR5e_FgBgxyYDD03pne16poRxcij-A15wx0MtsJayoWRVx26iCoi62nUJ2fri719_io4mo5VXnF4Ox_V4ByJTcc_fDef639SZZglxKksI5pWoIP3OB7ofxSWrQJXbicEitrhLOnJhYLW29-FCJby-1sL0s5laKKF-8rIXK3ya7e8DaqvTt6fuT7OdcZL9xEPkxIkk=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Zeus / Júpiter</div>
+<div class="god-title">Rei do Olimpo</div>
+<div class="god-domain">Céu, trovão, relâmpago, realeza, honra e justiça</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRgEKHcKdeGywUecc-42MEvJW7_VCjMBFc3FEfdEoJvuDU4FEboUgv-6bFhw8wS3N6_z4tgY6S62Zc6/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUC2vzX1NQAVS-tQTLKEJzpjfJGg11Y0mdWR5e_FgBgxyYDD03pne16poRxcij-A15wx0MtsJayoWRVx26iCoi62nUJ2fri719_io4mo5VXnF4Ox_V4ByJTcc_fDef639SZZglxKksI5pWoIP3OB7ofxSWrQJXbicEitrhLOnJhYLW29-FCJby-1sL0s5laKKF-8rIXK3ya7e8DaqvTt6fuT7OdcZL9xEPkxIkk=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Poseidon / Netuno</div>
+<div class="god-title">Rei dos Mares</div>
+<div class="god-domain">Tempestades e catástrofes naturais</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSLUuwikQ6x_cWpyTq1FkErFrhSOul7FS5lXMflB3Dio4U12DaUWW6g1pmxHOhjU1th2X62ZZaXAPfS/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hades / Plutão</div>
+<div class="god-title">Rei do Submundo</div>
+<div class="god-domain">Mortos e riquezas</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- MONARQUIA OLIMPIANA -->
+<div class="cat-header reveal">
+<div class="cat-title">Monarquia Olimpiana</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQWhyTfd_tsVdTrx2p_4pP6KvRJXuOdWpMkiNcxwvLSzJz428JMxvudDt4kfxn0LjhuDFMEh2cuVFNB/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hera / Juno</div>
+<div class="god-title">Rainha dos Deuses</div>
+<div class="god-domain">Mulheres, casamento, parto e amor familiar</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSD3KxbPjlVdnWTUxr_r5m7DAO4gLXDLVL1BkxOjomz8F1kIAJPpdmdZ7CFZ6R4yKr4VdcY1IrnEjOS/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Deméter / Ceres</div>
+<div class="god-title">Deusa da Natureza</div>
+<div class="god-domain">Agricultura, colheita e estações</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vR6Rr0xeJkeuslf_1ZW5me_l62LWDYYhC3wJ4-i7Try4Ww3YfkkXlftgb0VKZ_3TWdluwlKXEmMORRa/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Héstia / Vesta</div>
+<div class="god-title">Deusa do Lar</div>
+<div class="god-domain">Lar, fogo, calor e família</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTpKP7vu7v_uItArXqpDauYQKA8cp6lwbOxXfeerDzxMXVFZ-RM_cJGfv0N8rv8A46JVE537wUs_KTJ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Afrodite / Vênus</div>
+<div class="god-title">Deusa do Amor</div>
+<div class="god-domain">Beleza, amor, desejo, paixão, prazer e fertilidade</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTqh51T4jqnydYgM7Ia4TR7wiFI4l6Xsx9Nmow9rZgtlR21oc3I0qMcOytKEuzYN_4eAqsUj8hO0v8T/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Apolo / Phoebus</div>
+<div class="god-title">Deus do Sol</div>
+<div class="god-domain">Sol, medicina, arte, arco e flecha, conhecimento e profecias</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRv7Z_IjxLm1Igp_0fCJD-eHByhLEhqjfO4CB4pMDf7jGLaVJik8Mh65ArM3Yi8tbjVYSH38urzZX7m/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDhZLEXRb3DaW-ouwA9rW2RbdJuleUyVchSa3hy0IgSOa2ELJkyMn-1b9Ae_lspymsGB-jDM5aKD83HoFb_1R_2164yV3gqzzqlGQyZ7Ro2Ur-tj6PqICX1OKvIU_NRCNtZSL52sVmH4nIFa_53ybpSbAjKHMMkLzTpRpwZ6W_XsDWh4OE2F8my1-ymKKtNT1aO9GbeUzHl37TB-CRDdOpk60K8ElqF-mE1lx0=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Ares / Marte</div>
+<div class="god-title">Deus da Guerra</div>
+<div class="god-domain">Guerra e masculinidade</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSun9-QVWS6k--N0OD969QFrjnLOnA7cekZfO9frS4LswPa5ajrf4kCg8Eq6f_QHweLJnmw2H7z0Bfz/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBx6sBb0G5RIi9Zh9R9Lz52pcqHnR8zrfXetLgIyBosG-Y9cKj3YMfSa6wYhrMY6MzhzJxKtAibBE08USPgBA9DcQZV_GQ7Jwd_vS03HohLbZtXbepq67wAu-uBEgc0sENAYmST1-3-brsp67gdlAodEs5fUk7FJa9TzW_pquJhUFRPHcZ70UHc9mhYXpf3Cp8NqAJRVTSjzMaHGXJiL8B56jLaOXCSCtEF=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Artêmis / Diana</div>
+<div class="god-title">Deusa da Lua</div>
+<div class="god-domain">Lua, caça, arco e flecha, natureza selvagem, animais e florestas</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQUw15zSg5HCdLeY0yneonoVdBsuqtdygG3Ad33nl8IRQRfqQb-pf9e3Yegqba53ltadMdgRE6ZyeyQ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBx6sBb0G5RIi9Zh9R9Lz52pcqHnR8zrfXetLgIyBosG-Y9cKj3YMfSa6wYhrMY6MzhzJxKtAibBE08USPgBA9DcQZV_GQ7Jwd_vS03HohLbZtXbepq67wAu-uBEgc0sENAYmST1-3-brsp67gdlAodEs5fUk7FJa9TzW_pquJhUFRPHcZ70UHc9mhYXpf3Cp8NqAJRVTSjzMaHGXJiL8B56jLaOXCSCtEF=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Atena / Minerva</div>
+<div class="god-title">Deusa da Sabedoria</div>
+<div class="god-domain">Sabedoria, tecelãs, inteligência e estratégia em batalha</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRlU_LRh2p9mQqlOqze1XuMs6uc5vPlcNKestmhhb-_9OKrTCJoiGWZfYpgNCc7dYz8IvDWpjKv4atT/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDZ2riPo6zCVaxxwIKxa_t0yaUxNnwK5ZmP7tt_gJ4eiU6rbBJwS90u97auA2Z8Ae0abOCP26G-VJHQFFRYaJbb4SWmko0dnPE2Z3HCnxondPbhTdtnkZ58xRM71erz2pekq_ieij3aem_Z_jNHI4VMEdwS08AIJMI8Wz5ukS9ize5tN3P8xCBq8GXdbC7qgUh30-iyWZY3vCarn6vGgki-oSu2wvxb6ukkyx8=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hermes / Mercúrio</div>
+<div class="god-title">Deus das Viagens</div>
+<div class="god-domain">Viagens, atletas, diplomacia, oradores, ladrões, comércio e invenções</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSHIv1uKqswxdCRkSzQ1dKryS1D_HW3TmrCP6Hv4xgzm2JL-jR7U7jUO-KdaNTI7dFHRFEsLyM39fKG/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hefesto / Vulcano</div>
+<div class="god-title">Deus das Forjas</div>
+<div class="god-domain">Forjas, fogo, tecnologia, artesãos, vulcões e ferreiros</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSspnjyVmx-E8cp0qX-3lr0bpxfYMZ6yKZ73FWNuaBZuORNmheiJ2H283p-2ruPbDFA7eHECdbMyvyN/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Dionísio / Baco</div>
+<div class="god-title">Deus do Vinho</div>
+<div class="god-domain">Vinho, fertilidade, loucura, festas, êxtase religioso e teatro</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- MONARQUIA INFERNAL -->
+<div class="cat-header reveal">
+<div class="cat-title">Monarquia Infernal — Ctônicos</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSIXyEfmFMbFYeHYBzAHytwF3DecAnlCvMCdmHC7O5EN_BFK-UlTAGR9xxZ4G3xcQ46S2xn0rCdmdqe/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Perséfone / Proserpina</div>
+<div class="god-title">Rainha do Submundo</div>
+<div class="god-domain">Primavera</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRhJ30AvnbeqnIJ1C51QypeVkn5Y1R9ljl-Yg5ZPZm2PP6ogF3fJzQcFxbKk0BflZRx7Lp6Vvs3LgJg/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hécate / Trívia</div>
+<div class="god-title">Senhora de Erebos</div>
+<div class="god-domain">Magia, encruzilhadas, ciclos da vida, noite e lua</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAs67H5rc0cVje8opi3FoUx7ZsWL1huIy5XD_otYdyQmr_oNKvryXZWfzA5emG4buPQed9JFNr9dfy4SiwH9UXqszVlZ9HviTdxSJiasD6Es8QUUDwxNAT8WzP_4FC9Rmwy6ORqt6TKxygKi_2KAC5UYHl37o9z0t_paXGDFfm7tHybegQjESwZ9RrZtblCN06NCU0zLyMdanoDzwe3mc3IEo-sdYCCw6EQ=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Macária / Suda</div>
+<div class="god-title">Princesa dos Elísios</div>
+<div class="god-domain">Boa morte</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTzTAJMx2OVTOj_8Txj0FuMMGfg1mC76JsJjdXOfrnxYlqm9O4k5Ndp_P9LiNqJhFyI71c78UsvWyZ6/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUD8FMMj3DnaTd7l7aElEzrGSF0wwT-E8QWhpLmQhLppUnMBRIai6_lFSjcOZyjZqKedhRa3Cy0KXW4pRw5SzjOzufxyvwQsSMWW1bp-Tjlo7jjkej2d_zUGWHiy6bIjonAyqs7hNDPn9XYiK9k1muj19qrm-yxdKRXINzLFiwiGkg-5_iiOPzXY_K3Ebcek5r_GEOLINIlQqlP6TTCqATQI2F7oeplON6oC=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Melinoe / Phantessa</div>
+<div class="god-title">Princesa dos Perdidos</div>
+<div class="god-domain">Fantasmas e ritos funerários</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDv6I50ASppIkldj6O0KdotTTkrwZ0TwEyOpI5MU64SVJuPyES5XE8vqIwIgaTYj3SiqcBEELM4tw_v8vlZG3ca3a0tljRTzx3t0dprerE_5ibSlgOYWNYJ6zu_81V5_m33_vtMiltP-fBH8-3rTeK0Y4JXLDP43-WWCTY5KkUjhwceKjtc4kkKxM9vmiHuYoEckireP2hJ-rlx-ynlsZV2zD5Ap55IHy2C=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Zagreu / Zagreus</div>
+<div class="god-title">Príncipe do Limiar</div>
+<div class="god-domain">Rios infernais, travessia, juramento e negação</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDv6I50ASppIkldj6O0KdotTTkrwZ0TwEyOpI5MU64SVJuPyES5XE8vqIwIgaTYj3SiqcBEELM4tw_v8vlZG3ca3a0tljRTzx3t0dprerE_5ibSlgOYWNYJ6zu_81V5_m33_vtMiltP-fBH8-3rTeK0Y4JXLDP43-WWCTY5KkUjhwceKjtc4kkKxM9vmiHuYoEckireP2hJ-rlx-ynlsZV2zD5Ap55IHy2C=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Oberon / Tenebrus</div>
+<div class="god-title">Príncipe do Tártaro</div>
+<div class="god-domain">Sombras</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRQMmqEiYFfw00_IEOK1A77DQvhrMpSMqI6E7ziLedOuNkCX5-JNzgngoZ9wH5iiaKpeCsY6ikyCLfr/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5HzJtwko03b2bp5H1ieHXt37XSfSwIv4Us3T_DvzYteUAlO_dxNwEgUviIJqnzBfpHzbqaOpRd7E2_U3JNlh0B8EqEYfO3dym6nnbHysbssxcg8m2w9wIlS-1TB4u8SxlhQsXytz_cXc82gEbXhaVhtKgR4dT8piav286m3URIjwDi0pZzHYsFzYZJGfWV-NGBNorMRZ8aqhSO-_YCBON23ERa68BpV_4jT0=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Tânatos / Letus</div>
+<div class="god-title">Personificação da Morte</div>
+<div class="god-domain">A morte</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQRDMcFbbtI39gJNZ_azZOcuEKLnGx9Fo9EI1kvrMIQMfGar3F3cr8f-8XrU4fIA4MAfDkd8q45uxAg/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hipnos / Somnus</div>
+<div class="god-title">Personificação do Sono</div>
+<div class="god-domain">O sono</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTQmRWw4y7E7Vphq6pG9IVr93DDkZ136mCnCn_Pz3SEbf4LtlV-Fh1W6CRqUHEXqtDweENsN5XJNIyP/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Morfeu / Somnia</div>
+<div class="god-title">Líder dos Oneiros</div>
+<div class="god-domain">Sonhos</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vT39piSY62DBuFruxrDLp2eIdujvnZ9Zks4Fi9PFkqMUXr8XBppqfpLzZ-3XhcAriuLYVJ6pBwIySj0/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Paraphronia / Delírio</div>
+<div class="god-title">Deusa da Irrealidade</div>
+<div class="god-domain">Irrealidade e caos mental</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- CTÔNICOS MENORES -->
+<div class="cat-header reveal">
+<div class="cat-title">Ctônicos Menores</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTb7vTEKpm4F0PBVOH-PPMAQLpQ__MIxUuRDYEsr7l0x1uEHVZHSmrLCznCl-Lzr7UqE8RbLbs2lZRK/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBaF8y2cjzh98eZBDrsl67PCQZOEafoSLS1fPedvioR4_d1wClVth6fm_nSgo5xqAefuuweUgQzl6gTCfw6xS30Y23MI9GsADLZgaIOskAyvZJTCxSC-M5EEq15ofS4TQs6jGslrBSWXTKTZhfnFYXxZqQuGkFwMPY-_YiK7cXCWifDyyM6wMXfVIJnKZr9mfaSX0sFhFC1OHFtu1Awx4kNIg8saZiAUtpLuZc=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Circe</div>
+<div class="god-title">Deusa das Poções</div>
+<div class="god-domain">Poções, circenses, trapaça e magia sombria</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- OLIMPIANOS MENORES -->
+<div class="cat-header reveal">
+<div class="cat-title">Olimpianos Menores</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUCoVp7Yzw6rxUAynEmFBW69Kg9tij4u9JuC6iOkWpPxQyTDceoHYhj6mDE0QnvQkaF7bujtHCoKaH2PHkeCStZcW04YOKdnrgTOuvboaAgBy2YoFlTHNA8pitv486zpu5gQ3GZvl2Crdq4iLU_CipG3ztR7TC1aOBv9ZPqM6l2-YweKZY10cqHN2l4Z-Ms1HQKElkwQZ5QKJ1qD7xf5phscINdfrpeH5BI6=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Ênio / Belona</div>
+<div class="god-title">Deusa da Destruição</div>
+<div class="god-domain">Destruição e fúria em batalha</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDRsB-3xjNeLWDug9pkqsSkoB2qqbEPDN2JnRrnaFr42Y6PfHvMa_uV8HoxvEn9elpFKS-7FmU5jyOjTG_e6Yj-AM2a_TQMxssbLRPlHN4WluFFuNvX11XRbcHfg6BqZVAu2WcUfPGp1mmxTsVcpNpp_4zePUpfKIhtoI52gOLoh1sNP5wEEdXYVHDSFHwReJKzMX0CyefXjtWWtAfk22Hvyof1kF1M61Vw2BM=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Harmonia / Concordia</div>
+<div class="god-title">Deusa da Harmonia</div>
+<div class="god-domain">Harmonia, paz e concórdia</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDRsB-3xjNeLWDug9pkqsSkoB2qqbEPDN2JnRrnaFr42Y6PfHvMa_uV8HoxvEn9elpFKS-7FmU5jyOjTG_e6Yj-AM2a_TQMxssbLRPlHN4WluFFuNvX11XRbcHfg6BqZVAu2WcUfPGp1mmxTsVcpNpp_4zePUpfKIhtoI52gOLoh1sNP5wEEdXYVHDSFHwReJKzMX0CyefXjtWWtAfk22Hvyof1kF1M61Vw2BM=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Orfeu</div>
+<div class="god-title">Deus da Música</div>
+<div class="god-domain">Música</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5Gu-Utvy974Q4OZSZsOXbd9Zvs4WLFcwXIjiAYN8lVg8IyO5W-Wr7EbGHBVaTbHNqoIL52d--PMrrElL3Cimdg0_ezxWe0WmmLlxKbmorBN7CJYvmNLtJmHR3xCyF-AiRSCROchDuh2IsXkR3vvwEZygFkpYahmA6WJmmsZGmsDQ6OUwkk2PlBY9lzWJl6yKxrcK9ao1MeYRp0Jswyvvb_hV6aoLgegTK=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Psiquê / Cibele</div>
+<div class="god-title">Deusa da Alma</div>
+<div class="god-domain">Alma e mente</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSXpLoh9qAhDhLVT-u-On6Cey-PeFthcTm6ApLpqBeigvuj--3v2m1HpIO9FUm6MG7WT2TRaQRNh1rT/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5Gu-Utvy974Q4OZSZsOXbd9Zvs4WLFcwXIjiAYN8lVg8IyO5W-Wr7EbGHBVaTbHNqoIL52d--PMrrElL3Cimdg0_ezxWe0WmmLlxKbmorBN7CJYvmNLtJmHR3xCyF-AiRSCROchDuh2IsXkR3vvwEZygFkpYahmA6WJmmsZGmsDQ6OUwkk2PlBY9lzWJl6yKxrcK9ao1MeYRp0Jswyvvb_hV6aoLgegTK=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Tique / Fortuna</div>
+<div class="god-title">Deusa da Sorte</div>
+<div class="god-domain">Sorte e jogos de azar</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- ORGANIZAÇÕES & RAÇAS -->
+<div class="cat-header reveal">
+<div class="cat-title">Organizações &amp; Raças</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/1llHzlI1vwSlz0_U83TPSjdrGBjtbL75fAJeSWvZNNcE/preview" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDALKwhYKVAPykJYgm-XcQV99VOTcvqlQY5UNxXj7jxQVkWmGsKLBY7cA88vLDS-UtI_upE6loldhbyS_UvosR1p2ZXS4aYSQy4Bh5nytSR6BwxRyCMrIRxeSPnwtunu4iNDQ8I4ABtHaKl9GL3CvDDQqmxNh5TCBIARrtEPFWVV4F7lGkfBOYPBWbj7emsktfINOB9wJU3jdcVq53H8fjju1GfxEcWiLJoCqg=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Torre do Relógio</div>
+<div class="god-title">Associação dos Magos</div>
+<div class="god-domain">A ordem dos magistas de Londres</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRxwTF98BMZOzVW05lPkqay9HW95AAm_P-PWO8vDX3U8SvgiIDAhO528o-dZ6aZ7HXEZQGs7D2C5b28/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBCG-tmnkmWvAr3pDesWUZg6eUaRyJYAXEDb0JyvIV4UFlR8J1MEzMKh4EBMw5mdq7XlJTroQtAh2xO67oE3zfRBfJguPt1DTsOOGTy9mNj6Lfq6Z71qs0ZLGjy4izebM9fbaibXAb3ocy7dsC65-fp_qZNEYVcu4I2DPThExNBKB47gXxkc5bHQblytkLpby6TzQECRp8n6t5eSzgVhL917qg0JbGV0x6F=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Vampiros</div>
+<div class="god-title">Os Apóstolos Mortos</div>
+<div class="god-domain">A raça dos não-mortos de Londres</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/1A0YUP_AV6og5zRyBydGJ4eUUUYgTIxk3djMLtfPiPUU/preview" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUCWI-t9_VYfMZG12gTOQTXFsy019qZu4AckUgYXH-8VEnKgxErjxSq3AApFBDdz7ArozcW5aSIZ73453w223yi8mL56JfxbT8LBvaAqrlu6pi3HN-KVL9y3gFaU4rYtexi_Y-3AC1hpadZePr0ciUvWoF1-2zNJ5-FW9ar6n5W05N9J878J-_nfd8Ykq2TTb-O14PlhGHiIw4FCmpfZb14gA0lucK2Itzh55NI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Igreja</div>
+<div class="god-title">Os Guardiões do Equilíbrio</div>
+<div class="god-domain">Aqueles que mantêm o equilíbrio</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://postimg.cc/758nS0x4')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Congregação das Bruxas</div>
+<div class="god-title">Organização</div>
+<div class="god-domain">A congregação das feiticeiras de Londres</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AS CLASSES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">⚡</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+<span class="section-tag">Os Perpétuos</span>
+<h2 class="section-title">As Classes &amp; Os Princípios Celestiais</h2>
+<p class="section-desc">Forças cósmicas acima dos próprios deuses. Todo semideus é compatível com até <strong>2 classes</strong> — isso determina quais bênçãos poderá usar e define o foco da sua build.</p>
+</div>
+<div class="classes-grid reveal" style="transition-delay:.08s">
+<div class="class-card destruicao">
+<div class="class-icon">💥</div>
+<div class="class-name">Destruição</div>
+<div class="class-focus">Foco: ATK e Crítico</div>
+<div class="class-desc">Semideuses que escalam com poder de ataque puro e explosão crítica. Máximo dano em cada golpe.</div>
+</div>
+<div class="class-card destino">
+<div class="class-icon">🛡️</div>
+<div class="class-name">Destino</div>
+<div class="class-focus">Foco: DEF e Crítico</div>
+<div class="class-desc">Guerreiros que convertem resistência em poder ofensivo. Quanto mais aguentam, mais machucam.</div>
+</div>
+<div class="class-card morte">
+<div class="class-icon">💀</div>
+<div class="class-name">Morte</div>
+<div class="class-focus">Foco: HP e Crítico</div>
+<div class="class-desc">Tanques que escalam com vida. Sua sobrevivência se converte em força destrutiva.</div>
+</div>
+<div class="class-card sonho">
+<div class="class-icon">🌙</div>
+<div class="class-name">Sonho</div>
+<div class="class-focus">Foco: Buffs poderosos</div>
+<div class="class-desc">Potencializadores de aliados. Concedem bônus únicos e transformam o resultado de batalhas sem atacar diretamente.</div>
+</div>
+<div class="class-card desespero">
+<div class="class-icon">🩸</div>
+<div class="class-name">Desespero</div>
+<div class="class-focus">Foco: Debuffs e DOT</div>
+<div class="class-desc">Controladores que enfraquecem inimigos e causam dano ao longo do tempo. Lentos e inevitáveis.</div>
+</div>
+<div class="class-card desejo">
+<div class="class-icon">✨</div>
+<div class="class-name">Desejo</div>
+<div class="class-focus">Foco: Curas e buffs/debuffs menores</div>
+<div class="class-desc">Curadores e suportes. Mantêm aliados em pé com bênçãos de restauração e proteção.</div>
+</div>
+<div class="class-card delirio">
+<div class="class-icon">🌀</div>
+<div class="class-name">Delírio</div>
+<div class="class-focus">Foco: Invocações e pets de combate</div>
+<div class="class-desc">Invocadores que amplificam pets e criaturas. Seu exército é sua força.</div>
+</div>
+</div>
+<div class="tip reveal" style="transition-delay:.15s;background:rgba(158,42,42,0.15);border-left-color:rgba(192,57,43,0.5);">
+<div class="tip-label" style="color:rgba(220,90,70,0.8);">Atenção</div>
+<p>Não é possível usar bênçãos de uma classe que não pertença à sua lista. Se sua lista for compatível com Desespero e Morte, não poderá usar Destino, Destruição, etc. <strong>Toda e qualquer lista tem compatibilidade com até 2 perpétuos.</strong></p>
+</div>
+</section>
+<!-- FAQ -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2rem;">
+<span class="section-tag">Dúvidas Frequentes</span>
+<h2 class="section-title">Perguntas &amp; Respostas</h2>
+</div>
+<div class="faq-list reveal" style="transition-delay:.08s">
+<div class="faq-item">
+<div class="faq-q">Posso escolher qualquer individualidade em qualquer ordem?</div>
+<div class="faq-a">Não. Deve-se escolher somente a quantidade determinada e <strong>na ordem de nível correspondente</strong>. Não é possível escolher individualidades de níveis anteriores ao que alcançou.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Como funcionam os poderes de continuidade (I, II, Final)?</div>
+<div class="faq-a">São poderes que evoluem em etapas. Para ter "Umbracinese II" precisa ter escolhido "Umbracinese I" antes. <strong>Nunca é possível pular etapas.</strong> O mesmo vale para "Final" ou "III".</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Se nenhuma individualidade do meu nível me agradar, posso pegar de nível anterior?</div>
+<div class="faq-a">Não. Você pode escolher <strong>apenas individualidades do nível ao qual alcançou</strong>, sem exceções.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Como funcionam as afiliações divinas em comparação com a filiação?</div>
+<div class="faq-a"><strong>Filiação</strong> é ser filho de sangue de um deus. <strong>Afiliação</strong> é aceitar um pacto com uma divindade — sem vínculo de sangue, mas com um ritual de iniciação que altera geneticamente o personagem, concedendo as individualidades da divindade escolhida.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">O que são os Perpétuos e como afetam meu personagem?</div>
+<div class="faq-a">São forças cósmicas acima dos deuses. Todo semideus é compatível com até <strong>2 classes de perpétuos</strong>, determinando quais bênçãos poderá equipar. Isso define totalmente a build do personagem — escolha com cuidado.</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="neotheon_ambientacao.html">Ambientação</a>
+<a href="neotheon_regras.html">Regras &amp; Sistemas</a>
+<a href="neotheon_missoes.html">Missões Fixas</a>
+<a href="neotheon_fichas.html">Fichas</a>
+<a href="neotheon_empyrean.html">Empyrean</a>
+<a href="neotheon_fate.html">Fate / Guerra de Londres</a>
+<a href="neotheon_banner.html">Banner Ativo</a>
+<a href="neotheon_mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+<script>
+const canvas=document.getElementById('cosmos');const ctx=canvas.getContext('2d');let W,H,stars=[],nebulas=[],shooting=[],t=0;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+function initStars(){stars=[];for(let i=0;i<260;i++){stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+0.2,o:Math.random()*0.6+0.1,speed:Math.random()*0.35+0.05,phase:Math.random()*Math.PI*2,color:Math.random()>0.88?'#d4af37':Math.random()>0.72?'#9980cc':'#ffffff'});}nebulas=[];const cols=['rgba(106,60,201,','rgba(158,42,42,','rgba(18,12,40,'];for(let i=0;i<5;i++){nebulas.push({x:Math.random()*W,y:Math.random()*H*0.8,rx:80+Math.random()*160,ry:50+Math.random()*100,col:cols[Math.floor(Math.random()*cols.length)],a:0.03+Math.random()*0.05});}}
+function spawnShoot(){if(Math.random()<0.003){shooting.push({x:Math.random()*W*0.75,y:Math.random()*H*0.45,len:90+Math.random()*120,speed:9+Math.random()*6,angle:Math.PI/5+Math.random()*0.35,life:1});}}
+function draw(){ctx.clearRect(0,0,W,H);nebulas.forEach(n=>{const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));g.addColorStop(0,n.col+n.a+')');g.addColorStop(1,n.col+'0)');ctx.save();ctx.scale(1,n.ry/n.rx);ctx.beginPath();ctx.arc(n.x,n.y*(n.rx/n.ry),n.rx,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.restore();});stars.forEach(s=>{const tw=Math.sin(t*s.speed+s.phase)*0.35+0.65;ctx.globalAlpha=s.o*tw;ctx.fillStyle=s.color;if(s.color==='#d4af37'&&s.r>1){ctx.save();ctx.globalAlpha=s.o*tw*0.55;ctx.fillRect(s.x-0.5,s.y-s.r*2.8,1,s.r*5.6);ctx.fillRect(s.x-s.r*2.8,s.y-0.5,s.r*5.6,1);ctx.restore();ctx.globalAlpha=s.o*tw;}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();});spawnShoot();shooting=shooting.filter(s=>s.life>0);shooting.forEach(s=>{ctx.save();ctx.globalAlpha=s.life*0.8;const dx=Math.cos(s.angle)*s.len,dy=Math.sin(s.angle)*s.len;const g=ctx.createLinearGradient(s.x,s.y,s.x-dx,s.y-dy);g.addColorStop(0,'rgba(255,255,240,0.9)');g.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=g;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x-dx,s.y-dy);ctx.stroke();ctx.restore();s.x+=Math.cos(s.angle)*s.speed;s.y+=Math.sin(s.angle)*s.speed;s.life-=0.022;});ctx.globalAlpha=1;t+=0.01;requestAnimationFrame(draw);}
+resize();initStars();draw();window.addEventListener('resize',()=>{resize();initStars();});
+const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*50);io.unobserve(e.target);}});},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body>
+</html>

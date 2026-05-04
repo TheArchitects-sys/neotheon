@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Ambientação</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0b0a14;--deep:#141224;--veil:#1c1833;--mist:#26214a;
+  --blood:#9e2a2a;--ember:#d6452f;
+  --gold:#d4af37;--gold-light:#f1d27a;--gold-dim:#8c6a2b;
+  --silver:#cfc7b4;--bone:#f5f1e6;--whisper:#9a927f;--purple:#6a3cc9;
+}
+body{background:var(--void);color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.55;}
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid rgba(212,175,55,0.1);background:rgba(11,10,20,0.92);backdrop-filter:blur(10px);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.4rem;letter-spacing:0.15em;color:var(--gold);text-decoration:none;text-shadow:0 0 30px rgba(212,175,55,0.4);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;color:var(--whisper);text-decoration:none;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+.nav-discord{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;color:var(--gold);border:1px solid var(--gold-dim);padding:0.45rem 1.1rem;text-decoration:none;text-transform:uppercase;transition:all 0.3s;position:relative;overflow:hidden;}
+.nav-discord::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.3s;z-index:-1;}
+.nav-discord:hover{color:var(--void);}
+.nav-discord:hover::before{transform:translateX(0);}
+
+/* HERO */
+.hero{position:relative;z-index:2;min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;overflow:hidden;}
+.hero-bg-img{position:absolute;inset:0;background-image:url('assets/img/amb-hero.jpg');background-size:cover;background-position:center;filter:brightness(0.18) saturate(0.7);}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:800px;height:800px;border-radius:50%;background:radial-gradient(ellipse,rgba(106,60,201,0.25) 0%,transparent 65%);pointer-events:none;}
+.hero-blood{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:600px;height:250px;background:radial-gradient(ellipse,rgba(158,42,42,0.12) 0%,transparent 70%);pointer-events:none;}
+.fog-base{position:absolute;bottom:0;left:0;right:0;height:260px;background:linear-gradient(to top,rgba(11,10,20,0.98),transparent);pointer-events:none;}
+.penta{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(500px,80vw);height:min(500px,80vw);opacity:0.035;animation:spin 200s linear infinite;pointer-events:none;}
+@keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg);}}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.sigil-row{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.s-line{width:70px;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.45));}
+.s-line.r{background:linear-gradient(to left,transparent,rgba(212,175,55,0.45));}
+.s-sym{color:var(--gold);font-size:1.1rem;animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:900;line-height:1.1;color:var(--gold-light);text-shadow:0 0 80px rgba(212,175,55,0.3),0 2px 4px rgba(0,0,0,0.9);letter-spacing:0.05em;margin-bottom:1rem;opacity:0;animation:fadeUp 1.2s 0.6s ease forwards;}
+.hero-sub{font-family:'Cinzel',serif;font-size:clamp(0.75rem,1.5vw,0.95rem);letter-spacing:0.25em;color:var(--whisper);text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:fadeUp 1s 0.8s ease forwards;}
+.hero-lore{max-width:700px;font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.9;font-style:italic;color:var(--silver);opacity:0;animation:fadeUp 1s 1s ease forwards;}
+.hero-lore strong{color:var(--gold-light);font-style:normal;}
+
+/* DIVIDERS */
+.section-divider{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0 2rem;}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.15),transparent);max-width:350px;}
+.div-icon{color:rgba(212,175,55,0.35);font-size:1.1rem;}
+
+/* SECTIONS */
+section{position:relative;z-index:2;padding:5rem 2rem;max-width:1200px;margin:0 auto;}
+.section-tag{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(212,175,55,0.45);margin-bottom:0.8rem;display:block;}
+.section-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--gold-light);text-shadow:0 0 30px rgba(212,175,55,0.12);margin-bottom:1rem;line-height:1.1;}
+.section-desc{font-size:1.1rem;font-style:italic;color:var(--whisper);max-width:600px;line-height:1.75;margin-bottom:3rem;}
+
+/* INTRO */
+.intro-block{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.intro-text p{font-size:1.1rem;line-height:1.9;color:var(--silver);font-style:italic;margin-bottom:1.5rem;}
+.intro-text p:last-child{margin-bottom:0;}
+.intro-text strong{color:var(--bone);font-style:normal;}
+.intro-quote{border-left:1px solid rgba(212,175,55,0.3);padding:2rem 2rem 2rem 2.5rem;background:linear-gradient(135deg,rgba(30,20,52,0.4),rgba(158,42,42,0.12));position:relative;}
+.intro-quote::before{content:'\201C';font-family:'Cinzel Decorative',serif;font-size:6rem;color:rgba(212,175,55,0.12);position:absolute;top:-1rem;left:1rem;line-height:1;}
+.intro-quote p{font-size:1.15rem;line-height:1.85;font-style:italic;color:var(--bone);}
+.intro-quote cite{display:block;margin-top:1.2rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;}
+
+/* AMBIENTAÇÃO TEXT */
+.amb-text{max-width:900px;margin:0 auto;font-size:1.12rem;line-height:2;color:var(--silver);font-style:italic;text-align:justify;}
+.amb-text strong{color:var(--bone);font-style:normal;}
+.amb-text p{margin-bottom:1.5rem;}
+
+/* EGIDE BLOCKS */
+.egide-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,175,55,0.06);margin-bottom:3rem;}
+.egide-block{background:var(--deep);padding:2.5rem 2rem;}
+.egide-block-title{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.egide-block p{font-size:1rem;line-height:1.85;color:var(--silver);font-style:italic;}
+.egide-block p strong{color:var(--bone);font-style:normal;}
+
+/* OFÍCIOS — cards com imagem igual homepage */
+.oficios-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(212,175,55,0.06);
+}
+.oficio-card{
+  position:relative;background:var(--deep);padding:0;
+  overflow:hidden;transition:box-shadow 0.4s;
+  display:flex;flex-direction:column;
+  min-height:420px;
+}
+.of-img{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  transition:transform 0.6s ease,filter 0.5s ease;
+  filter:brightness(0.3) saturate(0.75);
+}
+.oficio-card:hover .of-img{transform:scale(1.06);filter:brightness(0.45) saturate(1);}
+.of-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,0.98) 0%,rgba(11,10,20,0.6) 45%,rgba(11,10,20,0.12) 100%);
+  transition:background 0.4s;
+}
+.oficio-card:hover .of-grad{background:linear-gradient(to top,rgba(11,10,20,0.96) 0%,rgba(106,60,201,0.4) 55%,rgba(11,10,20,0.08) 100%);}
+.oficio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;background:linear-gradient(to right,transparent,rgba(212,175,55,0.65),transparent);transform:scaleX(0);transition:transform 0.45s;}
+.oficio-card:hover::before{transform:scaleX(1);}
+.oficio-card:hover{box-shadow:inset 0 0 40px rgba(106,60,201,0.15);}
+.of-num{
+  position:absolute;top:1.5rem;right:1.8rem;z-index:2;
+  font-family:'Cinzel Decorative',serif;font-size:1.6rem;
+  color:rgba(212,175,55,0.55);line-height:1;
+  text-shadow:0 0 20px rgba(212,175,55,0.3);
+  transition:color 0.3s;
+}
+.oficio-card:hover .of-num{color:rgba(212,175,55,0.85);}
+.of-content{
+  position:relative;z-index:2;
+  margin-top:auto;padding:2rem 1.8rem;
+  display:flex;flex-direction:column;gap:0.6rem;
+}
+.oficio-title{font-family:'Cinzel',serif;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-light);}
+.oficio-perfil{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,175,55,0.38);}
+.oficio-desc{font-size:0.9rem;font-style:italic;color:var(--silver);line-height:1.6;margin-top:0.2rem;}
+.oficio-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.6rem;}
+.oficio-tag{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-dim);border:1px solid rgba(212,175,55,0.14);padding:0.22rem 0.55rem;}
+/* placeholder sem imagem */
+.of-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;opacity:0.1;z-index:1;}
+.of-placeholder-text{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.18em;color:var(--bone);text-transform:uppercase;}
+
+/* CONSELHO — cards com foto */
+.conselho-intro{max-width:850px;margin:0 auto 3.5rem;font-size:1.1rem;line-height:1.9;font-style:italic;color:var(--silver);text-align:center;}
+.conselho-intro strong{color:var(--bone);font-style:normal;}
+.cadeiras-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1px;background:rgba(212,175,55,0.06);
+}
+.cadeira-card{
+  position:relative;background:var(--deep);padding:0;
+  overflow:hidden;transition:box-shadow 0.4s;
+  display:flex;flex-direction:column;
+  min-height:400px;
+}
+.cad-img{
+  position:absolute;inset:0;background-size:cover;background-position:center top;
+  transition:transform 0.6s ease,filter 0.5s ease;
+  filter:brightness(0.32) saturate(0.75);
+}
+.cadeira-card:hover .cad-img{transform:scale(1.05);filter:brightness(0.48) saturate(1);}
+.cad-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,1) 0%,rgba(11,10,20,0.72) 40%,rgba(11,10,20,0.1) 75%,transparent 100%);
+  transition:background 0.4s;
+}
+.cadeira-card:hover .cad-grad{background:linear-gradient(to top,rgba(11,10,20,0.98) 0%,rgba(106,60,201,0.45) 45%,rgba(11,10,20,0.05) 80%,transparent 100%);}
+.cadeira-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;background:linear-gradient(to right,transparent,rgba(212,175,55,0.65),transparent);transform:scaleX(0);transition:transform 0.45s;}
+.cadeira-card:hover::before{transform:scaleX(1);}
+.cadeira-card:hover{box-shadow:inset 0 0 40px rgba(106,60,201,0.15);}
+/* placeholder */
+.cad-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;opacity:0.08;z-index:1;}
+.cad-placeholder-text{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.18em;color:var(--bone);text-transform:uppercase;}
+.cad-content{position:relative;z-index:2;margin-top:auto;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:0.4rem;}
+.cadeira-num{font-family:'Cinzel',serif;font-size:0.56rem;letter-spacing:0.28em;color:rgba(212,175,55,0.38);text-transform:uppercase;}
+.cadeira-nome{font-family:'Cinzel Decorative',serif;font-size:1.3rem;color:var(--gold-light);line-height:1.1;margin-bottom:0.2rem;}
+.cadeira-responsavel{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;color:var(--bone);text-transform:uppercase;margin-bottom:0.5rem;}
+.cadeira-desc{font-size:0.88rem;font-style:italic;color:var(--silver);line-height:1.6;}
+.cadeira-comanda{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,175,55,0.4);margin-top:0.5rem;}
+
+/* CAPITULO OMEGA */
+.omega-block{
+  max-width:860px;margin:0 auto;
+  background:linear-gradient(135deg,rgba(30,20,52,0.45),rgba(158,42,42,0.15));
+  border:1px solid rgba(212,175,55,0.15);
+  position:relative;overflow:hidden;
+}
+.omega-block::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.omega-header{
+  display:flex;align-items:center;gap:2rem;
+  padding:2.5rem 3rem 2rem;
+  border-bottom:1px solid rgba(212,175,55,0.1);
+}
+.omega-sym{
+  font-family:'Cinzel Decorative',serif;
+  font-size:3.5rem;color:rgba(212,175,55,0.45);
+  line-height:1;flex-shrink:0;
+  text-shadow:0 0 30px rgba(212,175,55,0.2);
+}
+.omega-header-text{}
+.omega-cap{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(212,175,55,0.4);margin-bottom:0.4rem;}
+.omega-title{font-family:'Cinzel Decorative',serif;font-size:1.5rem;color:var(--gold-light);line-height:1.1;}
+.omega-body{padding:2.5rem 3rem;display:flex;flex-direction:column;gap:1.3rem;}
+.omega-body p{font-size:1.05rem;line-height:1.9;font-style:italic;color:var(--silver);}
+.omega-body p strong{color:var(--bone);font-style:normal;}
+.omega-profecia{
+  margin:0.5rem 0;
+  padding:1.8rem 2.2rem;
+  border-left:2px solid rgba(212,175,55,0.35);
+  background:rgba(11,10,20,0.4);
+  position:relative;
+}
+.omega-profecia::before{
+  content:'"';font-family:'Cinzel Decorative',serif;
+  font-size:5rem;color:rgba(212,175,55,0.08);
+  position:absolute;top:-0.8rem;left:0.8rem;line-height:1;
+}
+.omega-profecia p{font-size:1rem;line-height:1.85;font-style:italic;color:var(--bone);}
+.omega-profecia cite{display:block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;}
+
+/* JORNADA / CRÔNICAS */
+.cronica-linha{display:flex;flex-direction:column;gap:0;max-width:800px;margin:0 auto;}
+.cronica-item{display:grid;grid-template-columns:48px 1fr;gap:0 2rem;position:relative;}
+.cronica-marcador{display:flex;flex-direction:column;align-items:center;padding-top:0.3rem;}
+.cronica-bolinha{
+  width:14px;height:14px;border-radius:50%;flex-shrink:0;
+  background:var(--void);
+  border:1px solid rgba(212,175,55,0.55);
+  box-shadow:0 0 12px rgba(212,175,55,0.25);
+  position:relative;z-index:2;
+  transition:background 0.3s,box-shadow 0.3s;
+}
+.cronica-item:hover .cronica-bolinha{background:rgba(212,175,55,0.2);box-shadow:0 0 20px rgba(212,175,55,0.5);}
+.cronica-fio{flex:1;width:1px;background:linear-gradient(to bottom,rgba(212,175,55,0.3),rgba(212,175,55,0.06));margin-top:6px;}
+.cronica-corpo{
+  background:var(--deep);
+  border:1px solid rgba(212,175,55,0.1);
+  border-left:2px solid rgba(212,175,55,0.25);
+  padding:2rem 2.2rem;
+  margin-bottom:1px;
+  position:relative;overflow:hidden;
+  transition:border-color 0.3s,background 0.3s;
+}
+.cronica-corpo::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 0% 50%,rgba(106,60,201,0.08) 0%,transparent 60%);
+  opacity:0;transition:opacity 0.4s;pointer-events:none;
+}
+.cronica-item:hover .cronica-corpo{background:var(--veil);border-color:rgba(212,175,55,0.3);}
+.cronica-item:hover .cronica-corpo::before{opacity:1;}
+.cronica-item.ultimo .cronica-corpo{margin-bottom:0;}
+.cronica-cap{
+  font-family:'Cinzel',serif;font-size:0.56rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(212,175,55,0.4);margin-bottom:0.5rem;
+}
+.cronica-titulo{
+  font-family:'Cinzel Decorative',serif;font-size:1.3rem;
+  color:var(--gold-light);line-height:1.1;margin-bottom:0.8rem;
+}
+.cronica-texto{
+  font-size:1rem;font-style:italic;
+  color:var(--silver);line-height:1.8;margin-bottom:1rem;
+}
+.cronica-data{
+  font-family:'Cinzel',serif;font-size:0.58rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(212,175,55,0.3);
+}
+
+/* FOOTER */
+footer{position:relative;z-index:2;text-align:center;padding:3rem 2rem 2rem;border-top:1px solid rgba(212,175,55,0.08);}
+.footer-logo{font-family:'Cinzel Decorative',serif;font-size:1.8rem;color:rgba(212,175,55,0.1);letter-spacing:0.2em;margin-bottom:1rem;}
+.footer-text{font-size:0.85rem;font-style:italic;color:var(--whisper);letter-spacing:0.05em;}
+.footer-nav{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;transition:color 0.3s;}
+.footer-nav a:hover{color:var(--gold);}
+.footer-disclaimer{
+  margin-top:2.5rem;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(212,175,55,0.05);
+  font-family:'Cinzel',serif;
+  font-size:0.58rem;letter-spacing:0.12em;
+  color:rgba(212,175,55,0.2);
+  text-transform:uppercase;line-height:1.9;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal-left.on{opacity:1;transform:translateX(0);}
+
+/* ── NAV DROPDOWN ── */
+.nav-links li{position:relative;}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 1rem);left:50%;
+  transform:translateX(-50%);
+  background:rgba(11,10,20,0.97);
+  border:1px solid rgba(212,175,55,0.18);
+  min-width:200px;
+  opacity:0;visibility:hidden;
+  transform:translateX(-50%) translateY(-6px);
+  transition:opacity 0.25s,transform 0.25s,visibility 0.25s;
+  z-index:300;
+  backdrop-filter:blur(12px);
+}
+.nav-links li:hover .nav-dropdown{
+  opacity:1;visibility:visible;
+  transform:translateX(-50%) translateY(0);
+}
+.nav-dropdown a{
+  display:block;
+  font-family:'Cinzel',serif;font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--whisper);text-decoration:none;
+  padding:0.85rem 1.4rem;
+  border-bottom:1px solid rgba(212,175,55,0.08);
+  transition:color 0.2s,background 0.2s;
+}
+.nav-dropdown a:last-child{border-bottom:none;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(212,175,55,0.05);}
+.nav-arrow{
+  display:inline-block;margin-left:0.3em;
+  font-size:0.5rem;vertical-align:middle;
+  opacity:0.5;transition:transform 0.25s;
+}
+.nav-links li:hover .nav-arrow{transform:rotate(180deg);}
+
+
+/* ── BANNERS VISUAIS ── */
+.visual-banner{
+  position:relative;z-index:2;
+  width:100%;overflow:hidden;
+  margin:0;
+}
+.visual-banner img{
+  width:100%;display:block;
+  height:420px;object-fit:cover;
+  object-position:center;
+  filter:brightness(0.55) saturate(0.85);
+  transition:filter 0.5s,transform 0.6s;
+}
+.visual-banner:hover img{filter:brightness(0.7) saturate(1);transform:scale(1.02);}
+.visual-banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(11,10,20,0.6) 0%,
+    rgba(11,10,20,0.1) 40%,
+    rgba(11,10,20,0.1) 60%,
+    rgba(11,10,20,0.6) 100%
+  );
+  pointer-events:none;
+}
+.visual-banner-placeholder{
+  width:100%;height:420px;
+  background:linear-gradient(135deg,rgba(30,20,52,0.6),rgba(158,42,42,0.25));
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0.8rem;
+  border-top:1px solid rgba(212,175,55,0.08);
+  border-bottom:1px solid rgba(212,175,55,0.08);
+}
+.visual-banner-placeholder span{
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:rgba(212,175,55,0.25);
+}
+
+/* banner menor para o Prólogo */
+.visual-banner.slim img{ height:280px; }
+.visual-banner.slim .visual-banner-placeholder{ height:280px; }
+
+
+/* ── IMAGEM PRÓLOGO ── */
+.prologue-img-wrap{
+  margin:1.5rem 0 0.5rem;
+  position:relative;
+  border:1px solid rgba(212,175,55,0.18);
+  overflow:hidden;
+}
+.prologue-img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  filter:brightness(0.6) saturate(0.85);
+  transition:filter 0.5s, transform 0.6s;
+}
+.prologue-img-wrap:hover .prologue-img{
+  filter:brightness(0.78) saturate(1);
+  transform:scale(1.03);
+}
+.prologue-img-caption{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:0.7rem 1.2rem;
+  font-family:'Cinzel',serif;
+  font-size:0.58rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:rgba(212,175,55,0.5);
+  background:linear-gradient(to top, rgba(11,10,20,0.85), transparent);
+  text-align:center;
+}
+
+
+.prologue-img.prologue-gif{
+  filter:none;
+  opacity:0.88;
+}
+.prologue-img-wrap:hover .prologue-img.prologue-gif{
+  filter:none;
+  opacity:1;
+  transform:none;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   NEOTHEON — PALETA CLARA PREMIUM (v2)
+   Aplicada para clarear o site mantendo a estética sombria.
+───────────────────────────────────────────── */
+body{
+  background:
+    radial-gradient(circle at 50% 18%, rgba(38,33,74,0.72) 0%, rgba(28,24,51,0.38) 32%, rgba(11,10,20,1) 72%),
+    var(--void) !important;
+}
+body::before{opacity:0.38 !important;}
+nav{
+  background:rgba(11,10,20,0.84) !important;
+  border-bottom:1px solid rgba(212,175,55,0.18) !important;
+  box-shadow:0 10px 40px rgba(0,0,0,0.24);
+}
+.nav-dropdown{
+  background:rgba(20,18,36,0.96) !important;
+  border-color:rgba(212,175,55,0.22) !important;
+  box-shadow:0 16px 50px rgba(0,0,0,0.34);
+}
+.nav-dropdown a:hover{background:rgba(212,175,55,0.08) !important;}
+.nav-logo,.hero-title,.hero-title-main,.section-title{
+  text-shadow:0 0 46px rgba(212,175,55,0.24),0 2px 4px rgba(0,0,0,0.65) !important;
+}
+.hero-glow,.glow-purple{
+  background:radial-gradient(ellipse,rgba(106,60,201,0.24) 0%,rgba(106,60,201,0.10) 34%,transparent 68%) !important;
+}
+.hero-blood,.glow-blood{
+  background:radial-gradient(ellipse,rgba(158,42,42,0.16) 0%,transparent 72%) !important;
+}
+.fog-base{
+  background:linear-gradient(to top,rgba(11,10,20,0.94),rgba(11,10,20,0.54),transparent) !important;
+}
+.hero-banner-grad{
+  background:linear-gradient(to bottom,rgba(11,10,20,0.40) 0%,rgba(11,10,20,0.06) 42%,rgba(11,10,20,0.15) 62%,rgba(11,10,20,0.96) 100%) !important;
+}
+.hero-bg-img,.hero-banner-img{filter:brightness(0.44) saturate(0.88) !important;}
+.hero-banner:hover .hero-banner-img{filter:brightness(0.50) saturate(0.95) !important;}
+section{background:linear-gradient(180deg,rgba(255,255,255,0.012),rgba(255,255,255,0)) !important;}
+.section-divider .div-line,.div-line{
+  background:linear-gradient(to right,transparent,rgba(212,175,55,0.24),transparent) !important;
+}
+.div-icon{color:rgba(212,175,55,0.48) !important;}
+.section-tag,.hero-eyebrow,.evento-tag,.endgame-tag,.ato-num,.destaque-rank,.god-title,.dragon-cat-title,.info-tag,.stat-lbl{
+  color:rgba(212,175,55,0.68) !important;
+}
+.section-desc,.hero-sub,.hero-subtitle,.god-domain,.destaque-sub,.footer-text,.stat-bar-label,.stat-bar-val{
+  color:var(--whisper) !important;
+}
+.hero-lore,.section-intro,.amb-text,.intro-text p,.intro-quote p,.egide-block p,.resource-card-desc,.endgame-desc,.evento-desc,.of-desc,.ato-desc,.dragon-desc,.info-text,.acc-body,.acc-content,.mission-desc,.mission-card p,.rule-card p{
+  color:var(--silver) !important;
+}
+.intro-quote,.dragon-section,.welcome-banner,.note-box,.warning-box,.info-box,.callout,.system-box{
+  background:linear-gradient(135deg,rgba(38,33,74,0.52),rgba(158,42,42,0.13)) !important;
+  border-color:rgba(212,175,55,0.18) !important;
+  box-shadow:0 18px 55px rgba(0,0,0,0.20);
+}
+.resources-grid,.destaques-grid,.endgame-grid,.egide-grid,.oficios-grid,.gods-grid,.dragon-grid,.ato-grid,.accordion,.stat-banner{
+  background:rgba(212,175,55,0.10) !important;
+}
+.resource-card,.destaque-card,.endgame-card,.egide-block,.oficio-card,.god-card,.dragon-card,.ato-card,.stat-item,.acc-item,.mission-card,.rule-card,.info-card,.card{
+  background:rgba(20,18,36,0.88) !important;
+  border-color:rgba(212,175,55,0.12) !important;
+}
+.resource-card:hover,.destaque-card:hover,.endgame-card:hover,.oficio-card:hover,.god-card:hover,.dragon-card:hover,.ato-card:hover,.acc-item:hover,.mission-card:hover,.rule-card:hover{
+  background:rgba(28,24,51,0.94) !important;
+  box-shadow:inset 0 0 42px rgba(106,60,201,0.16),0 18px 48px rgba(0,0,0,0.24) !important;
+}
+.rc-img,.dest-img,.eg-img,.of-img,.god-img{filter:brightness(0.50) saturate(0.88) !important;}
+.resource-card:hover .rc-img,.destaque-card:hover .dest-img,.endgame-card:hover .eg-img,.oficio-card:hover .of-img,.god-card:hover .god-img{filter:brightness(0.68) saturate(1.04) !important;}
+.rc-grad,.dest-grad,.eg-grad,.of-grad,.god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.94) 0%,rgba(20,18,36,0.64) 42%,rgba(20,18,36,0.16) 100%) !important;
+}
+.resource-card:hover .rc-grad,.destaque-card:hover .dest-grad,.endgame-card:hover .eg-grad,.oficio-card:hover .of-grad,.god-card:hover .god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.92) 0%,rgba(106,60,201,0.32) 52%,rgba(20,18,36,0.10) 100%) !important;
+}
+.endgame-card .eg-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.95) 0%,rgba(158,42,42,0.30) 55%,rgba(20,18,36,0.14) 100%) !important;
+}
+.ato-img img{filter:brightness(0.62) saturate(0.88) !important;}
+.ato-card:hover .ato-img img{filter:brightness(0.78) saturate(1.05) !important;}
+.ato-img-grad{background:linear-gradient(to right,rgba(20,18,36,0.72),transparent) !important;}
+.ato-card:nth-child(even) .ato-img-grad{background:linear-gradient(to left,rgba(20,18,36,0.72),transparent) !important;}
+.eventos-wrapper{
+  background:rgba(20,18,36,0.92) !important;
+  border-color:rgba(212,175,55,0.36) !important;
+  box-shadow:0 0 60px rgba(212,175,55,0.10),0 0 0 1px rgba(212,175,55,0.10) !important;
+}
+.evento-overlay{background:linear-gradient(to top,rgba(11,10,20,0.90) 0%,rgba(20,18,36,0.36) 54%,transparent 100%) !important;}
+.evento-slide img{filter:brightness(0.82) saturate(0.95) !important;}
+.btn-primary,.evento-cta,.destaque-badge{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold)) !important;
+  color:var(--void) !important;
+}
+.btn-secondary,.ato-link,.nav-discord{
+  border-color:rgba(212,175,55,0.42) !important;
+  color:var(--gold) !important;
+}
+.btn-secondary:hover,.ato-link:hover,.nav-discord:hover{
+  background:rgba(212,175,55,0.10) !important;
+  border-color:var(--gold) !important;
+}
+.acc-header:hover,.acc-item.open .acc-header{background:rgba(212,175,55,0.075) !important;}
+.stat-bar-track{background:rgba(255,255,255,0.09) !important;}
+footer{background:rgba(11,10,20,0.42) !important;border-top-color:rgba(212,175,55,0.12) !important;}
+@media(max-width:900px){
+  nav{background:rgba(11,10,20,0.92) !important;}
+  .hero-bg-img,.hero-banner-img{filter:brightness(0.38) saturate(0.82) !important;}
+}
+
+</style>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON — Ambientação"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-container"></div>
+<div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
+  <div class="loader-orbit" aria-hidden="true">
+    <span class="loader-ring r1"></span>
+    <span class="loader-ring r2"></span>
+    <span class="loader-core">✦</span>
+  </div>
+  <div class="loader-title">NEOTHEON</div>
+  <div class="loader-subtitle">Abrindo o véu entre mundos</div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-bg-img"></div>
+<div class="hero-glow"></div>
+<div class="hero-blood"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewbox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">A Égide de Avalon · Londres, 2047</div>
+<div class="sigil-row">
+<div class="s-line"></div><span class="s-sym">⛧</span><div class="s-line r"></div>
+</div>
+<h1 class="hero-title">Ambientação</h1>
+<div class="hero-sub">Os deuses nunca caíram · Apenas subiram</div>
+<p class="hero-lore">Sob as luzes de néon e a névoa do Tâmisa, ergue-se <strong>Avalon</strong> — onde juramentos são mais fortes que sangue, e o silêncio sustenta o equilíbrio entre deuses e homens. A cidade nunca dorme, mas seus maiores segredos vivem enterrados em mármore e sombra.</p>
+</div>
+<!-- COMO JOGAMOS -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal">
+<span class="section-tag">Introdução</span>
+<h2 class="section-title">Como Jogamos por Aqui</h2>
+</div>
+<div class="intro-block">
+<div class="intro-text reveal" style="transition-delay:.08s">
+<p>Nosso RPG explora uma história única, com referências ao riordanverso (olimpianos), mas com uma narrativa <strong>mais adulta</strong> que o normal em campanhas olimpianas.</p>
+<p>Você terá conteúdo para realizar — tarefas, atividades e eventos — de maneira completamente <strong>independente</strong>, para criar personagens e fortalecê-los, ou participar do desenvolvimento da trama principal na <strong>campanha geral</strong>.</p>
+<p>Nosso foco é principalmente no desenvolvimento de <strong>intrigas políticas</strong>, batalhas épicas e o clássico jogo dos tronos quando se trata de um governo à beira do colapso. Com muita traição, acordos e sacanagem.</p>
+</div>
+<div class="intro-quote reveal" style="transition-delay:.15s">
+<p>A Égide chama sem elevar a voz. Londres observa sem pestanejar. Aqui, cada escolha tem preço, e cada silêncio, uma assinatura.</p>
+<cite>— Pacto de Avalon</cite>
+</div>
+</div>
+</section>
+<!-- AMBIENTAÇÃO -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<!-- BANNER VISUAL 1 — Londres das Sombras
+     Arquivo: "amb-londres.jpg" — 1920x420px (panorâmico, bem horizontal)
+     Midjourney: dark gothic London skyline at night, fog over the Thames, neon reflections,
+     ancient and modern buildings mixed, cinematic wide shot, dark fantasy atmosphere --ar 16:7 -->
+<div class="visual-banner reveal">
+<img alt="A Londres das Sombras" decoding="async" loading="eager" src="https://i.postimg.cc/nr5NwVBB/imagem-2026-04-15-115934422.png"/>
+<div class="visual-banner-overlay"></div>
+</div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:3rem;">
+<span class="section-tag">O Mundo</span>
+<h2 class="section-title">A Londres das Sombras</h2>
+</div>
+<div class="amb-text reveal" style="transition-delay:.1s">
+<p>Em uma Londres contemporânea que respira <strong>pedra úmida e luzes de néon</strong> filtradas pela neblina, onde sinos antigos disputam espaço com sirenes e o Tâmisa corre como uma artéria silenciosa sob pontes de ferro, a Égide de Avalon atua nas dobras da cidade — uma ordem secreta, fria e metódica, que regula tudo o que toca o invisível.</p>
+<p>Não há academias nem heróis dourados: há contratos, juramentos e consequências. <strong>Semideuses greco-romanos</strong> dividem cadeiras e corredores com bruxos, caçadores, médiuns e criaturas juramentadas, todos presos à mesma equação: manter o mundo humano ignorante e o mundo divino contido. A cidade é um palco onde cada bairro esconde um segredo e cada névoa cobre uma guerra silenciosa.</p>
+<p>Sob os distritos iluminados e os mercados movimentados, Londres possui uma segunda pele — <strong>túneis de pedra romana</strong>, catedrais abandonadas com altares ainda ativos, docks onde barcos fantasmas atracam, e parques onde árvores antigas guardam portais para dimensões esquecidas. Quem sabe ver além do véu percebe que a cidade nunca foi apenas dos mortais.</p>
+<p>Os deuses não desceram do Olimpo. Eles <strong>nunca partiram</strong>. Adaptaram-se, vestiram ternos e máscaras, compraram propriedades e influenciaram parlamentos. Alguns trabalham através de avatares mortais; outros habitam corpos esculpidos de aspirações humanas. E todos, sem exceção, têm seus olhos sobre a Égide — porque quem controla a ordem secreta, controla o equilíbrio entre os dois mundos.</p>
+<p>Este é um cenário de <strong>intriga e liturgia</strong>, de missões oficiais mascaradas de acidentes, de diplomacias que exigem oferendas, de cultos rivais que seduzem com liberdade e caos. Você, jogador, entra nessa engrenagem como uma peça indispensável e descartável ao mesmo tempo: agente que equilibra divindade e mortalidade, chamado a decidir entre obediência e insubordinação, entre glória sem testemunhas e sobrevivência com culpa.</p>
+</div>
+<div class="egide-grid reveal" style="transition-delay:.2s;margin-top:3rem;">
+<div class="egide-block">
+<div class="egide-block-title">O Conselho de Mármore</div>
+<p>No alto, o <strong>Conselho de Mármore</strong> negocia pactos com emissários dos deuses e arbitra disputas entre facções. Sete cadeiras de igual poder, onde as decisões são tomadas por votação secreta — e onde alianças frágeis, favores e chantagens determinam o destino de nações.</p>
+</div>
+<div class="egide-block">
+<div class="egide-block-title">Os Agentes em Campo</div>
+<p>No solo, os agentes da Égide cruzam <strong>vielas encharcadas e catedrais vazias</strong>, recolhendo relíquias, silenciando monstros e desatando profecias antes que elas se cumpram. Cada missão deixa uma marca — no corpo, na alma ou nos registros sigilosos da ordem.</p>
+</div>
+<div class="egide-block">
+<div class="egide-block-title">O Véu que Protege os Mortais</div>
+<p>Por trás de cada desvio de imprensa, memória falha ou câmera que não gravou, opera <strong>O Véu</strong> — a máquina de ocultação que sustenta o teatro do cotidiano. Sem ele, o pânico humano destruiria em dias o que levou séculos para construir.</p>
+</div>
+<div class="egide-block">
+<div class="egide-block-title">A Biblioteca de Alexandria</div>
+<p>Sob a cidade, por túneis e criptopórticos onde a água do Tâmisa toca pedra romana, dorme a <strong>Biblioteca de Alexandria</strong> — um arquivo vivo de nomes esquecidos, mapas de rotas mitológicas e promessas escritas em sangue antigo. Poucos têm acesso. Menos ainda retornam iguais.</p>
+</div>
+</div>
+</section>
+<!-- OFÍCIOS -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">⚔</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:3rem;">
+<span class="section-tag">Escolha seu Caminho</span>
+<h2 class="section-title">Ofícios na Égide de Avalon</h2>
+<p class="section-desc" style="margin:0.5rem auto 0;max-width:600px;">Cada personagem, ao servir à Égide, é designado a uma função que representa seu treinamento e utilidade. Escolha um dos caminhos abaixo de acordo com a história do seu personagem.</p>
+</div>
+<div class="oficios-grid">
+<!-- OFÍCIO 1 — Custódios
+         Imagem: "of-custodios.jpg" — 480x560px
+         Midjourney: dark fantasy warrior soldier guarding sacred site, gothic London, dramatic lighting --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.04s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/d35qG1wv/imagem-2026-04-15-042908146.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">I</div>
+<div class="of-content">
+<div class="oficio-title">Custódios</div>
+<div class="oficio-perfil">Semideuses fortes · Caçadores experientes</div>
+<div class="oficio-desc">A linha de frente. Soldados e guerreiros que executam ordens diretas do Conselho, encarregados de combate contra monstros e guarda de locais sagrados.</div>
+<div class="oficio-tags"><span class="oficio-tag">Força</span><span class="oficio-tag">Disciplina</span><span class="oficio-tag">Proteção</span></div>
+</div>
+</div>
+<!-- OFÍCIO 2 — Vigilantes
+         Imagem: "of-vigilantes.jpg" — 480x560px
+         Midjourney: dark fantasy spy assassin in shadows London fog, cloaked figure, noir --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.08s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/YCHHjY1G/imagem-2026-04-15-043142876.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">II</div>
+<div class="of-content">
+<div class="oficio-title">Vigilantes</div>
+<div class="oficio-perfil">Filhos de Hermes · Mortais astutos</div>
+<div class="oficio-desc">Espiões, informantes e agentes infiltrados. Especialistas em observar, manipular e infiltrar-se em grupos rivais ou entre mortais.</div>
+<div class="oficio-tags"><span class="oficio-tag">Sombra</span><span class="oficio-tag">Segredo</span><span class="oficio-tag">Engano</span></div>
+</div>
+</div>
+<!-- OFÍCIO 3 — Arcanistas
+         Imagem: "of-arcanistas.jpg" — 480x560px
+         Midjourney: dark fantasy sorcerer casting spell ritual mystical runes london night --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.12s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/jdq6Tk1S/imagem-2026-04-15-043412509.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">III</div>
+<div class="of-content">
+<div class="oficio-title">Arcanistas</div>
+<div class="oficio-perfil">Filhos de Hécate · Descendentes de Apolo</div>
+<div class="oficio-desc">Especialistas em magia, oráculos e manipulação sobrenatural. Estudam artefatos, profecias e rituais, servindo de suporte e conselho tático.</div>
+<div class="oficio-tags"><span class="oficio-tag">Conhecimento</span><span class="oficio-tag">Ritual</span><span class="oficio-tag">Poder Oculto</span></div>
+</div>
+</div>
+<!-- OFÍCIO 4 — Inquisidores
+         Imagem: "of-inquisidores.jpg" — 480x560px
+         Midjourney: dark fantasy judge inquisitor in ceremonial robes justice scales gothic --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.16s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/ydY6xcCt/imagem-2026-04-15-043612015.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">IV</div>
+<div class="of-content">
+<div class="oficio-title">Inquisidores</div>
+<div class="oficio-perfil">Filhos de Nêmesis · Juramentados</div>
+<div class="oficio-desc">Agentes de disciplina interna, responsáveis por investigar traições, julgar suspeitos e impor a lei da Égide. Temidos por aliados e inimigos.</div>
+<div class="oficio-tags"><span class="oficio-tag">Ordem</span><span class="oficio-tag">Julgamento</span><span class="oficio-tag">Medo</span></div>
+</div>
+</div>
+<!-- OFÍCIO 5 — Mediadores
+         Imagem: "of-mediadores.jpg" — 480x560px
+         Midjourney: dark fantasy diplomat noble negotiating gods supernatural council chamber --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.20s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/wvC6VPsJ/imagem-2026-04-15-043749419.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">V</div>
+<div class="of-content">
+<div class="oficio-title">Mediadores</div>
+<div class="oficio-perfil">Filhos de Apolo, Afrodite ou Hermes</div>
+<div class="oficio-desc">Diplomatas e negociadores. Representam o Conselho em encontros com deuses, espíritos ou facções sobrenaturais. Evitam guerras com carisma e lógica.</div>
+<div class="oficio-tags"><span class="oficio-tag">Política</span><span class="oficio-tag">Influência</span><span class="oficio-tag">Palavra</span></div>
+</div>
+</div>
+<!-- OFÍCIO 6 — Tecelões do Véu
+         Imagem: "of-teceloes.jpg" — 480x560px
+         Midjourney: dark fantasy illusionist weaving reality manipulation memory magic gothic --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.24s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/Dz3d9y3y/imagem-2026-04-15-044124582.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">VI</div>
+<div class="of-content">
+<div class="oficio-title">Tecelões do Véu</div>
+<div class="oficio-perfil">Descendentes do destino ou da ilusão</div>
+<div class="oficio-desc">Especialistas em manipulação do real: memória, ilusão, cobertura. São os que mantêm a humanidade alheia ao sobrenatural.</div>
+<div class="oficio-tags"><span class="oficio-tag">Silêncio</span><span class="oficio-tag">Mentira</span><span class="oficio-tag">Encobrimento</span></div>
+</div>
+</div>
+<!-- OFÍCIO 7 — Arquivistas
+         Imagem: "of-arquivistas.jpg" — 480x560px
+         Midjourney: dark fantasy scholar ancient library forbidden books candlelight underground --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.28s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/GpSYccZt/imagem-2026-04-15-044409965.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">VII</div>
+<div class="of-content">
+<div class="oficio-title">Arquivistas de Avalon</div>
+<div class="oficio-perfil">Estudiosos · Oráculos · Visionários</div>
+<div class="oficio-desc">Guardam e interpretam os segredos da Biblioteca de Avalon. Têm acesso a registros proibidos, nomes esquecidos e mapas do divino.</div>
+<div class="oficio-tags"><span class="oficio-tag">Saber</span><span class="oficio-tag">Segredo</span><span class="oficio-tag">Memória</span></div>
+</div>
+</div>
+<!-- OFÍCIO 8 — Artífices de Ébano
+         Imagem: "of-artifices.jpg" — 480x560px
+         Midjourney: dark fantasy blacksmith alchemist forging divine weapons underground workshop --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.32s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/rsyLQkwh/imagem-2026-04-15-044656098.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">VIII</div>
+<div class="of-content">
+<div class="oficio-title">Artífices de Ébano</div>
+<div class="oficio-perfil">Descendentes de Hefesto, Hécate ou Atena</div>
+<div class="oficio-desc">Mestres da criação, forja e alquimia. Responsáveis por desenvolver o arsenal da Égide: armas divinas, poções, talismãs e armadilhas místicas.</div>
+<div class="oficio-tags"><span class="oficio-tag">Criação</span><span class="oficio-tag">Engenho</span><span class="oficio-tag">Sacrifício</span></div>
+</div>
+</div>
+<!-- OFÍCIO 9 — Sanctificadores
+         Imagem: "of-sanctificadores.jpg" — 480x560px
+         Midjourney: dark fantasy healer medic mystical divine light wounds gothic battlefield --ar 6:7 -->
+<div class="oficio-card reveal" style="transition-delay:.36s">
+<div class="of-img" style="background-image:url('https://i.postimg.cc/DfCzHj3Z/imagem-2026-04-15-045312962.png')"></div>
+<div class="of-grad"></div>
+<div class="of-num">IX</div>
+<div class="of-content">
+<div class="oficio-title">Sanctificadores</div>
+<div class="oficio-perfil">Filhos de Apolo, Asclépio ou Hígia</div>
+<div class="oficio-desc">Médicos, curandeiros e restauradores. Tratam ferimentos físicos e espirituais, curam envenenamentos e lidam com maldições em campo e na cidadela.</div>
+<div class="oficio-tags"><span class="oficio-tag">Cura</span><span class="oficio-tag">Restauração</span><span class="oficio-tag">Sacrifício</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONSELHO -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">👁</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2rem;">
+<span class="section-tag">O Coração da Ordem</span>
+<h2 class="section-title">O Conselho de Avalon</h2>
+</div>
+<p class="conselho-intro reveal" style="transition-delay:.08s">
+    O Conselho se reúne nas profundezas da sede, na <strong>Câmara de Mármore Negro</strong> — iluminada apenas por velas eternas e pelo reflexo de um poço central ligado ao Tâmisa. Sete cadeiras de pedra de igual poder. Nenhum membro é superior ao outro. As decisões são tomadas por votação secreta, e <strong>alianças frágeis, favores e chantagens</strong> determinam o destino do mundo oculto.
+  </p>
+<div class="cadeiras-grid">
+<!-- CADEIRA 1 — A Lança
+         Foto: "cad-lanca.jpg" — 400x560px (retrato) --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.05s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/L4jV9S5j/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira I</div>
+<div class="cadeira-nome">A Lança</div>
+<div class="cadeira-responsavel">Eric Bauman</div>
+<div class="cadeira-desc">Representa a força militar. Responsável pelas estratégias de guerra e pela coordenação dos Custódios em campo.</div>
+<div class="cadeira-comanda">Comanda os Custódios</div>
+</div>
+</div>
+<!-- CADEIRA 2 — O Véu
+         Foto: "cad-veu.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.08s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/fLqQkdBd/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira II</div>
+<div class="cadeira-nome">O Véu</div>
+<div class="cadeira-responsavel">Hector Vermillion</div>
+<div class="cadeira-desc">Supervisiona a ocultação do sobrenatural perante os mortais, controlando memórias, mídia e ilusões.</div>
+<div class="cadeira-comanda">Comanda Tecelões do Véu e Arcanistas</div>
+</div>
+</div>
+<!-- CADEIRA 3 — O Julgador
+         Foto: "cad-julgador.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.11s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/NfgCZFDh/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira III</div>
+<div class="cadeira-nome">O Julgador</div>
+<div class="cadeira-responsavel">Lukas Ekantor</div>
+<div class="cadeira-desc">Mantém a disciplina interna e lidera os Inquisidores. Decide sobre punições, traições e execuções dentro da ordem.</div>
+<div class="cadeira-comanda">Comanda os Inquisidores</div>
+</div>
+</div>
+<!-- CADEIRA 4 — O Oráculo
+         Foto: "cad-oraculo.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.14s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/RFtVrXMW/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira IV</div>
+<div class="cadeira-nome">O Oráculo</div>
+<div class="cadeira-responsavel">William Kovacs</div>
+<div class="cadeira-desc">Guia o Conselho nas decisões ligadas a profecias, sonhos e sinais divinos. Seu conselho raramente é ignorado.</div>
+<div class="cadeira-comanda">Comanda Artífices de Ébano e Sanctificadores</div>
+</div>
+</div>
+<!-- CADEIRA 5 — O Arquivista
+         Foto: "cad-arquivista.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.17s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/rsC4T88z/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira V</div>
+<div class="cadeira-nome">O Arquivista</div>
+<div class="cadeira-responsavel">Rowan Escardos</div>
+<div class="cadeira-desc">Guardião da Biblioteca de Alexandria. Detém acesso a saberes proibidos, registros históricos e segredos que podem mudar o mundo.</div>
+<div class="cadeira-comanda">Comanda os Arquivistas de Avalon</div>
+</div>
+</div>
+<!-- CADEIRA 6 — O Mediador
+         Foto: "cad-mediador.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.20s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/sxZn4G42/Sem-Titulo-1.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira VI</div>
+<div class="cadeira-nome">O Mediador</div>
+<div class="cadeira-responsavel">Alexandre Magno</div>
+<div class="cadeira-desc">Responsável pela diplomacia. Negocia com outras facções sobrenaturais e panteões estrangeiros em nome do Conselho.</div>
+<div class="cadeira-comanda">Comanda os Mediadores</div>
+</div>
+</div>
+<!-- CADEIRA 7 — A Torre
+         Foto: "cad-torre.jpg" — 400x560px --ar 5:7 -->
+<div class="cadeira-card reveal" style="transition-delay:.23s">
+<div class="cad-img" style="background-image:url('https://i.postimg.cc/15rdCwZf/imagem-2026-04-15-041134453.png')"></div>
+<div class="cad-grad"></div>
+<div class="cad-content">
+<div class="cadeira-num">Cadeira VII</div>
+<div class="cadeira-nome">A Torre</div>
+<div class="cadeira-responsavel">Selene Telamon</div>
+<div class="cadeira-desc">Observa o mundo exterior em larga escala: mapeia movimentações de cultos, prevê colapsos sociais e mantém redes de alerta sobrenatural.</div>
+<div class="cadeira-comanda">Comanda os Vigilantes</div>
+</div>
+</div>
+</div>
+</section>
+<!-- JORNADA -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">📜</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:3rem;">
+<span class="section-tag">Crônicas da Égide</span>
+<h2 class="section-title">A Jornada Até Aqui</h2>
+<p class="section-desc" style="margin:0.5rem auto 0;max-width:620px;">Os acontecimentos que moldaram a ordem, seus agentes e o equilíbrio entre os dois mundos. Atualizado conforme a trama avança.</p>
+</div>
+<!-- ═══════════════════════════════════════════
+       COMO ADICIONAR UM NOVO CAPÍTULO:
+       Copie um bloco .cronica-item e cole abaixo do último.
+       Troque o número, o título e o texto.
+       ═══════════════════════════════════════════ -->
+<div class="cronica-linha reveal" style="transition-delay:.1s">
+<!-- CAPÍTULO Ω — A Origem -->
+<div class="cronica-item">
+<div class="cronica-marcador">
+<div class="cronica-bolinha"></div>
+<div class="cronica-fio"></div>
+</div>
+<div class="cronica-corpo">
+<div class="cronica-cap">Capítulo Ω · Prólogo</div>
+<div class="cronica-titulo">O Início de Tudo</div>
+<div class="cronica-texto">
+          O início de tudo varia conforme a etnia e a cultura de cada raça e civilização. Ainda assim, dentro do universo do RPG, há um consenso geral: a criação teve origem em uma existência extraplanar, dotada de poder incomensurável. A partir de sua vontade, o criador tornou possível a existência tanto da vida celestial quanto da mortal.
+        </div>
+<div class="cronica-texto">
+          Inicialmente, os <strong>Celestiais</strong> (deuses) foram criados para governar a criação, e seus aspectos se desenvolveram em diversidade e potencial em relação à vida mortal. Dessa forma, a existência de um sempre esteve — e sempre estará — ligada à do outro. Afinal, um deus só é deus enquanto houver vida mortal.
+        </div>
+<div class="cronica-texto">
+          A partir desse ponto, surgem divergências entre as etnias sobre o que foi criado, onde e por quem. Ainda assim, todas concordam em um ponto: foi dada ao povo a missão de zelar pela vida e pelo mundo em que vivem, ou enfrentar grandes consequências. Essa verdade permanece registrada em uma <strong>profecia esquecida</strong> e mantida em segredo:
+        </div>
+<blockquote style="margin:1rem 0;padding:1.2rem 1.8rem;border-left:2px solid rgba(212,175,55,0.35);background:rgba(11,10,20,0.4);font-style:italic;color:var(--bone);font-size:0.95rem;line-height:1.8;">
+          "Nascido de pais sem nome, criado pelo desconhecido. Pela morte passou, e por muito mais ainda se desfez. Renegado pelo mundo, mas acolhido pelo destino. A criança prometida será a mão que unirá os cinco. E, em sua decisão final, guiará o criador de volta a este mundo. Tudo isso para sua ascensão... ou sua completa danação."
+          <cite style="display:block;margin-top:0.8rem;font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;font-style:normal;">— Profecia do Caos</cite>
+</blockquote>
+<div class="cronica-texto">
+          De modo geral, todo celestial, para exercer domínio sobre seu aspecto da realidade, possui um <strong>núcleo</strong> — uma centelha de energia cósmica pulsante que lhe permite atravessar eras e manter sua consciência. É pela destruição desse núcleo que um celestial pode renascer, ou ser consumido por outra entidade, perdendo permanentemente sua identidade.
+        </div>
+<div class="cronica-texto">
+          Por fim, há um rumor: ao concluir a grande obra, o criador teria dividido seu próprio núcleo em duas partes. Uma dessas metades fragmentou-se em <strong>cinco partes menores</strong>, cada uma contendo poderes únicos e inimagináveis. A criança escolhida, destinada a reunir os cinco fragmentos, carregaria o poder de decidir o destino de todo o mundo — e aos olhos de muitos celestiais, ela não passa de um risco que deve ser evitado a qualquer custo.
+        </div>
+<!-- IMAGEM DO PRÓLOGO
+             Arquivo: "amb-prologue.jpg" — 800x360px
+             Proporção Midjourney: --ar 20:9
+             Prompt sugerido: cosmic divine creation energy, five glowing shards of light fragmenting
+             from a single source, dark mythological universe, gold and deep purple tones, cinematic --ar 20:9 -->
+<div class="prologue-img-wrap reveal">
+<img alt="A Origem" class="prologue-img" decoding="async" loading="eager" src="https://i.postimg.cc/bJ8TpZQG/imagem-2026-04-15-123626990.png"/>
+<div class="prologue-img-caption">A fragmentação do núcleo primordial</div>
+</div>
+<div class="cronica-data">— Prólogo · O Universo antes da Égide</div>
+</div>
+</div>
+<!-- CAPÍTULO 2 — edite aqui -->
+<div class="cronica-item">
+<div class="cronica-marcador">
+<div class="cronica-bolinha"></div>
+<div class="cronica-fio"></div>
+</div>
+<div class="cronica-corpo">
+<div class="cronica-cap">Capítulo II</div>
+<div class="cronica-titulo">Em Breve</div>
+<div class="cronica-texto">Os acontecimentos deste capítulo ainda serão revelados. Volte após a próxima sessão.</div>
+<div class="cronica-data">— A ser revelado</div>
+</div>
+</div>
+<!-- CAPÍTULO 3 — edite aqui -->
+<div class="cronica-item ultimo">
+<div class="cronica-marcador">
+<div class="cronica-bolinha"></div>
+</div>
+<div class="cronica-corpo">
+<div class="cronica-cap">Capítulo III</div>
+<div class="cronica-titulo">Em Breve</div>
+<div class="cronica-texto">Os acontecimentos deste capítulo ainda serão revelados. Volte após a próxima sessão.</div>
+<div class="cronica-data">— A ser revelado</div>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="neotheon_ambientacao.html">Home</a>
+<a href="index.html">Regras &amp; Sistemas</a>
+<a href="index.html">Missões Fixas</a>
+<a href="index.html">Fichas</a>
+<a href="index.html">Empyrean</a>
+<a href="index.html">Fate / Guerra de Londres</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+<script>
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], nebulas = [], shooting = [], t = 0;
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+function initStars(){
+  stars = [];
+  for(let i=0;i<260;i++){stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+0.2,o:Math.random()*0.6+0.1,speed:Math.random()*0.35+0.05,phase:Math.random()*Math.PI*2,color:Math.random()>0.88?'#d4af37':Math.random()>0.72?'#9980cc':'#ffffff'});}
+  nebulas=[];
+  const cols=['rgba(106,60,201,','rgba(158,42,42,','rgba(18,12,40,'];
+  for(let i=0;i<6;i++){nebulas.push({x:Math.random()*W,y:Math.random()*H*0.8,rx:80+Math.random()*180,ry:50+Math.random()*120,col:cols[Math.floor(Math.random()*cols.length)],a:0.03+Math.random()*0.05});}
+}
+function spawnShoot(){if(Math.random()<0.003){shooting.push({x:Math.random()*W*0.75,y:Math.random()*H*0.45,len:90+Math.random()*120,speed:9+Math.random()*6,angle:Math.PI/5+Math.random()*0.35,life:1});}}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  nebulas.forEach(n=>{const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));g.addColorStop(0,n.col+n.a+')');g.addColorStop(1,n.col+'0)');ctx.save();ctx.scale(1,n.ry/n.rx);ctx.beginPath();ctx.arc(n.x,n.y*(n.rx/n.ry),n.rx,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.restore();});
+  stars.forEach(s=>{const tw=Math.sin(t*s.speed+s.phase)*0.35+0.65;ctx.globalAlpha=s.o*tw;ctx.fillStyle=s.color;if(s.color==='#d4af37'&&s.r>1){ctx.save();ctx.globalAlpha=s.o*tw*0.55;ctx.fillRect(s.x-0.5,s.y-s.r*2.8,1,s.r*5.6);ctx.fillRect(s.x-s.r*2.8,s.y-0.5,s.r*5.6,1);ctx.restore();ctx.globalAlpha=s.o*tw;}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();});
+  spawnShoot();shooting=shooting.filter(s=>s.life>0);shooting.forEach(s=>{ctx.save();ctx.globalAlpha=s.life*0.8;const dx=Math.cos(s.angle)*s.len,dy=Math.sin(s.angle)*s.len;const g=ctx.createLinearGradient(s.x,s.y,s.x-dx,s.y-dy);g.addColorStop(0,'rgba(255,255,240,0.9)');g.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=g;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x-dx,s.y-dy);ctx.stroke();ctx.restore();s.x+=Math.cos(s.angle)*s.speed;s.y+=Math.sin(s.angle)*s.speed;s.life-=0.022;});
+  ctx.globalAlpha=1;t+=0.01;requestAnimationFrame(draw);
+}
+resize();initStars();draw();
+window.addEventListener('resize',()=>{resize();initStars();});
+const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*50);io.unobserve(e.target);}});},{threshold:0.07});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>io.observe(el));
+</script>
+
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body>
+</html>

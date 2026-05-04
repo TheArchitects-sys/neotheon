@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --void:#0b0a14;
+  --deep:#141224;
+  --veil:#1c1833;
+  --mist:#26214a;
+  --blood:#9e2a2a;
+  --ember:#d6452f;
+  --gold:#d4af37;
+  --gold-light:#f1d27a;
+  --gold-dim:#8c6a2b;
+  --silver:#cfc7b4;
+  --bone:#f5f1e6;
+  --whisper:#9a927f;
+  --purple:#6a3cc9;
+  --crimson:#b63434;
+  --panel:rgba(20,18,36,0.86);
+  --panel-soft:rgba(28,24,51,0.68);
+  --line-gold:rgba(212,175,55,0.14);
+  --section-wash:rgba(255,255,255,0.025);
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 12%, rgba(106,60,201,0.22) 0%, rgba(28,24,51,0.20) 24%, transparent 52%),
+    radial-gradient(circle at 10% 70%, rgba(158,42,42,0.13) 0%, transparent 34%),
+    var(--void);
+  color:var(--bone);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* grain overlay */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:0.55;
+}
+
+/* starfield canvas */
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3rem;
+  border-bottom:1px solid var(--line-gold);
+  background:rgba(11,10,20,0.88);
+  backdrop-filter:blur(10px);
+}
+.nav-logo{
+  font-family:'Cinzel Decorative',serif;
+  font-size:1.4rem;letter-spacing:0.15em;
+  color:var(--gold);text-decoration:none;
+  text-shadow:0 0 30px rgba(212,175,55,0.48);
+  transition:text-shadow 0.3s;
+}
+.nav-logo:hover{text-shadow:0 0 50px rgba(212,175,55,0.78);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-family:'Cinzel',serif;font-size:0.72rem;
+  letter-spacing:0.12em;color:var(--whisper);
+  text-decoration:none;text-transform:uppercase;
+  transition:color 0.3s,text-shadow 0.3s;
+}
+.nav-links a:hover{color:var(--gold-light);text-shadow:0 0 15px rgba(212,175,55,0.58);}
+.nav-discord{
+  font-family:'Cinzel',serif;font-size:0.72rem;
+  letter-spacing:0.1em;color:var(--gold);
+  border:1px solid var(--gold-dim);
+  padding:0.45rem 1.1rem;text-decoration:none;text-transform:uppercase;
+  transition:all 0.3s;position:relative;overflow:hidden;
+}
+.nav-discord::before{
+  content:'';position:absolute;inset:0;
+  background:var(--gold);transform:translateX(-101%);
+  transition:transform 0.3s;z-index:-1;
+}
+.nav-discord:hover{color:var(--void);}
+.nav-discord:hover::before{transform:translateX(0);}
+
+/* ── HERO ── */
+.hero{
+  position:relative;z-index:2;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:8rem 2rem 5rem;
+  overflow:hidden;
+}
+
+/* layered glows */
+.glow-purple{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-55%);
+  width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(106,60,201,0.24) 0%,transparent 65%);
+  pointer-events:none;
+}
+.glow-blood{
+  position:absolute;bottom:-8%;left:50%;
+  transform:translateX(-50%);
+  width:700px;height:350px;
+  background:radial-gradient(ellipse,rgba(158,42,42,0.16) 0%,transparent 70%);
+  pointer-events:none;
+}
+.glow-gold{
+  position:absolute;top:42%;left:50%;
+  transform:translate(-50%,-50%);
+  width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(212,175,55,0.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.fog-base{
+  position:absolute;bottom:0;left:0;right:0;height:300px;
+  background:linear-gradient(to top,rgba(11,10,20,0.92),transparent);
+  pointer-events:none;
+}
+
+/* rotating pentagram */
+.penta{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-52%);
+  width:min(700px,90vw);height:min(700px,90vw);
+  opacity:0.04;
+  animation:spin 200s linear infinite;
+  pointer-events:none;
+}
+@keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg);}}
+
+/* floating orbs */
+.orb{
+  position:absolute;border-radius:50%;
+  animation:floatOrb var(--dur,8s) ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes floatOrb{from{transform:translate(0,0);}to{transform:translate(var(--tx,10px),var(--ty,-15px));}}
+
+.hero-eyebrow{
+  font-family:'Cinzel',serif;font-size:0.72rem;
+  letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:2rem;
+  opacity:0;animation:fadeUp 1s 0.3s ease forwards;
+}
+.rune-divider{
+  display:flex;align-items:center;gap:1rem;
+  justify-content:center;margin-bottom:2rem;
+  opacity:0;animation:fadeUp 1s 0.5s ease forwards;
+}
+.rune-line{width:80px;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.58));}
+.rune-line.r{background:linear-gradient(to left,transparent,rgba(212,175,55,0.58));}
+.rune-sym{
+  color:var(--gold);font-size:1.2rem;opacity:0.9;
+  animation:pulse 4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.12);}}
+
+.hero-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(3rem,8vw,6.5rem);
+  font-weight:900;line-height:1.05;
+  color:var(--gold-light);
+  text-shadow:0 0 80px rgba(212,175,55,0.42),0 0 160px rgba(61,32,96,0.4),0 2px 4px rgba(0,0,0,0.9);
+  letter-spacing:0.05em;margin-bottom:0.5rem;
+  opacity:0;animation:fadeUp 1.2s 0.6s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-subtitle{
+  font-family:'Cinzel',serif;
+  font-size:clamp(0.8rem,2vw,1.1rem);
+  letter-spacing:0.25em;color:var(--whisper);
+  text-transform:uppercase;margin-bottom:2.5rem;
+  opacity:0;animation:fadeUp 1.2s 0.8s ease forwards;
+}
+.hero-lore{
+  max-width:640px;font-size:clamp(1.1rem,2vw,1.35rem);
+  line-height:1.85;font-style:italic;
+  color:var(--silver);opacity:0.9;margin-bottom:3.5rem;
+  opacity:0;animation:fadeUp 1s 1s ease forwards;
+}
+.hero-lore strong{color:var(--gold-light);font-style:normal;font-weight:600;}
+.hero-ctas{
+  display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;
+  opacity:0;animation:fadeUp 1s 1.2s ease forwards;
+}
+.btn-primary{
+  font-family:'Cinzel',serif;font-size:0.8rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--void);
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  border:none;padding:1rem 2.5rem;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:transform 0.2s,box-shadow 0.3s;
+  box-shadow:0 0 30px rgba(212,175,55,0.30);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(212,175,55,0.58);}
+.btn-secondary{
+  font-family:'Cinzel',serif;font-size:0.8rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);background:transparent;
+  border:1px solid var(--gold-dim);padding:1rem 2.5rem;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  transition:all 0.3s;
+}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(212,175,55,0.10);}
+
+.scroll-indicator{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  opacity:0;animation:fadeUp 1s 1.8s ease forwards;
+}
+.scroll-indicator span{
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.2em;color:rgba(212,175,55,0.48);text-transform:uppercase;
+}
+.scroll-arrow{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(212,175,55,0.58),transparent);
+  animation:drip 2.2s ease-in-out infinite;
+}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform:scaleY(1);transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* ── SECTION DIVIDERS ── */
+.section-divider{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  gap:1.5rem;padding:0 2rem;
+}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.22),transparent);max-width:350px;}
+.div-icon{color:rgba(212,175,55,0.48);font-size:1.2rem;}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:2;padding:5rem 2rem;max-width:1200px;margin:0 auto;}
+section::before{
+  content:'';position:absolute;inset:1.5rem 1rem;z-index:-1;
+  background:linear-gradient(135deg,var(--section-wash),transparent 58%);
+  border-radius:2px;pointer-events:none;
+}
+.section-header{text-align:center;margin-bottom:3.5rem;}
+.section-tag{
+  font-family:'Cinzel',serif;font-size:0.65rem;
+  letter-spacing:0.35em;text-transform:uppercase;
+  color:rgba(212,175,55,0.52);margin-bottom:0.8rem;display:block;
+}
+.section-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.6rem,4vw,2.5rem);
+  color:var(--gold-light);
+  text-shadow:0 0 40px rgba(212,175,55,0.18);
+  margin-bottom:1rem;
+}
+.section-desc{
+  font-size:1.15rem;font-style:italic;
+  color:var(--whisper);max-width:500px;
+  margin:0 auto;line-height:1.7;
+}
+
+/* ── RESOURCES ── */
+.resources-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;background:rgba(212,175,55,0.10);
+}
+.resource-card{
+  position:relative;
+  background:var(--panel);
+  padding:0;
+  text-decoration:none;overflow:hidden;
+  transition:box-shadow 0.4s;
+  display:flex;flex-direction:column;
+  min-height:420px;
+}
+.rc-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform 0.6s ease,filter 0.5s ease;
+  filter:brightness(0.32) saturate(0.75);
+}
+.resource-card:hover .rc-img{transform:scale(1.06);filter:brightness(0.48) saturate(1);}
+.rc-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,0.92) 0%,rgba(11,10,20,0.48) 45%,rgba(11,10,20,0.10) 100%);
+  transition:background 0.4s;
+}
+.resource-card:hover .rc-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.88) 0%,rgba(106,60,201,0.34) 55%,rgba(11,10,20,0.08) 100%);
+}
+.resource-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(to right,transparent,rgba(212,175,55,0.78),transparent);
+  transform:scaleX(0);transition:transform 0.45s;
+}
+.resource-card:hover::before{transform:scaleX(1);}
+.resource-card:hover{box-shadow:inset 0 0 40px rgba(106,60,201,0.18);}
+.rc-content{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;gap:0.8rem;
+  padding:2.2rem 1.8rem;
+  margin-top:auto;
+}
+.resource-card-title{
+  font-family:'Cinzel',serif;font-size:0.95rem;
+  letter-spacing:0.08em;color:var(--gold-light);text-transform:uppercase;
+}
+.resource-card-desc{font-size:0.95rem;font-style:italic;color:var(--silver);line-height:1.55;}
+.resource-card-arrow{
+  margin-top:0.4rem;font-size:0.75rem;
+  color:rgba(212,175,55,0.42);letter-spacing:0.1em;
+  font-family:'Cinzel',serif;transition:color 0.3s;
+}
+.resource-card:hover .resource-card-arrow{color:var(--gold);}
+
+/* ── WELCOME ── */
+.welcome-banner{
+  position:relative;
+  background:linear-gradient(135deg,rgba(30,20,52,0.5),rgba(158,42,42,0.18));
+  border:1px solid rgba(212,175,55,0.22);
+  padding:3.5rem;text-align:center;overflow:hidden;
+}
+.welcome-banner::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(212,175,55,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.welcome-orb{font-size:3rem;margin-bottom:1rem;display:block;animation:float 3.5s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.welcome-title{
+  font-family:'Cinzel Decorative',serif;font-size:1.7rem;
+  color:var(--gold-light);margin-bottom:1rem;
+}
+.welcome-text{
+  font-size:1.15rem;font-style:italic;color:var(--silver);
+  max-width:520px;margin:0 auto 1.8rem;line-height:1.8;
+}
+.welcome-reward{
+  display:inline-block;font-family:'Cinzel',serif;
+  font-size:0.8rem;letter-spacing:0.15em;
+  color:var(--gold);border:1px solid rgba(212,175,55,0.42);
+  padding:0.7rem 2rem;text-transform:uppercase;
+  background:rgba(212,175,55,0.10);
+}
+
+/* ── DESTAQUES ── */
+.destaques-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1px;background:rgba(212,175,55,0.10);margin-bottom:2rem;
+}
+.destaque-card{
+  position:relative;
+  background:var(--panel);
+  padding:0;
+  text-align:center;overflow:hidden;
+  transition:box-shadow 0.4s;
+  display:flex;flex-direction:column;
+  min-height:400px;
+}
+/* imagem do personagem */
+.dest-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center top;
+  transition:transform 0.6s ease,filter 0.5s ease;
+  filter:brightness(0.4) saturate(0.8);
+}
+.destaque-card:hover .dest-img{transform:scale(1.05);filter:brightness(0.55) saturate(1);}
+/* gradiente — mais escuro embaixo para texto */
+.dest-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(11,10,20,0.96) 0%,
+    rgba(11,10,20,0.62) 35%,
+    rgba(11,10,20,0.07) 70%,
+    rgba(11,10,20,0) 100%
+  );
+  transition:background 0.4s;
+}
+.destaque-card:hover .dest-grad{
+  background:linear-gradient(
+    to top,
+    rgba(11,10,20,0.94) 0%,
+    rgba(106,60,201,0.38) 40%,
+    rgba(11,10,20,0.04) 75%,
+    rgba(11,10,20,0) 100%
+  );
+}
+/* linha dourada topo no hover */
+.destaque-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(to right,transparent,rgba(212,175,55,0.78),transparent);
+  transform:scaleX(0);transition:transform 0.45s;
+}
+.destaque-card:hover::before{transform:scaleX(1);}
+.destaque-card:hover{box-shadow:inset 0 0 40px rgba(106,60,201,0.16);}
+/* conteúdo textual */
+.dest-content{
+  position:relative;z-index:2;
+  margin-top:auto;
+  padding:1.5rem 1.2rem 1.8rem;
+  display:flex;flex-direction:column;gap:0.3rem;
+}
+.destaque-rank{
+  font-family:'Cinzel',serif;font-size:0.58rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:rgba(212,175,55,0.62);margin-bottom:0.4rem;display:block;
+}
+.destaque-name{
+  font-family:'Cinzel',serif;font-size:1.05rem;
+  color:var(--bone);line-height:1.2;
+}
+.destaque-sub{font-size:0.85rem;font-style:italic;color:var(--whisper);margin-top:0.2rem;}
+/* placeholder sem foto */
+.dest-placeholder{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:0.6rem;
+  opacity:0.28;
+}
+.dest-placeholder-icon{font-size:4rem;}
+.dest-placeholder-text{
+  font-family:'Cinzel',serif;font-size:0.55rem;
+  letter-spacing:0.2em;color:var(--bone);text-transform:uppercase;
+}
+.destaque-badge{
+  position:absolute;top:0;right:0;z-index:4;
+  background:var(--gold);color:var(--void);
+  font-family:'Cinzel',serif;font-size:0.55rem;
+  letter-spacing:0.1em;padding:0.3rem 0.7rem;
+}
+.bonus-tag{
+  text-align:center;font-family:'Cinzel',serif;
+  font-size:0.7rem;letter-spacing:0.2em;
+  color:rgba(212,175,55,0.48);text-transform:uppercase;
+  border-top:1px solid rgba(212,175,55,0.12);padding-top:1.2rem;
+}
+.bonus-tag strong{color:var(--gold);}
+
+/* ── ENDGAME ── */
+.endgame-warning{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.2rem,3vw,2rem);
+  color:var(--blood);line-height:1.3;margin-bottom:3rem;
+  opacity:0.85;
+}
+.endgame-warning span{color:var(--ember);}
+.endgame-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1px;background:rgba(212,175,55,0.08);
+}
+.endgame-card{
+  position:relative;
+  background:var(--panel);
+  padding:0;
+  text-decoration:none;overflow:hidden;
+  transition:box-shadow 0.4s;
+  display:flex;flex-direction:column;
+  min-height:420px;
+}
+.eg-img{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  transition:transform 0.6s ease,filter 0.5s ease;
+  filter:brightness(0.28) saturate(0.7);
+}
+.endgame-card:hover .eg-img{transform:scale(1.06);filter:brightness(0.42) saturate(0.9);}
+.eg-grad{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,0.94) 0%,rgba(158,42,42,0.24) 55%,rgba(11,10,20,0.14) 100%);
+  transition:background 0.4s;
+}
+.endgame-card:hover .eg-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.90) 0%,rgba(158,42,42,0.34) 55%,rgba(11,10,20,0.10) 100%);
+}
+.endgame-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;z-index:3;
+  background:linear-gradient(to right,transparent,rgba(139,26,26,0.7),transparent);
+  transform:scaleX(0);transition:transform 0.45s;
+}
+.endgame-card:hover::before{transform:scaleX(1);}
+.endgame-card:hover{box-shadow:inset 0 0 40px rgba(158,42,42,0.20);}
+.eg-content{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;gap:1rem;
+  padding:2.5rem 2rem;
+  margin-top:auto;
+}
+.endgame-tag{
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--ember);opacity:0.9;
+}
+.endgame-title{
+  font-family:'Cinzel Decorative',serif;font-size:1.3rem;
+  color:var(--gold-light);line-height:1.3;
+}
+.endgame-desc{font-size:0.9rem;font-style:italic;color:var(--silver);line-height:1.65;}
+
+/* ── EVENTOS CAROUSEL ── */
+.eventos-wrapper{position:relative;overflow:hidden;border:1px solid rgba(212,175,55,0.42);background:var(--panel);box-shadow:0 0 60px rgba(212,175,55,0.12),0 0 0 1px rgba(212,175,55,0.12);}
+.eventos-track{display:flex;transition:transform 0.7s cubic-bezier(.77,0,.18,1);}
+.evento-slide{min-width:100%;position:relative;cursor:pointer;display:block;text-decoration:none;overflow:hidden;}
+.evento-slide img{width:100%;height:520px;object-fit:cover;display:block;filter:brightness(0.75);transition:filter 0.5s,transform 0.6s;}
+.evento-slide:hover img{filter:brightness(0.9);transform:scale(1.02);}
+.evento-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,10,20,0.86) 0%,rgba(11,10,20,0.24) 50%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2.5rem 3rem;pointer-events:none;
+}
+.evento-tag{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;margin-bottom:0.6rem;opacity:0.85;}
+.evento-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,4vw,2.5rem);color:var(--bone);line-height:1.1;margin-bottom:0.6rem;text-shadow:0 2px 12px rgba(0,0,0,0.8);}
+.evento-desc{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--silver);max-width:500px;line-height:1.6;}
+.evento-cta{
+  display:inline-block;margin-top:1.2rem;
+  font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.15em;
+  color:var(--void);background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  padding:0.6rem 1.8rem;text-transform:uppercase;pointer-events:all;
+  transition:box-shadow 0.3s;
+}
+.evento-cta:hover{box-shadow:0 0 25px rgba(212,175,55,0.58);}
+
+/* nav arrows */
+.ev-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  z-index:10;background:rgba(11,10,20,0.62);
+  border:1px solid rgba(212,175,55,0.25);
+  color:var(--gold);font-size:1.2rem;
+  width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all 0.3s;user-select:none;
+}
+.ev-arrow:hover{background:rgba(212,175,55,0.18);border-color:var(--gold);}
+.ev-arrow.left{left:1.2rem;}
+.ev-arrow.right{right:1.2rem;}
+
+/* dots */
+.ev-dots{
+  position:absolute;bottom:1.2rem;right:3rem;
+  display:flex;gap:0.5rem;align-items:center;z-index:10;
+}
+.ev-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(212,175,55,0.36);
+  border:1px solid rgba(212,175,55,0.48);
+  cursor:pointer;transition:all 0.3s;
+}
+.ev-dot.active{background:var(--gold);width:20px;border-radius:3px;}
+
+/* placeholder (sem imagem) */
+.evento-placeholder{
+  width:100%;height:420px;
+  background:linear-gradient(135deg,rgba(30,20,52,0.8),rgba(158,42,42,0.26));
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1rem;
+}
+.evento-placeholder-icon{font-size:3rem;opacity:0.3;}
+.evento-placeholder-text{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.2em;color:var(--whisper);text-transform:uppercase;}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:2;
+  text-align:center;padding:3rem 2rem 2rem;
+  border-top:1px solid rgba(212,175,55,0.12);
+}
+.footer-disclaimer{
+  margin-top:2.5rem;
+  padding-top:1.5rem;
+  border-top:1px solid rgba(212,175,55,0.08);
+  font-family:'Cinzel',serif;
+  font-size:0.58rem;letter-spacing:0.12em;
+  color:rgba(212,175,55,0.25);
+  text-transform:uppercase;line-height:1.9;
+}
+.footer-logo{
+  font-family:'Cinzel Decorative',serif;font-size:1.8rem;
+  color:rgba(212,175,55,0.16);letter-spacing:0.2em;margin-bottom:1rem;
+}
+.footer-text{font-size:0.85rem;font-style:italic;color:var(--whisper);letter-spacing:0.05em;}
+.footer-nav{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;transition:color 0.3s;}
+.footer-nav a:hover{color:var(--gold);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-left{opacity:0;transform:translateX(-34px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal-left.on{opacity:1;transform:translateX(0);}
+
+/* ── NAV DROPDOWN ── */
+.nav-links li{position:relative;}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 1rem);left:50%;
+  transform:translateX(-50%);
+  background:rgba(11,10,20,0.92);
+  border:1px solid rgba(212,175,55,0.22);
+  min-width:200px;
+  opacity:0;visibility:hidden;
+  transform:translateX(-50%) translateY(-6px);
+  transition:opacity 0.25s,transform 0.25s,visibility 0.25s;
+  z-index:300;
+  backdrop-filter:blur(12px);
+}
+.nav-links li:hover .nav-dropdown{
+  opacity:1;visibility:visible;
+  transform:translateX(-50%) translateY(0);
+}
+.nav-dropdown a{
+  display:block;
+  font-family:'Cinzel',serif;font-size:0.65rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--whisper);text-decoration:none;
+  padding:0.85rem 1.4rem;
+  border-bottom:1px solid rgba(212,175,55,0.12);
+  transition:color 0.2s,background 0.2s;
+}
+.nav-dropdown a:last-child{border-bottom:none;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(212,175,55,0.08);}
+.nav-arrow{
+  display:inline-block;margin-left:0.3em;
+  font-size:0.5rem;vertical-align:middle;
+  opacity:0.5;transition:transform 0.25s;
+}
+.nav-links li:hover .nav-arrow{transform:rotate(180deg);}
+
+
+/* ── LIGHTER THEME POLISH ── */
+.resource-card,.destaque-card,.endgame-card,.eventos-wrapper,.welcome-banner{
+  border:1px solid var(--line-gold);
+}
+.resource-card,.destaque-card,.endgame-card{
+  box-shadow:0 18px 55px rgba(0,0,0,0.18);
+}
+.rc-img,.dest-img,.eg-img{
+  filter:brightness(0.46) saturate(0.86);
+}
+.resource-card:hover .rc-img,.destaque-card:hover .dest-img,.endgame-card:hover .eg-img{
+  filter:brightness(0.62) saturate(1.05);
+}
+@media (max-width: 820px){
+  nav{padding:1rem 1.2rem;gap:1rem;align-items:flex-start;}
+  .nav-links{display:none;}
+  .nav-discord{font-size:0.65rem;padding:0.4rem 0.8rem;}
+  .hero{padding-top:7rem;}
+  .evento-slide img,.evento-placeholder{height:380px;}
+  .evento-overlay{padding:2rem 1.5rem;}
+  section{padding:4rem 1.1rem;}
+  .welcome-banner{padding:2.2rem 1.4rem;}
+}
+
+</style>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-container"></div>
+<div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
+  <div class="loader-orbit" aria-hidden="true">
+    <span class="loader-ring r1"></span>
+    <span class="loader-ring r2"></span>
+    <span class="loader-core">✦</span>
+  </div>
+  <div class="loader-title">NEOTHEON</div>
+  <div class="loader-subtitle">Abrindo o véu entre mundos</div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="glow-purple"></div>
+<div class="glow-blood"></div>
+<div class="glow-gold"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewbox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+<circle cx="250" cy="250" fill="#c8bfb0" opacity="0.2" r="3"></circle>
+</svg>
+<div class="orb" style="width:3px;height:3px;background:rgba(212,175,55,0.62);top:20%;left:15%;--dur:7s;--tx:14px;--ty:-18px;"></div>
+<div class="orb" style="width:2px;height:2px;background:rgba(200,191,176,0.45);top:32%;left:80%;--dur:9s;--tx:-10px;--ty:14px;"></div>
+<div class="orb" style="width:4px;height:4px;background:rgba(107,21,21,0.6);top:70%;left:10%;--dur:11s;--tx:16px;--ty:-12px;"></div>
+<div class="orb" style="width:2px;height:2px;background:rgba(212,175,55,0.42);top:75%;left:88%;--dur:6s;--tx:-14px;--ty:9px;"></div>
+<div class="hero-eyebrow">Londres · 2047 · Além do Véu</div>
+<div class="rune-divider">
+<div class="rune-line"></div>
+<span class="rune-sym">⛧</span>
+<div class="rune-line r"></div>
+</div>
+<h1 class="hero-title">NEOTHEON</h1>
+<div class="hero-subtitle">Os Deuses Nunca Caíram · Apenas Subiram</div>
+<p class="hero-lore">
+    No coração de Londres, entre as torres que tocam os céus envenenados,
+    antigos mitos respiram sob novas formas. Sob o néon e a névoa do Tâmisa,
+    ergue-se <strong>Avalon</strong> — onde juramentos são mais fortes que sangue,
+    e o silêncio sustenta o equilíbrio entre deuses e homens.
+  </p>
+<div class="hero-ctas">
+<a class="btn-primary" href="neotheon_regras.html">Primeiros Passos</a>
+<a class="btn-secondary" href="neotheon_fichas.html">Ver Fichas</a>
+</div>
+<div class="scroll-indicator">
+<span>Descer</span>
+<div class="scroll-arrow"></div>
+</div>
+</div>
+<!-- EVENTOS -->
+<div class="section-divider" style="padding-top:1rem">
+<div class="div-line"></div><span class="div-icon">★</span><div class="div-line"></div>
+</div>
+<section>
+<div class="section-header reveal">
+<span class="section-tag">Limitado por Tempo</span>
+<h2 class="section-title">Eventos Temporários</h2>
+<p class="section-desc">Use suas contas celestiais e arrisque a sorte em busca de prêmios exclusivos</p>
+</div>
+<div class="eventos-wrapper reveal" style="transition-delay:.1s">
+<div class="eventos-track" id="eventosTrack">
+<!-- ═══ EVENTO 1 ═══
+           Para usar imagem: remova a div.evento-placeholder e descomente a tag img
+           Troque href="index.html" pelo link da página do evento -->
+<a class="evento-slide" href="index.html">
+<div class="evento-placeholder">
+<div class="evento-placeholder-icon">🌑</div>
+<div class="evento-placeholder-text">Adicione a imagem do Evento 1</div>
+</div>
+<!-- <img src="assets/img/imagem-evento-1.jpg" alt="Nome do Evento 1"> -->
+<div class="evento-overlay">
+<span class="evento-tag">Evento Sazonal · Ativo agora</span>
+<div class="evento-title">Nome do Evento 1</div>
+<div class="evento-desc">Descrição breve do evento — o que os jogadores podem ganhar ou enfrentar.</div>
+<span class="evento-cta">Participar →</span>
+</div>
+</a>
+<!-- ═══ EVENTO 2 ═══ -->
+<a class="evento-slide" href="index.html">
+<div class="evento-placeholder">
+<div class="evento-placeholder-icon">🔥</div>
+<div class="evento-placeholder-text">Adicione a imagem do Evento 2</div>
+</div>
+<!-- <img src="assets/img/imagem-evento-2.jpg" alt="Nome do Evento 2"> -->
+<div class="evento-overlay">
+<span class="evento-tag">Evento Especial · Tempo limitado</span>
+<div class="evento-title">Nome do Evento 2</div>
+<div class="evento-desc">Descrição breve do evento — o que os jogadores podem ganhar ou enfrentar.</div>
+<span class="evento-cta">Participar →</span>
+</div>
+</a>
+<!-- ═══ EVENTO 3 ═══ -->
+<a class="evento-slide" href="index.html">
+<div class="evento-placeholder">
+<div class="evento-placeholder-icon">⚡</div>
+<div class="evento-placeholder-text">Adicione a imagem do Evento 3</div>
+</div>
+<!-- <img src="assets/img/imagem-evento-3.jpg" alt="Nome do Evento 3"> -->
+<div class="evento-overlay">
+<span class="evento-tag">Raid · Exclusivo</span>
+<div class="evento-title">Nome do Evento 3</div>
+<div class="evento-desc">Descrição breve do evento — o que os jogadores podem ganhar ou enfrentar.</div>
+<span class="evento-cta">Participar →</span>
+</div>
+</a>
+</div>
+<div class="ev-arrow left" id="evPrev">←</div>
+<div class="ev-arrow right" id="evNext">→</div>
+<div class="ev-dots" id="evDots"></div>
+</div>
+</section>
+<!-- RECURSOS -->
+<div class="section-divider">
+<div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div>
+</div>
+<section>
+<div class="section-header reveal">
+<span class="section-tag">Tome as Rédeas do Destino</span>
+<h2 class="section-title">Recursos Importantes</h2>
+<p class="section-desc">Tudo o que você precisa para adentrar o mundo de Neotheon</p>
+</div>
+<div class="resources-grid">
+<!-- CARD 1 — Primeiros Passos
+         Imagem: coloque o arquivo como "rc-primeiros-passos.jpg" na mesma pasta do HTML
+         Dimensões ideais: 480x640px -->
+<a class="resource-card reveal" href="index.html" style="transition-delay:.05s">
+<div class="rc-img" style="background-image:url('https://i.postimg.cc/ZKHZFKzr/ron-dark-gothic-London-streets-at-night-fog-mysterious-doorwa-adfb0908-27c2-4489-a67e-488f627dd8f4-1.png')"></div>
+<div class="rc-grad"></div>
+<div class="rc-content">
+<div class="resource-card-title">Primeiros Passos</div>
+<div class="resource-card-desc">Descubra o mundo de Avalon e entenda as regras que regem deuses e mortais</div>
+<div class="resource-card-arrow">Explorar →</div>
+</div>
+</a>
+<!-- CARD 2 — Loja Divina
+         Imagem: "rc-loja-divina.jpg" — Dimensões: 480x640px -->
+<a class="resource-card reveal" href="index.html" style="transition-delay:.1s">
+<div class="rc-img" style="background-image:url('https://i.postimg.cc/nzb6f6fg/imagem-2026-04-14-221918767.png')"></div>
+<div class="rc-grad"></div>
+<div class="rc-content">
+<div class="resource-card-title">Loja Divina</div>
+<div class="resource-card-desc">Adquira armas, artefatos e relíquias sagradas com suas moedas celestiais</div>
+<div class="resource-card-arrow">Entrar →</div>
+</div>
+</a>
+<!-- CARD 3 — Seres Fantásticos
+         Imagem: "rc-seres-fantasticos.jpg" — Dimensões: 480x640px -->
+<a class="resource-card reveal" href="index.html" style="transition-delay:.15s">
+<div class="rc-img" style="background-image:url('https://i.postimg.cc/X77tWftW/imagem-2026-04-14-222027514.png')"></div>
+<div class="rc-grad"></div>
+<div class="rc-content">
+<div class="resource-card-title">Seres Fantásticos</div>
+<div class="resource-card-desc">Controle e domine criaturas do Além com os contratos corretos</div>
+<div class="resource-card-arrow">Estudar →</div>
+</div>
+</a>
+<!-- CARD 4 — Guia de Materiais
+         Imagem: "rc-guia-materiais.jpg" — Dimensões: 480x640px -->
+<a class="resource-card reveal" href="index.html" style="transition-delay:.2s">
+<div class="rc-img" style="background-image:url('https://i.postimg.cc/50Skdy3H/imagem-2026-04-14-222144989.png')"></div>
+<div class="rc-grad"></div>
+<div class="rc-content">
+<div class="resource-card-title">Guia de Materiais</div>
+<div class="resource-card-desc">Alquimia, forja e magia: os materiais que moldam o destino</div>
+<div class="resource-card-arrow">Consultar →</div>
+</div>
+</a>
+<!-- CARD 5 — Eventos Sazonais
+         Imagem: "rc-eventos-sazonais.jpg" — Dimensões: 480x640px -->
+<a class="resource-card reveal" href="index.html" style="transition-delay:.25s">
+<div class="rc-img" style="background-image:url('https://i.postimg.cc/cH0XmZSL/imagem-2026-04-14-222335169.png')"></div>
+<div class="rc-grad"></div>
+<div class="rc-content">
+<div class="resource-card-title">Eventos Sazonais</div>
+<div class="resource-card-desc">Oportunidades únicas que surgem com as estações e os caprichos dos deuses</div>
+<div class="resource-card-arrow">Ver →</div>
+</div>
+</a>
+</div>
+</section>
+<!-- WELCOME -->
+<div class="section-divider">
+<div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div>
+</div>
+<section>
+<div class="welcome-banner reveal">
+<span class="welcome-orb">🕯️</span>
+<div class="welcome-title">Seja Bem-Vindo, Neófito</div>
+<p class="welcome-text">O início é sempre o mais difícil. A Égide reconhece sua coragem — e em honra ao seu primeiro passo além do véu, concede-lhe um presente sagrado.</p>
+<div class="welcome-reward">✦ 10 Orações Divinas por Novo Personagem ✦</div>
+</div>
+</section>
+<!-- DESTAQUES -->
+<div class="section-divider">
+<div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div>
+</div>
+<section>
+<div class="section-header reveal">
+<span class="section-tag">Reconhecimento da Égide</span>
+<h2 class="section-title">Destaques</h2>
+<p class="section-desc">Os escolhidos que se destacaram perante os olhos dos deuses</p>
+</div>
+<div class="destaques-grid">
+<!-- DESTAQUE 1 — Cadete
+         Foto do personagem: "dest-cadete.jpg" na mesma pasta
+         Dimensões: 400x600px (proporção 2:3, retrato)
+         Dica: use fundo escuro/neutro na geração para integrar bem -->
+<div class="destaque-card reveal" style="transition-delay:.05s">
+<div class="dest-img" style="background-image:url('assets/img/dest-cadete.jpg')"></div>
+<div class="dest-placeholder">
+<div class="dest-placeholder-icon">⚔</div>
+<div class="dest-placeholder-text">Foto do Personagem</div>
+</div>
+<div class="dest-grad"></div>
+<div class="dest-content">
+<span class="destaque-rank">Cadete</span>
+<div class="destaque-name">Nome do Personagem</div>
+<div class="destaque-sub">O primeiro passo à glória</div>
+</div>
+</div>
+<!-- DESTAQUE 2 — Especialista
+         Foto: "dest-especialista.jpg" — 400x600px -->
+<div class="destaque-card reveal" style="transition-delay:.1s">
+<div class="dest-img" style="background-image:url('assets/img/dest-especialista.jpg')"></div>
+<div class="dest-placeholder">
+<div class="dest-placeholder-icon">🌟</div>
+<div class="dest-placeholder-text">Foto do Personagem</div>
+</div>
+<div class="dest-grad"></div>
+<div class="destaque-badge">+10% XP</div>
+<div class="dest-content">
+<span class="destaque-rank">Especialista</span>
+<div class="destaque-name">Nome do Personagem</div>
+<div class="destaque-sub">Domínio além do comum</div>
+</div>
+</div>
+<!-- DESTAQUE 3 — Instrutor
+         Foto: "dest-instrutor.jpg" — 400x600px -->
+<div class="destaque-card reveal" style="transition-delay:.15s">
+<div class="dest-img" style="background-image:url('assets/img/dest-instrutor.jpg')"></div>
+<div class="dest-placeholder">
+<div class="dest-placeholder-icon">🔱</div>
+<div class="dest-placeholder-text">Foto do Personagem</div>
+</div>
+<div class="dest-grad"></div>
+<div class="destaque-badge">+10% XP</div>
+<div class="dest-content">
+<span class="destaque-rank">Instrutor</span>
+<div class="destaque-name">Nome do Personagem</div>
+<div class="destaque-sub">Forjado na batalha</div>
+</div>
+</div>
+<!-- DESTAQUE 4 — Deus (Mestre de Mesa)
+         Foto: "dest-deus.jpg" — 400x600px -->
+<div class="destaque-card reveal" style="transition-delay:.2s">
+<div class="dest-img" style="background-image:url('assets/img/dest-deus.jpg')"></div>
+<div class="dest-placeholder">
+<div class="dest-placeholder-icon">👁</div>
+<div class="dest-placeholder-text">Foto do Personagem</div>
+</div>
+<div class="dest-grad"></div>
+<div class="destaque-badge">+10% Gold</div>
+<div class="dest-content">
+<span class="destaque-rank">Deus</span>
+<div class="destaque-name">Nome do Mestre</div>
+<div class="destaque-sub">Acima dos mortais</div>
+</div>
+</div>
+</div>
+<div class="bonus-tag reveal" style="transition-delay:.28s">Destaques recebem <strong>10% de bônus</strong> em aquisição de XP e Gold</div>
+</section>
+<!-- ENDGAME -->
+<div class="section-divider">
+<div class="div-line"></div><span class="div-icon">☠</span><div class="div-line"></div>
+</div>
+<section>
+<div class="section-header reveal">
+<p class="endgame-warning">Além do véu, além da lei —<br/><span>apenas os mais fortes sobrevivem.</span></p>
+<h2 class="section-title">Endgame</h2>
+<p class="section-desc">Faça apenas se tiver coragem suficiente</p>
+</div>
+<div class="endgame-grid">
+<!-- ENDGAME CARD 1 — Abismo Espiral
+         Imagem: "eg-abismo-espiral.jpg" na mesma pasta — 600x640px
+         Midjourney: dark spiral abyss, endless chasm, horror, fantasy RPG, dramatic lighting --ar 3:4 -->
+<a class="endgame-card reveal" href="index.html" style="transition-delay:.05s">
+<div class="eg-img" style="background-image:url('assets/img/eg-abismo-espiral.jpg')"></div>
+<div class="eg-grad"></div>
+<div class="eg-content">
+<div class="endgame-tag">▲ Zona de Risco</div>
+<div class="endgame-title">Abismo Espiral</div>
+<div class="endgame-desc">Um labirinto sem fim. Cada descida revela horrores maiores — e recompensas que os deuses escondem dos fracos.</div>
+</div>
+</a>
+<!-- ENDGAME CARD 2 — Universo Simulado
+         Imagem: "eg-universo-simulado.jpg" — 600x640px
+         Midjourney: dark simulated reality glitch, digital divine technology, sci-fi mystical --ar 3:4 -->
+<a class="endgame-card reveal" href="index.html" style="transition-delay:.1s">
+<div class="eg-img" style="background-image:url('assets/img/eg-universo-simulado.jpg')"></div>
+<div class="eg-grad"></div>
+<div class="eg-content">
+<div class="endgame-tag">▲ Simulacro</div>
+<div class="endgame-title">Universo Simulado</div>
+<div class="endgame-desc">Realidades forjadas pela tecnologia divina. O que é real, dentro do simulacro?</div>
+</div>
+</a>
+<!-- ENDGAME CARD 3 — Berçário Abissal
+         Imagem: "eg-bercario-abissal.jpg" — 600x640px
+         Midjourney: abyssal creature nursery, dark eggs hatching monsters, horror fantasy --ar 3:4 -->
+<a class="endgame-card reveal" href="index.html" style="transition-delay:.15s">
+<div class="eg-img" style="background-image:url('assets/img/eg-bercario-abissal.jpg')"></div>
+<div class="eg-grad"></div>
+<div class="eg-content">
+<div class="endgame-tag">▲ Origem Abissal</div>
+<div class="endgame-title">Berçário Abissal</div>
+<div class="endgame-desc">Onde criaturas do Abismo nascem. Domine-as — ou torne-se sua primeira refeição.</div>
+</div>
+</a>
+<!-- ENDGAME CARD 4 — Reino do Caos
+         Imagem: "eg-reino-do-caos.jpg" — 600x640px
+         Midjourney: primordial chaos realm, reality dissolving, dark god, apocalyptic fantasy --ar 3:4 -->
+<a class="endgame-card reveal" href="index.html" style="transition-delay:.2s">
+<div class="eg-img" style="background-image:url('assets/img/eg-reino-do-caos.jpg')"></div>
+<div class="eg-grad"></div>
+<div class="eg-content">
+<div class="endgame-tag">▲ Caos Primordial</div>
+<div class="endgame-title">Reino do Caos</div>
+<div class="endgame-desc">Onde as leis da realidade se dissolvem e apenas a vontade dos mais fortes prevalece.</div>
+</div>
+</a>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="neotheon_ambientacao.html">Ambientação</a>
+<a href="neotheon_regras.html">Regras &amp; Sistemas</a>
+<a href="neotheon_missoes.html">Missões Fixas</a>
+<a href="neotheon_fichas.html">Fichas</a>
+<a href="neotheon_empyrean.html">Empyrean</a>
+<a href="neotheon_empyrean_missoes.html">Empyrean: Missões</a>
+<a href="neotheon_fate.html">Fate / Guerra de Londres</a>
+<a href="neotheon_fate_missoes.html">Fate: Missões</a>
+<a href="neotheon_banner.html">Banner Ativo</a>
+<a href="neotheon_mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+<script>
+/* ── COSMOS ── */
+const canvas = document.getElementById('cosmos');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [], nebulas = [], shooting = [], t = 0;
+
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+
+function initStars(){
+  stars = [];
+  for(let i=0;i<300;i++){
+    stars.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.5+0.2,
+      o:Math.random()*0.65+0.1,
+      speed:Math.random()*0.35+0.05,
+      phase:Math.random()*Math.PI*2,
+      color:Math.random()>0.88?'#c9a050':Math.random()>0.72?'#9980cc':'#ffffff'
+    });
+  }
+  nebulas=[];
+  const cols=['rgba(61,32,96,','rgba(107,21,21,','rgba(18,12,40,','rgba(40,15,15,'];
+  for(let i=0;i<7;i++){
+    nebulas.push({
+      x:Math.random()*W, y:Math.random()*H*0.75,
+      rx:90+Math.random()*200, ry:55+Math.random()*130,
+      col:cols[Math.floor(Math.random()*cols.length)],
+      a:0.035+Math.random()*0.055
+    });
+  }
+}
+
+function spawnShoot(){
+  if(Math.random()<0.003){
+    shooting.push({
+      x:Math.random()*W*0.75, y:Math.random()*H*0.45,
+      len:90+Math.random()*130,
+      speed:9+Math.random()*7,
+      angle:Math.PI/5+Math.random()*0.35,
+      life:1
+    });
+  }
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+
+  nebulas.forEach(n=>{
+    const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));
+    g.addColorStop(0,n.col+n.a+')');
+    g.addColorStop(1,n.col+'0)');
+    ctx.save();ctx.scale(1,n.ry/n.rx);
+    ctx.beginPath();ctx.arc(n.x,n.y*(n.rx/n.ry),n.rx,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();ctx.restore();
+  });
+
+  stars.forEach(s=>{
+    const tw=Math.sin(t*s.speed+s.phase)*0.35+0.65;
+    ctx.globalAlpha=s.o*tw;
+    ctx.fillStyle=s.color;
+    if(s.color==='#c9a050'&&s.r>1){
+      ctx.save();ctx.globalAlpha=s.o*tw*0.55;
+      ctx.fillRect(s.x-0.5,s.y-s.r*2.8,1,s.r*5.6);
+      ctx.fillRect(s.x-s.r*2.8,s.y-0.5,s.r*5.6,1);
+      ctx.restore();ctx.globalAlpha=s.o*tw;
+    }
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+  });
+
+  spawnShoot();
+  shooting=shooting.filter(s=>s.life>0);
+  shooting.forEach(s=>{
+    ctx.save();ctx.globalAlpha=s.life*0.85;
+    const dx=Math.cos(s.angle)*s.len,dy=Math.sin(s.angle)*s.len;
+    const g=ctx.createLinearGradient(s.x,s.y,s.x-dx,s.y-dy);
+    g.addColorStop(0,'rgba(255,255,240,0.95)');
+    g.addColorStop(0.3,'rgba(212,175,55,0.48)');
+    g.addColorStop(1,'rgba(255,255,255,0)');
+    ctx.strokeStyle=g;ctx.lineWidth=1.2;
+    ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x-dx,s.y-dy);ctx.stroke();
+    ctx.restore();
+    s.x+=Math.cos(s.angle)*s.speed;s.y+=Math.sin(s.angle)*s.speed;s.life-=0.022;
+  });
+
+  ctx.globalAlpha=1;t+=0.01;
+  requestAnimationFrame(draw);
+}
+
+resize();initStars();draw();
+window.addEventListener('resize',()=>{resize();initStars();});
+
+/* ── CAROUSEL DE EVENTOS ── */
+(function(){
+  const track = document.getElementById('eventosTrack');
+  const dotsContainer = document.getElementById('evDots');
+  if(!track) return;
+
+  const slides = track.querySelectorAll('.evento-slide');
+  let current = 0;
+  let autoTimer;
+
+  // criar dots
+  slides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'ev-dot' + (i===0?' active':'');
+    d.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(idx) {
+    current = (idx + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsContainer.querySelectorAll('.ev-dot').forEach((d,i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  document.getElementById('evNext').addEventListener('click', e => { e.preventDefault(); next(); resetAuto(); });
+  document.getElementById('evPrev').addEventListener('click', e => { e.preventDefault(); prev(); resetAuto(); });
+
+  // autoplay a cada 5s
+  function startAuto(){ autoTimer = setInterval(next, 5000); }
+  function resetAuto(){ clearInterval(autoTimer); startAuto(); }
+  startAuto();
+
+  // swipe touch
+  let touchX = 0;
+  track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 50){ diff > 0 ? next() : prev(); resetAuto(); }
+  }, {passive:true});
+})();
+
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('on'),i*55);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.07});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>io.observe(el));
+</script>
+
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body>
+</html>

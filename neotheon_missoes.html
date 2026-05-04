@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Missões Fixas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --void:#0b0a14;--deep:#141224;--veil:#1c1833;
+  --blood:#9e2a2a;--ember:#d6452f;
+  --gold:#d4af37;--gold-light:#f1d27a;--gold-dim:#8c6a2b;
+  --silver:#cfc7b4;--bone:#f5f1e6;--whisper:#9a927f;--purple:#6a3cc9;
+  --teal:#2ec59c;--blue:#4fa3f7;--amber:#d9942e;--red:#d6452f;--mist:#26214a;}
+body{background:var(--void);color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(assets/img/%23g)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.55;}
+#cosmos{position:fixed;inset:0;z-index:0;pointer-events:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid rgba(212,175,55,0.1);background:rgba(11,10,20,0.92);backdrop-filter:blur(10px);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.4rem;letter-spacing:0.15em;color:var(--gold);text-decoration:none;text-shadow:0 0 30px rgba(212,175,55,0.4);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.12em;color:var(--whisper);text-decoration:none;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+.nav-discord{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.1em;color:var(--gold);border:1px solid var(--gold-dim);padding:0.45rem 1.1rem;text-decoration:none;text-transform:uppercase;transition:all 0.3s;position:relative;overflow:hidden;}
+.nav-discord::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-101%);transition:transform 0.3s;z-index:-1;}
+.nav-discord:hover{color:var(--void);}
+.nav-discord:hover::before{transform:translateX(0);}
+.nav-links li{position:relative;}
+.nav-dropdown{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(11,10,20,0.97);border:1px solid rgba(212,175,55,0.18);min-width:200px;opacity:0;visibility:hidden;transition:opacity 0.25s,transform 0.25s,visibility 0.25s;z-index:300;backdrop-filter:blur(12px);}
+.nav-links li:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nav-dropdown a{display:block;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;padding:0.85rem 1.4rem;border-bottom:1px solid rgba(212,175,55,0.08);transition:color 0.2s,background 0.2s;}
+.nav-dropdown a:last-child{border-bottom:none;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(212,175,55,0.05);}
+.nav-arrow{display:inline-block;margin-left:0.3em;font-size:0.5rem;vertical-align:middle;opacity:0.5;transition:transform 0.25s;}
+.nav-links li:hover .nav-arrow{transform:rotate(180deg);}
+
+/* HERO */
+.hero{position:relative;z-index:2;min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;overflow:hidden;}
+.hero-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);width:700px;height:700px;border-radius:50%;background:radial-gradient(ellipse,rgba(106,60,201,0.22) 0%,transparent 65%);pointer-events:none;}
+.fog-base{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,rgba(11,10,20,0.98),transparent);pointer-events:none;}
+.penta{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(400px,80vw);height:min(400px,80vw);opacity:0.03;animation:spin 200s linear infinite;pointer-events:none;}
+@keyframes spin{to{transform:translate(-50%,-52%) rotate(360deg);}}
+.hero-eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.sigil-row{display:flex;align-items:center;gap:1rem;justify-content:center;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.s-line{width:70px;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.45));}
+.s-line.r{background:linear-gradient(to left,transparent,rgba(212,175,55,0.45));}
+.s-sym{color:var(--gold);font-size:1.1rem;animation:pulse 4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+.hero-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6vw,4.5rem);font-weight:900;line-height:1.1;color:var(--gold-light);text-shadow:0 0 80px rgba(212,175,55,0.3),0 2px 4px rgba(0,0,0,0.9);letter-spacing:0.05em;margin-bottom:1rem;opacity:0;animation:fadeUp 1.2s 0.6s ease forwards;}
+.hero-sub{font-family:'Cinzel',serif;font-size:clamp(0.75rem,1.5vw,0.95rem);letter-spacing:0.25em;color:var(--whisper);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.8s ease forwards;}
+.hero-lore{max-width:680px;font-size:clamp(1rem,2vw,1.2rem);line-height:1.9;font-style:italic;color:var(--silver);opacity:0;animation:fadeUp 1s 1s ease forwards;}
+.hero-lore strong{color:var(--gold-light);font-style:normal;}
+
+/* STAT BANNER */
+.stat-banner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1px;background:rgba(212,175,55,0.08);
+  margin:0;
+}
+.stat-item{
+  background:var(--deep);padding:1.5rem 2rem;text-align:center;
+}
+.stat-val{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold-light);line-height:1;}
+.stat-lbl{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--whisper);margin-top:0.4rem;}
+
+/* DIVIDERS */
+.section-divider{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:0 2rem;}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,0.15),transparent);max-width:350px;}
+.div-icon{color:rgba(212,175,55,0.35);font-size:1.1rem;}
+
+/* SECTIONS */
+section{position:relative;z-index:2;padding:4rem 2rem;max-width:1200px;margin:0 auto;}
+.section-tag{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(212,175,55,0.45);margin-bottom:0.8rem;display:block;}
+.section-title{font-family:'Cinzel Decorative',serif;font-size:clamp(1.4rem,4vw,2.3rem);color:var(--gold-light);margin-bottom:1rem;line-height:1.1;}
+
+/* FILTER BAR */
+
+/* MISSÕES GRID */
+.missoes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:1px;
+  background:rgba(212,175,55,0.07);
+}
+.missao-card{
+  background:var(--deep);
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:background 0.4s;
+}
+.missao-card:hover{background:var(--veil);}
+.missao-card.hidden{display:none;}
+
+/* color accent per difficulty */
+.missao-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transform:scaleX(0);transition:transform 0.45s;
+}
+.missao-card:hover::before{transform:scaleX(1);}
+.missao-card.dif-normal::before{background:linear-gradient(to right,transparent,rgba(29,158,117,0.8),transparent);}
+.missao-card.dif-medio::before{background:linear-gradient(to right,transparent,rgba(186,117,23,0.8),transparent);}
+.missao-card.dif-alto::before{background:linear-gradient(to right,transparent,rgba(192,57,43,0.8),transparent);}
+
+.missao-header{padding:1.5rem 1.8rem 0.8rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;}
+.missao-num{
+  font-family:'Cinzel Decorative',serif;font-size:1.2rem;
+  color:rgba(212,175,55,0.2);flex-shrink:0;
+  transition:color 0.3s;
+}
+.missao-card:hover .missao-num{color:rgba(212,175,55,0.45);}
+.missao-badges{display:flex;flex-direction:column;gap:0.3rem;align-items:flex-end;}
+.badge{
+  font-family:'Cinzel',serif;font-size:0.52rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.22rem 0.6rem;border-radius:2px;
+  white-space:nowrap;
+}
+.badge.semanal{background:rgba(55,137,221,0.15);color:rgba(133,183,235,0.9);border:1px solid rgba(55,137,221,0.25);}
+.badge.dif-normal{background:rgba(29,158,117,0.12);color:rgba(93,202,165,0.9);border:1px solid rgba(29,158,117,0.25);}
+.badge.dif-medio{background:rgba(186,117,23,0.12);color:rgba(239,159,39,0.9);border:1px solid rgba(186,117,23,0.25);}
+.badge.dif-alto{background:rgba(192,57,43,0.12);color:rgba(220,100,80,0.9);border:1px solid rgba(192,57,43,0.25);}
+
+.missao-title{
+  font-family:'Cinzel',serif;font-size:0.9rem;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--gold-light);
+  padding:0 1.8rem 0.5rem;line-height:1.3;
+}
+.missao-local{
+  font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(212,175,55,0.38);
+  padding:0 1.8rem 0.8rem;
+}
+.missao-desc{
+  font-size:0.92rem;font-style:italic;color:var(--silver);
+  line-height:1.7;padding:0 1.8rem;
+  flex:1;
+}
+
+
+/* recompensa */
+.missao-reward{
+  display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;
+  padding:0.8rem 1.8rem 1.5rem;
+  border-top:1px solid rgba(212,175,55,0.07);
+  margin-top:0.5rem;
+}
+.reward-chip{
+  font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;
+  text-transform:uppercase;padding:0.3rem 0.7rem;
+  background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.18);
+  color:var(--gold);
+}
+.reward-chip.rep{background:rgba(107,47,160,0.12);border-color:rgba(107,47,160,0.25);color:rgba(160,100,220,0.9);}
+.missao-entrega{
+  font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--whisper);
+  padding:0 1.8rem 1rem;
+}
+
+/* TURNOS ALEATORIOS */
+.turno-card{
+  position:relative;z-index:2;
+  background:linear-gradient(135deg,rgba(30,20,52,0.5),rgba(158,42,42,0.15));
+  border:1px solid rgba(212,175,55,0.2);
+  padding:2.5rem 3rem;
+  display:grid;grid-template-columns:1fr auto;
+  gap:2rem;align-items:center;
+  margin-top:2rem;
+}
+.turno-title{font-family:'Cinzel Decorative',serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:0.5rem;}
+.turno-desc{font-size:1rem;font-style:italic;color:var(--silver);line-height:1.7;}
+.turno-reward{text-align:center;}
+.turno-xp{font-family:'Cinzel Decorative',serif;font-size:2.5rem;color:var(--gold-light);line-height:1;}
+.turno-lbl{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--whisper);margin-top:0.3rem;}
+
+/* OBS BOX */
+.obs-box{
+  position:relative;z-index:2;
+  background:rgba(106,60,201,0.15);
+  border-left:3px solid rgba(107,47,160,0.5);
+  padding:1.5rem 2rem;margin-top:2rem;
+}
+.obs-label{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(160,100,220,0.7);margin-bottom:0.5rem;}
+.obs-text{font-size:0.98rem;font-style:italic;color:var(--silver);line-height:1.75;}
+.obs-text strong{color:var(--bone);font-style:normal;}
+
+/* FOOTER */
+footer{position:relative;z-index:2;text-align:center;padding:3rem 2rem 2rem;border-top:1px solid rgba(212,175,55,0.08);}
+.footer-logo{font-family:'Cinzel Decorative',serif;font-size:1.8rem;color:rgba(212,175,55,0.08);letter-spacing:0.2em;margin-bottom:1rem;}
+.footer-text{font-size:0.85rem;font-style:italic;color:var(--whisper);}
+.footer-nav{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap;}
+.footer-nav a{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--whisper);text-decoration:none;transition:color 0.3s;}
+.footer-nav a:hover{color:var(--gold);}
+.footer-disclaimer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(212,175,55,0.05);font-family:'Cinzel',serif;font-size:0.56rem;letter-spacing:0.12em;color:rgba(212,175,55,0.18);text-transform:uppercase;line-height:1.9;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.85s cubic-bezier(.16,1,.3,1),transform 0.85s cubic-bezier(.16,1,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+
+/* ─────────────────────────────────────────────
+   NEOTHEON — PALETA CLARA PREMIUM (v2)
+   Aplicada para clarear o site mantendo a estética sombria.
+───────────────────────────────────────────── */
+body{
+  background:
+    radial-gradient(circle at 50% 18%, rgba(38,33,74,0.72) 0%, rgba(28,24,51,0.38) 32%, rgba(11,10,20,1) 72%),
+    var(--void) !important;
+}
+body::before{opacity:0.38 !important;}
+nav{
+  background:rgba(11,10,20,0.84) !important;
+  border-bottom:1px solid rgba(212,175,55,0.18) !important;
+  box-shadow:0 10px 40px rgba(0,0,0,0.24);
+}
+.nav-dropdown{
+  background:rgba(20,18,36,0.96) !important;
+  border-color:rgba(212,175,55,0.22) !important;
+  box-shadow:0 16px 50px rgba(0,0,0,0.34);
+}
+.nav-dropdown a:hover{background:rgba(212,175,55,0.08) !important;}
+.nav-logo,.hero-title,.hero-title-main,.section-title{
+  text-shadow:0 0 46px rgba(212,175,55,0.24),0 2px 4px rgba(0,0,0,0.65) !important;
+}
+.hero-glow,.glow-purple{
+  background:radial-gradient(ellipse,rgba(106,60,201,0.24) 0%,rgba(106,60,201,0.10) 34%,transparent 68%) !important;
+}
+.hero-blood,.glow-blood{
+  background:radial-gradient(ellipse,rgba(158,42,42,0.16) 0%,transparent 72%) !important;
+}
+.fog-base{
+  background:linear-gradient(to top,rgba(11,10,20,0.94),rgba(11,10,20,0.54),transparent) !important;
+}
+.hero-banner-grad{
+  background:linear-gradient(to bottom,rgba(11,10,20,0.40) 0%,rgba(11,10,20,0.06) 42%,rgba(11,10,20,0.15) 62%,rgba(11,10,20,0.96) 100%) !important;
+}
+.hero-bg-img,.hero-banner-img{filter:brightness(0.44) saturate(0.88) !important;}
+.hero-banner:hover .hero-banner-img{filter:brightness(0.50) saturate(0.95) !important;}
+section{background:linear-gradient(180deg,rgba(255,255,255,0.012),rgba(255,255,255,0)) !important;}
+.section-divider .div-line,.div-line{
+  background:linear-gradient(to right,transparent,rgba(212,175,55,0.24),transparent) !important;
+}
+.div-icon{color:rgba(212,175,55,0.48) !important;}
+.section-tag,.hero-eyebrow,.evento-tag,.endgame-tag,.ato-num,.destaque-rank,.god-title,.dragon-cat-title,.info-tag,.stat-lbl{
+  color:rgba(212,175,55,0.68) !important;
+}
+.section-desc,.hero-sub,.hero-subtitle,.god-domain,.destaque-sub,.footer-text,.stat-bar-label,.stat-bar-val{
+  color:var(--whisper) !important;
+}
+.hero-lore,.section-intro,.amb-text,.intro-text p,.intro-quote p,.egide-block p,.resource-card-desc,.endgame-desc,.evento-desc,.of-desc,.ato-desc,.dragon-desc,.info-text,.acc-body,.acc-content,.mission-desc,.mission-card p,.rule-card p{
+  color:var(--silver) !important;
+}
+.intro-quote,.dragon-section,.welcome-banner,.note-box,.warning-box,.info-box,.callout,.system-box{
+  background:linear-gradient(135deg,rgba(38,33,74,0.52),rgba(158,42,42,0.13)) !important;
+  border-color:rgba(212,175,55,0.18) !important;
+  box-shadow:0 18px 55px rgba(0,0,0,0.20);
+}
+.resources-grid,.destaques-grid,.endgame-grid,.egide-grid,.oficios-grid,.gods-grid,.dragon-grid,.ato-grid,.accordion,.stat-banner{
+  background:rgba(212,175,55,0.10) !important;
+}
+.resource-card,.destaque-card,.endgame-card,.egide-block,.oficio-card,.god-card,.dragon-card,.ato-card,.stat-item,.acc-item,.mission-card,.rule-card,.info-card,.card{
+  background:rgba(20,18,36,0.88) !important;
+  border-color:rgba(212,175,55,0.12) !important;
+}
+.resource-card:hover,.destaque-card:hover,.endgame-card:hover,.oficio-card:hover,.god-card:hover,.dragon-card:hover,.ato-card:hover,.acc-item:hover,.mission-card:hover,.rule-card:hover{
+  background:rgba(28,24,51,0.94) !important;
+  box-shadow:inset 0 0 42px rgba(106,60,201,0.16),0 18px 48px rgba(0,0,0,0.24) !important;
+}
+.rc-img,.dest-img,.eg-img,.of-img,.god-img{filter:brightness(0.50) saturate(0.88) !important;}
+.resource-card:hover .rc-img,.destaque-card:hover .dest-img,.endgame-card:hover .eg-img,.oficio-card:hover .of-img,.god-card:hover .god-img{filter:brightness(0.68) saturate(1.04) !important;}
+.rc-grad,.dest-grad,.eg-grad,.of-grad,.god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.94) 0%,rgba(20,18,36,0.64) 42%,rgba(20,18,36,0.16) 100%) !important;
+}
+.resource-card:hover .rc-grad,.destaque-card:hover .dest-grad,.endgame-card:hover .eg-grad,.oficio-card:hover .of-grad,.god-card:hover .god-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.92) 0%,rgba(106,60,201,0.32) 52%,rgba(20,18,36,0.10) 100%) !important;
+}
+.endgame-card .eg-grad{
+  background:linear-gradient(to top,rgba(11,10,20,0.95) 0%,rgba(158,42,42,0.30) 55%,rgba(20,18,36,0.14) 100%) !important;
+}
+.ato-img img{filter:brightness(0.62) saturate(0.88) !important;}
+.ato-card:hover .ato-img img{filter:brightness(0.78) saturate(1.05) !important;}
+.ato-img-grad{background:linear-gradient(to right,rgba(20,18,36,0.72),transparent) !important;}
+.ato-card:nth-child(even) .ato-img-grad{background:linear-gradient(to left,rgba(20,18,36,0.72),transparent) !important;}
+.eventos-wrapper{
+  background:rgba(20,18,36,0.92) !important;
+  border-color:rgba(212,175,55,0.36) !important;
+  box-shadow:0 0 60px rgba(212,175,55,0.10),0 0 0 1px rgba(212,175,55,0.10) !important;
+}
+.evento-overlay{background:linear-gradient(to top,rgba(11,10,20,0.90) 0%,rgba(20,18,36,0.36) 54%,transparent 100%) !important;}
+.evento-slide img{filter:brightness(0.82) saturate(0.95) !important;}
+.btn-primary,.evento-cta,.destaque-badge{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold)) !important;
+  color:var(--void) !important;
+}
+.btn-secondary,.ato-link,.nav-discord{
+  border-color:rgba(212,175,55,0.42) !important;
+  color:var(--gold) !important;
+}
+.btn-secondary:hover,.ato-link:hover,.nav-discord:hover{
+  background:rgba(212,175,55,0.10) !important;
+  border-color:var(--gold) !important;
+}
+.acc-header:hover,.acc-item.open .acc-header{background:rgba(212,175,55,0.075) !important;}
+.stat-bar-track{background:rgba(255,255,255,0.09) !important;}
+footer{background:rgba(11,10,20,0.42) !important;border-top-color:rgba(212,175,55,0.12) !important;}
+@media(max-width:900px){
+  nav{background:rgba(11,10,20,0.92) !important;}
+  .hero-bg-img,.hero-banner-img{filter:brightness(0.38) saturate(0.82) !important;}
+}
+
+</style>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><link rel="icon" href="assets/img/favicon.png"><link rel="apple-touch-icon" href="assets/img/favicon.png"><meta property="og:title" content="NEOTHEON — Missões Fixas"><meta property="og:description" content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-container"></div>
+<div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
+  <div class="loader-orbit" aria-hidden="true">
+    <span class="loader-ring r1"></span>
+    <span class="loader-ring r2"></span>
+    <span class="loader-core">✦</span>
+  </div>
+  <div class="loader-title">NEOTHEON</div>
+  <div class="loader-subtitle">Abrindo o véu entre mundos</div>
+  <div class="loader-bar" aria-hidden="true"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-glow"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewbox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">A Égide de Avalon · Atividades Permanentes</div>
+<div class="sigil-row"><div class="s-line"></div><span class="s-sym">⚔</span><div class="s-line r"></div></div>
+<h1 class="hero-title">Missões Fixas</h1>
+<div class="hero-sub">Farm diário · XP · Golds · Reputação</div>
+<p class="hero-lore">Atividades que <strong>nunca mudam</strong> — inspiradas nos ofícios da Égide. Fundamentais para rotina, ascensão de classe e geração de recursos. Faça as suas e avance na hierarquia.</p>
+</div>
+<!-- STAT BANNER -->
+<div class="stat-banner">
+<div class="stat-item"><div class="stat-val">10</div><div class="stat-lbl">Missões disponíveis</div></div>
+<div class="stat-item"><div class="stat-val">3×</div><div class="stat-lbl">Por semana cada</div></div>
+<div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Turnos por entrega</div></div>
+<div class="stat-item"><div class="stat-val">8</div><div class="stat-lbl">Linhas mínimas por turno</div></div>
+<div class="stat-item"><div class="stat-val">10xp</div><div class="stat-lbl">A cada 40 palavras (turno livre)</div></div>
+</div>
+<!-- MISSÕES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2rem;">
+<span class="section-tag">Atividades da Égide</span>
+<h2 class="section-title">Missões Semanais</h2>
+</div>
+<div class="missoes-grid reveal" style="transition-delay:.1s">
+<!-- 1 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">01</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Patrulha da Névoa no Tâmisa</div>
+<div class="missao-local">📍 Docks de Londres · Margens do Tâmisa</div>
+<div class="missao-desc">As margens do Tâmisa são vigiadas há séculos, mas a névoa não guarda apenas ladrões comuns. Patrulhar essa região é percorrer pontes onde o Véu precisa ser constantemente reforçado. Exige silêncio, disciplina e atenção a sinais sutis — um reflexo que não deveria estar ali, uma sombra que caminha sobre a corrente.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 2 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">02</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Ronda em Whitechapel</div>
+<div class="missao-local">📍 Whitechapel · Leste de Londres</div>
+<div class="missao-desc">Os becos estreitos de Whitechapel são terreno fértil para crimes, mas também para rumores de coisas mais antigas. Gangues mortais disputam território com cultos menores. O verdadeiro trabalho é impedir que o caos mortal se torne brecha para o divino se manifestar em plena rua.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 3 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">03</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Baixo combate</span>
+</div>
+</div>
+<div class="missao-title">Acalmar os Espíritos do Cemitério de Highgate</div>
+<div class="missao-local">📍 Highgate Cemetery · Norte de Londres</div>
+<div class="missao-desc">Entre esculturas góticas e mausoléus cobertos de hera, o silêncio é interrompido por murmúrios de outro tempo. O Véu enfraquece com facilidade aqui, e espíritos inquietos exigem intervenção. Missão de contenção — exige sensibilidade para não despertar o que prefere dormir.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 4 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">04</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Varredura nos Esgotos Antigos</div>
+<div class="missao-local">📍 Rede de Esgotos Romanos e Vitorianos</div>
+<div class="missao-desc">Sob as ruas iluminadas por néon, os corredores úmidos guardam segredos antigos. A missão é caminhar entre túneis romanos, limpando marcas de rituais e rastreando infiltrações de cultistas. O cheiro de enxofre denuncia quando algo além do humano está por perto.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 5 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">05</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Rastreio de Cultos no Soho</div>
+<div class="missao-local">📍 Soho · West End de Londres</div>
+<div class="missao-desc">O Soho pulsa com casas noturnas e teatros, mas por trás do brilho existem portas que não aparecem em mapas. Cultos menores infiltram esses espaços para mascarar rituais. Infiltrar, observar, identificar líderes — e só então agir. Mas há noites em que a fumaça no teto não é mais humana.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 6 -->
+<div class="missao-card dif-alto">
+<div class="missao-header">
+<div class="missao-num">06</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-alto">● Alto risco</span>
+</div>
+</div>
+<div class="missao-title">Caçada na Linha do Metrô Abandonada</div>
+<div class="missao-local">📍 Estação Aldwych · Trechos lacrados do metrô</div>
+<div class="missao-desc">Trechos do metrô londrino foram lacrados após acidentes inexplicáveis. Criaturas atraídas pelos labirintos de ferro vagam por ali. Em raros casos, minotauros deslocados de seus labirintos tornam a tarefa quase suicida. Exploração de túneis apagados com instalação de selos de contenção.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">350 XP</span>
+<span class="reward-chip">100 Golds</span>
+<span class="reward-chip rep">50 Reputação</span>
+</div>
+</div>
+<!-- 7 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">07</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Tensão diplomática</span>
+</div>
+</div>
+<div class="missao-title">Proteção de Diplomacia Oculta</div>
+<div class="missao-local">📍 Locais neutros de encontro · Escolhidos pela Torre</div>
+<div class="missao-desc">Reuniões secretas entre facções divinas e representantes da Égide ocorrem em porões de igrejas, salões privados ou templos escondidos. O trabalho é assegurar que a diplomacia siga seu curso. Combate não é esperado — mas sempre possível quando emissários rivais preferem a força ao diálogo.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 8 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">08</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Investigativo</span>
+</div>
+</div>
+<div class="missao-title">Investigação de Profecias no Museu Britânico</div>
+<div class="missao-local">📍 Museu Britânico · Setor de Antiguidades</div>
+<div class="missao-desc">Algumas peças em exposição carregam mais do que história. Inscrições roubadas da Biblioteca de Alexandria reaparecem disfarçadas de artefatos acadêmicos. Análise discreta, identificação de riscos e impedimento de que manuscritos sejam levados — seguido de perseguições pelos becos vizinhos.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 9 -->
+<div class="missao-card dif-alto">
+<div class="missao-header">
+<div class="missao-num">09</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-alto">● Alto risco · Esquadrão</span>
+</div>
+</div>
+<div class="missao-title">Caçada às Keres no Tâmisa Noturno</div>
+<div class="missao-local">📍 Trechos do Tâmisa · Noites sem lua</div>
+<div class="missao-desc">Bandos de Keres surgem sobre a água como pássaros negros de carne rasgada, atacando tudo que se move. Missão de alto risco para esquadrões preparados e coordenados. A caçada ocorre sempre sob névoa espessa, onde os gritos são abafados pelo rio. Enfrentar essas criaturas é encarar a morte em sua forma mais voraz.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">400 XP</span>
+<span class="reward-chip">200 Golds</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 10 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">10</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Baixo risco</span>
+</div>
+</div>
+<div class="missao-title">Patrulha no Hyde Park</div>
+<div class="missao-local">📍 Hyde Park · Clareiras internas</div>
+<div class="missao-desc">Durante o dia, o parque é refúgio de tranquilidade. À noite, sua natureza muda. Cultos pequenos utilizam clareiras para rituais — cinzas ainda quentes, sangue fresco em pedras, símbolos gravados em árvores. A maior ameaça costuma ser o acúmulo de energia mágica fora de controle.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">100 XP</span>
+<span class="reward-chip">50 Golds</span>
+</div>
+</div>
+</div>
+<!-- TURNO LIVRE -->
+<div class="turno-card reveal" style="transition-delay:.12s">
+<div>
+<div class="turno-title">Turnos Aleatórios</div>
+<div class="turno-desc">Escreva livremente — qualquer narração, interação ou cena do personagem conta. Não há tema fixo nem ofício exigido. Ideal para quem quer desenvolver relações, backstory ou simplesmente se ambientar no mundo.</div>
+</div>
+<div class="turno-reward">
+<div class="turno-xp">10 xp</div>
+<div class="turno-lbl">a cada 40 palavras</div>
+<div class="turno-lbl" style="margin-top:0.3rem;">Entrega: por turno</div>
+</div>
+</div>
+<!-- OBS -->
+<div class="obs-box reveal" style="transition-delay:.15s">
+<div class="obs-label">Observação importante</div>
+<div class="obs-text">Se o turno tiver mais linhas do que a atividade pede, ele poderá ser considerado como mais de um turno. Por exemplo: se a atividade pede <strong>3 turnos de 8 linhas</strong> e você escrever <strong>1 turno com 24 linhas</strong>, não precisará realizar a escrita de mais dois turnos separados.</div>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="neotheon_ambientacao.html">Ambientação</a>
+<a href="neotheon_regras.html">Regras &amp; Sistemas</a>
+<a href="neotheon_individualidades.html">Individualidades</a>
+<a href="neotheon_fichas.html">Fichas</a>
+<a href="neotheon_empyrean.html">Empyrean</a>
+<a href="neotheon_fate.html">Fate / Guerra de Londres</a>
+<a href="neotheon_banner.html">Banner Ativo</a>
+<a href="neotheon_mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+<script>
+const canvas=document.getElementById('cosmos');const ctx=canvas.getContext('2d');let W,H,stars=[],nebulas=[],shooting=[],t=0;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+function initStars(){stars=[];for(let i=0;i<240;i++){stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+0.2,o:Math.random()*0.6+0.1,speed:Math.random()*0.35+0.05,phase:Math.random()*Math.PI*2,color:Math.random()>0.88?'#d4af37':Math.random()>0.72?'#9980cc':'#ffffff'});}nebulas=[];const cols=['rgba(106,60,201,','rgba(158,42,42,','rgba(18,12,40,'];for(let i=0;i<5;i++){nebulas.push({x:Math.random()*W,y:Math.random()*H*0.8,rx:80+Math.random()*160,ry:50+Math.random()*100,col:cols[Math.floor(Math.random()*cols.length)],a:0.03+Math.random()*0.05});}}
+function spawnShoot(){if(Math.random()<0.003){shooting.push({x:Math.random()*W*0.75,y:Math.random()*H*0.45,len:90+Math.random()*120,speed:9+Math.random()*6,angle:Math.PI/5+Math.random()*0.35,life:1});}}
+function draw(){ctx.clearRect(0,0,W,H);nebulas.forEach(n=>{const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,Math.max(n.rx,n.ry));g.addColorStop(0,n.col+n.a+')');g.addColorStop(1,n.col+'0)');ctx.save();ctx.scale(1,n.ry/n.rx);ctx.beginPath();ctx.arc(n.x,n.y*(n.rx/n.ry),n.rx,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.restore();});stars.forEach(s=>{const tw=Math.sin(t*s.speed+s.phase)*0.35+0.65;ctx.globalAlpha=s.o*tw;ctx.fillStyle=s.color;if(s.color==='#d4af37'&&s.r>1){ctx.save();ctx.globalAlpha=s.o*tw*0.55;ctx.fillRect(s.x-0.5,s.y-s.r*2.8,1,s.r*5.6);ctx.fillRect(s.x-s.r*2.8,s.y-0.5,s.r*5.6,1);ctx.restore();ctx.globalAlpha=s.o*tw;}ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();});spawnShoot();shooting=shooting.filter(s=>s.life>0);shooting.forEach(s=>{ctx.save();ctx.globalAlpha=s.life*0.8;const dx=Math.cos(s.angle)*s.len,dy=Math.sin(s.angle)*s.len;const g=ctx.createLinearGradient(s.x,s.y,s.x-dx,s.y-dy);g.addColorStop(0,'rgba(255,255,240,0.9)');g.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=g;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x-dx,s.y-dy);ctx.stroke();ctx.restore();s.x+=Math.cos(s.angle)*s.speed;s.y+=Math.sin(s.angle)*s.speed;s.life-=0.022;});ctx.globalAlpha=1;t+=0.01;requestAnimationFrame(draw);}
+resize();initStars();draw();window.addEventListener('resize',()=>{resize();initStars();});
+
+/* SCROLL REVEAL */
+const io=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*50);io.unobserve(e.target);}});},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body>
+</html>

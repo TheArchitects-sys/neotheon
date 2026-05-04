@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>NEOTHEON — Página não encontrada</title><meta name="description" content="A página solicitada não foi encontrada no portal NEOTHEON."><meta name="theme-color" content="#0b0a14"><meta property="og:title" content="NEOTHEON — Página não encontrada"><meta property="og:description" content="Retorne ao portal NEOTHEON."><meta property="og:type" content="website"><meta property="og:image" content="assets/img/preview.jpg"><link rel="icon" href="assets/img/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"><style>body{margin:0;min-height:100vh;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 20%,#1a1730 0%,#0b0a14 60%);color:#f5f1e6;font-family:'Cormorant Garamond',Georgia,serif;padding:2rem}.panel{max-width:760px;border:1px solid rgba(212,175,55,.18);background:rgba(20,18,36,.78);padding:clamp(2rem,6vw,4rem);box-shadow:0 30px 80px rgba(0,0,0,.35)}h1{font-family:'Cinzel Decorative',serif;font-size:clamp(3rem,10vw,7rem);color:#f1d27a;letter-spacing:.12em;margin:0}p{font-size:1.25rem;line-height:1.8;color:#cfc7b4}.cta{display:inline-block;margin-top:1.5rem;color:#0b0a14;background:#f1d27a;font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.12em;text-decoration:none;padding:.8rem 1.2rem}</style>
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head><body>
+<div id="nav-container"></div><main class="panel"><h1>404</h1><p>Este caminho se perdeu entre os véus. A página pode ter mudado de plano, sido renomeada ou ainda não ter despertado.</p><a class="cta" href="index.html">Voltar ao portal</a></main>
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body></html>

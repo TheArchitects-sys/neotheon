@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEOTHEON — Fichas</title>
+<meta name="description" content="Modelos de ficha de personagem para NEOTHEON, com campos essenciais para origem, patrono, vínculos, atributos e progressão.">
+<meta name="theme-color" content="#0b0a14">
+<meta property="og:title" content="NEOTHEON — Fichas">
+<meta property="og:description" content="Modelos de ficha de personagem para campanhas de NEOTHEON.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>:root{--void:#0b0a14;--gold:#d4af37;--gold-light:#f1d27a;--bone:#f5f1e6;--silver:#cfc7b4;--whisper:#9a927f;--line-gold:rgba(212,175,55,.14)}body{margin:0;background:radial-gradient(circle at 50% 20%,#1a1730 0%,#0b0a14 60%);color:var(--bone);font-family:'Cormorant Garamond',Georgia,serif}nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid var(--line-gold);background:rgba(11,10,20,.92);backdrop-filter:blur(10px)}.nav-logo{font-family:'Cinzel Decorative',serif;font-size:1.4rem;letter-spacing:.15em;color:var(--gold);text-decoration:none}.nav-links{display:flex;gap:2rem;list-style:none;margin:0;padding:0}.nav-links a,.nav-discord{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.12em;color:var(--whisper);text-decoration:none;text-transform:uppercase}.nav-discord{color:var(--gold);border:1px solid #8c6a2b;padding:.45rem 1.1rem}main{min-height:100vh;padding:8.5rem 1.5rem 4rem}.page-title{text-align:center;margin-bottom:2rem}.page-title h1{font-family:'Cinzel Decorative',serif;font-size:clamp(2.3rem,6vw,4.5rem);color:var(--gold-light);letter-spacing:.08em;margin:0 0 1rem}.page-title p{max-width:760px;margin:auto;font-size:1.2rem;line-height:1.8;color:var(--silver)}.cta{display:inline-block;color:#0b0a14;background:var(--gold-light);font-family:'Cinzel',serif;text-transform:uppercase;letter-spacing:.12em;text-decoration:none;padding:.8rem 1.2rem}</style>
+
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="nav-container"></div>
+<div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON"><div><div class="loader-orbit" aria-hidden="true"><span class="loader-ring r1"></span><span class="loader-ring r2"></span><span class="loader-core">✦</span></div><div class="loader-title">NEOTHEON</div><div class="loader-subtitle">Os véus estão se abrindo</div><div class="loader-bar"><span></span></div></div></div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+
+<main id="conteudo">
+  <section class="page-title"><h1>Fichas</h1><p>Um espaço pronto para criação de personagens, impressão e expansão. Use este modelo como base para fichas digitais ou físicas da campanha.</p></section>
+  <section class="sheet-box" aria-labelledby="modelo-ficha"><h2 id="modelo-ficha" class="sr-only">Modelo de ficha</h2><div class="sheet-fields"><div class="sheet-field"><span>Nome</span><div class="sheet-line"></div></div><div class="sheet-field"><span>Jogador</span><div class="sheet-line"></div></div><div class="sheet-field"><span>Origem</span><div class="sheet-line"></div></div><div class="sheet-field"><span>Patrono / Linhagem</span><div class="sheet-line"></div></div><div class="sheet-field"><span>Facção</span><div class="sheet-line"></div></div><div class="sheet-field"><span>Conceito</span><div class="sheet-line"></div></div></div><div class="production-grid"><article class="production-card"><h3>Atributos</h3><p>Corpo, mente, presença, vontade e dom sobrenatural.</p></article><article class="production-card"><h3>Vínculos</h3><p>Aliados, dívidas, juramentos, rivalidades e segredos.</p></article><article class="production-card"><h3>Progressão</h3><p>Marque evolução, ferimentos, bênçãos, maldições e recompensas.</p></article></div><p class="small-note">Dica: use Ctrl+P para imprimir esta página como ficha rápida.</p></section>
+  <div class="production-actions"><a class="cta" href="javascript:window.print()">Imprimir ficha</a><a class="cta secondary" href="neotheon_regras.html">Ver regras</a><a class="cta secondary" href="index.html">Voltar ao portal</a></div>
+</main>
+<script>
+(function(){
+  var target = document.getElementById('nav-container');
+  function loadMain(){
+    var s = document.createElement('script');
+    s.src = 'assets/js/main.js';
+    document.body.appendChild(s);
+  }
+  if (!target) { loadMain(); return; }
+  fetch('nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ target.innerHTML = html; loadMain(); })
+    .catch(function(){ target.innerHTML = '<nav>
+  <a href="index.html" class="nav-logo">NEOTHEON</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
+    <li><a href="neotheon_empyrean.html">Empyrean</a></li>
+    <li><a href="neotheon_empyrean_missoes.html">Missões Empyrean</a></li>
+    <li><a href="neotheon_fate.html">Fate</a></li>
+    <li><a href="neotheon_fate_missoes.html">Missões Fate</a></li>
+    <li><a href="neotheon_missoes.html">Missões Fixas</a></li>
+    <li><a href="neotheon_regras.html">Regras</a></li>
+    <li><a href="neotheon_individualidades.html">Individualidades</a></li>
+    <li><a href="neotheon_mesticos.html">Mestiços</a></li>
+    <li><a href="neotheon_fichas.html">Fichas</a></li>
+    <li><a href="neotheon_banner.html">Banners</a></li>
+  </ul>
+  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
+</nav>'; loadMain(); });
+})();
+</script>
+
+</body></html>
