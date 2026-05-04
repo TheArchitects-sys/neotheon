@@ -368,7 +368,6 @@ footer{position:relative;z-index:2;text-align:center;padding:3rem 2rem 2rem;bord
 })();
 </script>
 
-<div id="nav-container"></div>
 <div class="neotheon-loader" id="neotheon-loader" role="status" aria-live="polite" aria-label="Carregando NEOTHEON">
   <div class="loader-orbit" aria-hidden="true">
     <span class="loader-ring r1"></span>
@@ -775,65 +774,6 @@ const io=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
-<script>
-(function(){
-  var target = document.getElementById('nav-container');
-  function loadMain(){
-    var s = document.createElement('script');
-    s.src = 'assets/js/main.js';
-    document.body.appendChild(s);
-  }
-  if (!target) { loadMain(); return; }
-  fetch('nav.html')
-    .then(function(r){ return r.text(); })
-    .then(function(html){ target.innerHTML = html; loadMain(); })
-    .catch(function(){ target.innerHTML = '<nav>
-  <a href="index.html" class="nav-logo">NEOTHEON</a>
-
-  <ul class="nav-links">
-    <li><a href="index.html">Início</a></li>
-
-    <li><a href="neotheon_ambientacao.html">Ambientação</a></li>
-
-    <li class="has-dropdown">
-      <a href="neotheon_empyrean.html">Empyrean <span class="nav-arrow">▾</span></a>
-      <div class="nav-dropdown">
-        <a href="neotheon_empyrean.html">Visão Geral</a>
-        <a href="neotheon_empyrean_missoes.html">Missões Empyrean</a>
-      </div>
-    </li>
-
-    <li class="has-dropdown">
-      <a href="neotheon_fate.html">Fate <span class="nav-arrow">▾</span></a>
-      <div class="nav-dropdown">
-        <a href="neotheon_fate.html">Visão Geral</a>
-        <a href="neotheon_fate_missoes.html">Missões Fate</a>
-      </div>
-    </li>
-
-    <li class="has-dropdown">
-      <a href="neotheon_regras.html">Sistemas <span class="nav-arrow">▾</span></a>
-      <div class="nav-dropdown">
-        <a href="neotheon_regras.html">Regras</a>
-        <a href="neotheon_missoes.html">Missões Fixas</a>
-        <a href="neotheon_fichas.html">Fichas</a>
-      </div>
-    </li>
-
-    <li class="has-dropdown">
-      <a href="neotheon_individualidades.html">Extras <span class="nav-arrow">▾</span></a>
-      <div class="nav-dropdown">
-        <a href="neotheon_individualidades.html">Individualidades</a>
-        <a href="neotheon_mesticos.html">Mestiços</a>
-        <a href="neotheon_banner.html">Banners</a>
-      </div>
-    </li>
-  </ul>
-
-  <a class="nav-discord" href="https://yoble.com.br/Community/305387" target="_blank" rel="noopener noreferrer">Comunidade</a>
-</nav>'; loadMain(); });
-})();
-</script>
-
+<script src="assets/js/main.js"></script>
 </body>
 </html>

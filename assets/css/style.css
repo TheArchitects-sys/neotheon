@@ -334,3 +334,27 @@ nav{
     max-width: calc(100vw - 1.5rem) !important;
   }
 }
+
+
+/* NAV REMOVIDO — limpeza final */
+nav,
+#nav-container,
+.nav-backdrop,
+.mobile-nav-toggle,
+.nav-links,
+.nav-discord{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+body.mobile-menu-open{
+  overflow:auto!important;
+}
+
+.hero,
+.hero-banner,
+.page-title,
+.page-header{
+  padding-top: clamp(3rem, 8vw, 6rem)!important;
+}
