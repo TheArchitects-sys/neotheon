@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Regras &amp; Sistemas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><meta content="NEOTHEON — Regras &amp; Sistemas" property="og:title"/><meta content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/preview.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="assets/css/pages/regras.css" rel="stylesheet"/><link href="assets/css/style.css" rel="stylesheet"/><link href="assets/img/favicon.png" rel="icon"/><link href="assets/img/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<div aria-label="Carregando NEOTHEON" aria-live="polite" class="neotheon-loader" id="neotheon-loader" role="status">
+<div aria-hidden="true" class="loader-orbit">
+<span class="loader-ring r1"></span>
+<span class="loader-ring r2"></span>
+<span class="loader-core">✦</span>
+</div>
+<div class="loader-title">NEOTHEON</div>
+<div class="loader-subtitle">Abrindo o véu entre mundos</div>
+<div aria-hidden="true" class="loader-bar"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<nav aria-label="Navegação principal"><a class="nav-logo" href="index.html">NEOTHEON</a><ul class="nav-links"><li><a href="ambientacao.html">Ambientação</a></li><li><a aria-current="page" class="active" href="regras.html">Regras</a></li><li><a href="individualidades.html">Individualidades</a></li><li><a href="missoes.html">Missões</a></li><li><a href="fichas.html">Fichas</a></li><li class="has-dropdown"><a href="empyrean.html">Empyrean<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="empyrean.html">Visão geral</a><a href="empyrean-missoes.html">Missões</a></div></li><li class="has-dropdown"><a href="fate.html">Fate<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="fate.html">Guerra de Londres</a><a href="fate-missoes.html">Missões</a></div></li><li><a href="banners.html">Banners</a></li><li><a href="mesticos.html">Mestiços</a></li></ul><a class="nav-discord" href="https://yoble.com.br/Community/305387" rel="noopener noreferrer" target="_blank">Comunidade</a></nav><span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-glow"></div>
+<div class="hero-blood"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewBox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">A Égide de Avalon · Codex Interno</div>
+<div class="sigil-row">
+<div class="s-line"></div><span class="s-sym">⚔</span><div class="s-line r"></div>
+</div>
+<h1 class="hero-title">Regras &amp; Sistemas</h1>
+<div class="hero-sub">O manual do agente · Leia antes de entrar em campo</div>
+<p class="hero-lore">Cada agente da Égide precisa conhecer as leis que regem este mundo. Não por obrigação — mas porque <strong>ignorância não é desculpa</strong> quando os dados rolam e as consequências chegam.</p>
+</div>
+<!-- RESUMO RÁPIDO -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:1rem;">
+<span class="section-tag">Para novos agentes</span>
+<h2 class="section-title">Como funciona tudo aqui?</h2>
+</div>
+<p class="reveal" style="text-align:center;font-size:1.1rem;font-style:italic;color:var(--whisper);max-width:650px;margin:0 auto 3rem;line-height:1.8;transition-delay:.05s;">Parece muito? Respira. É mais simples do que parece. Aqui vai o resumo essencial para você entrar em campo hoje mesmo:</p>
+<div class="info-wrap reveal" style="transition-delay:.05s">
+<div class="info-flow">
+<!-- 1. CRIE SEU PERSONAGEM -->
+<div class="info-step s-gold">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 1 · O começo</div>
+<div class="info-title">Crie seu Personagem</div>
+<div class="info-text">
+            Tudo começa com a ficha do personagem. Ela registra sua origem divina, seus poderes e atributos base — HP, ATK, DEF, MANA e SPD. No nível 1, os valores são fixos e iguais para todos. A partir daí, cada escolha que você faz molda quem esse personagem se tornará. Filhos dos três grandes (Zeus, Hades e Poseidon) recebem <strong>+30 HP e +10% de Taxa Crítica</strong> sobre os valores normais.
+          </div>
+<div class="stat-bars" id="statBars">
+<div class="stat-bar-row"><span class="stat-bar-label">HP</span><div class="stat-bar-track"><div class="stat-bar-fill" style="width:12%;background:#1d9e75;"></div></div><span class="stat-bar-val">60</span></div>
+<div class="stat-bar-row"><span class="stat-bar-label">ATK</span><div class="stat-bar-track"><div class="stat-bar-fill" style="width:11%;background:#d4af37;"></div></div><span class="stat-bar-val">15</span></div>
+<div class="stat-bar-row"><span class="stat-bar-label">MANA</span><div class="stat-bar-track"><div class="stat-bar-fill" style="width:25%;background:#6b2fa0;"></div></div><span class="stat-bar-val">200</span></div>
+</div>
+<div class="info-pills">
+<span class="info-pill">Nível 1 de 10</span>
+<span class="info-pill">Atributos base garantidos</span>
+</div>
+</div>
+</div>
+<!-- 2. GANHE XP -->
+<div class="info-step s-teal">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 2 · Progressão</div>
+<div class="info-title">Ganhe XP &amp; Suba de Nível</div>
+<div class="info-text">
+            XP é a moeda do crescimento. Você o ganha participando de missões independentes, eventos com mestre de mesa e narrações da trama principal. Ao atingir o XP necessário, seu personagem <strong>ascende de nível</strong> e recebe pontos de atributo para distribuir à sua escolha. O nível máximo é 10 — chegar lá representa um agente verdadeiramente experiente dentro da Égide.
+          </div>
+<div class="info-pills">
+<span class="info-pill">Nível 2 → 600 xp</span>
+<span class="info-pill">Nível 5 → 3.000 xp</span>
+<span class="info-pill">Nível 10 → 10.000 xp</span>
+</div>
+</div>
+</div>
+<!-- 3. ATRIBUTOS -->
+<div class="info-step s-purple">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 3 · Sua build</div>
+<div class="info-title">Distribua seus Atributos</div>
+<div class="info-text">
+            Cada ponto de atributo ganho ao subir de nível pode ser investido em diferentes status — e cada atributo tem um valor de conversão diferente. Um ponto em ATK vale <strong>+10 de ataque</strong>, enquanto um ponto em HP rende <strong>+30 de vida</strong>. Pense na identidade do seu personagem: guerreiro que aguenta muito? Mago que destrói tudo? Veloz que age antes de todos? Sua build define como você joga.
+          </div>
+<div class="info-pills">
+<span class="info-pill">1 pt = +10 ATK</span>
+<span class="info-pill">1 pt = +5 DEF</span>
+<span class="info-pill">1 pt = +30 HP</span>
+<span class="info-pill">1 pt = +3 SPD</span>
+<span class="info-pill">1 pt = +10% Crit.</span>
+</div>
+</div>
+</div>
+<!-- 4. COMBATE -->
+<div class="info-step s-red">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><rect height="9" rx="1" width="9" x="2" y="2"></rect><rect height="9" rx="1" width="9" x="13" y="2"></rect><rect height="9" rx="1" width="9" x="2" y="13"></rect><rect height="9" rx="1" width="9" x="13" y="13"></rect></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 4 · Em batalha</div>
+<div class="info-title">Role os Dados no Discord</div>
+<div class="info-text">
+            Em combate, nada é garantido — tudo é uma tentativa. Nunca escreva "meu personagem acerta". Escreva <strong>"meu personagem tenta atacar"</strong> — os dados decidem o resultado. Você usa o bot do Discord no seu canal de rolagem com o comando <strong>/roll</strong>, informando dados e dificuldade no formato <strong>10d10 t5</strong>. Quem tiver mais sucessos vence a disputa. Se vencer no ataque, o dano final é calculado com ATK − DEF do oponente.
+          </div>
+<div class="info-pills">
+<span class="info-pill">/roll no Discord</span>
+<span class="info-pill">Ex: 10d10 t5</span>
+<span class="info-pill">Mais sucessos = vence</span>
+</div>
+</div>
+</div>
+<!-- 5. MANA -->
+<div class="info-step s-blue">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 5 · Poderes</div>
+<div class="info-title">Gerencie sua Mana</div>
+<div class="info-text">
+            Todo poder ativo tem um custo de mana. Ao usá-lo, desconte o valor do seu total e registre o atual no turno — por exemplo: <strong>Mana: 80/100</strong>. Esse registro é obrigatório, tanto em combates por dados quanto interpretativos. Quando a mana zerar, sem poderes até recuperá-la. Saber quando guardar energia e quando descarregar tudo pode ser decisivo em um combate.
+          </div>
+<div class="info-pills">
+<span class="info-pill">Registre: Mana 80/100</span>
+<span class="info-pill">Cada poder tem custo próprio</span>
+<span class="info-pill">Sem mana = sem poder</span>
+</div>
+</div>
+</div>
+<!-- 6. EVENTOS & PRÊMIOS -->
+<div class="info-step s-amber">
+<div class="info-icon-col">
+<div class="info-circle"><svg fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="26"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg></div>
+<div class="info-vline"></div>
+</div>
+<div class="info-body">
+<div class="info-tag">Passo 6 · Recompensas</div>
+<div class="info-title">Participe de Eventos e Conquiste Prêmios</div>
+<div class="info-text">
+            Eventos são narrações organizadas que recompensam com XP, gold e prêmios exclusivos — armas, artefatos, pets e bênçãos únicas. O nível de perigo do evento (<strong>verde, amarelo ou vermelho</strong>) define a dificuldade e a qualidade da recompensa. Prêmios vão de 4 a 6 estrelas e podem ser melhorados por artesãos ao longo do tempo. Participar com frequência é o caminho mais rápido para fortalecer seu personagem.
+          </div>
+<div class="info-pills">
+<span class="info-pill">✩✩✩✩ a ✩✩✩✩✩✩</span>
+<span class="info-pill">Armas · Artefatos · Pets · Bênçãos</span>
+<span class="info-pill">Maior perigo = melhor prêmio</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ACCORDION -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+<span class="section-tag">Manual Completo</span>
+<h2 class="section-title">Sistemas &amp; Regras</h2>
+</div>
+<div class="accordion reveal" style="transition-delay:.1s">
+<!-- 1. REGRAS DE CONVIVÊNCIA -->
+<div class="acc-item" id="acc1">
+<div class="acc-header" onclick="toggle('acc1')">
+<div class="acc-left">
+<div class="acc-num">I</div>
+<div>
+<div class="acc-title">Regras de Convivência</div>
+<div class="acc-tag">O código de conduta da Égide</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<div class="rule-list">
+<div class="rule-item">
+<div class="rule-n">1</div>
+<div class="rule-text"><strong>Não invente o que não tem.</strong> É proibido inventar a posse de itens. Armas e objetos são adquiridos por compras, eventos ou tarefas rotineiras.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">2</div>
+<div class="rule-text"><strong>Deixe seus atributos visíveis no turno.</strong> Informe ATK, DEF e HP para facilitar o cálculo do mestre e dos outros jogadores durante narrações de combate.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">3</div>
+<div class="rule-text"><strong>Respeite o sistema de combate.</strong> Use apenas o que suas magias, poderes ou objetos fornecem. Não invente bônus inexistentes.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">4</div>
+<div class="rule-text"><strong>Tenha bom senso com jogos alheios.</strong> Respeite tópicos em uso por eventos ou jogos particulares — regra de 72h. Todo tópico tem cópia para evitar conflitos.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">5</div>
+<div class="rule-text"><strong>Você não faz, você tenta.</strong> Em combates físicos, mentais ou derivados, use sempre "tentativa". Você vai <em>tentar</em> atacar, <em>tentar</em> defender, <em>tentar</em> persuadir.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">6</div>
+<div class="rule-text"><strong>Não existe patente exclusiva.</strong> Em eventos qualquer item pode ser pedido, mas outros jogadores podem obter o mesmo em eventos futuros. Bom senso na descrição para não plagiar.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">7</div>
+<div class="rule-text"><strong>Turnos com mínimo de 600px.</strong> Para preservar o padrão de qualidade das narrações.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">8</div>
+<div class="rule-text"><strong>Seja educado.</strong> Não toleramos brigas ou desrespeito em espaços de convivência. Conflitos ficam dentro do jogo, na ficção — não fora dele.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">9</div>
+<div class="rule-text"><strong>Cuidado com conteúdo adulto.</strong> Este é um RPG adulto. Conteúdo erótico é permitido, mas deve ser sinalizado no início do turno com <strong>ALERTA +18</strong>.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">10</div>
+<div class="rule-text"><strong>Use os títulos dos personagens.</strong> Refira-se a personagens com título pelo título deles — foi conquistado com esforço e reputação dentro do jogo.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. SISTEMA DE EVOLUÇÃO -->
+<div class="acc-item" id="acc2">
+<div class="acc-header" onclick="toggle('acc2')">
+<div class="acc-left">
+<div class="acc-num">II</div>
+<div>
+<div class="acc-title">Sistema de Evolução</div>
+<div class="acc-tag">XP, níveis e distribuição de atributos</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<p class="sys-intro">Os personagens possuem <strong>10 níveis</strong> de evolução. À medida que acumulam XP — através de missões, eventos e narrações — sobem de nível e ganham pontos de atributo para distribuir na ficha.</p>
+<!-- TABELA 1: XP por nível -->
+<div class="sys-block">
+<div class="sys-block-title">Tabela de Evolução — XP e Pontos de Atributo</div>
+<p>Ao atingir o XP necessário, o personagem ascende e recebe pontos de atributo para distribuir livremente na ficha.</p>
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>XP Necessário para Ascender</th>
+<th>Pontos de Atributo</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="lvl">01</td><td>0 xp</td><td>1 ponto de atributo</td></tr>
+<tr><td class="lvl">02</td><td>600 xp</td><td>1 ponto de atributo</td></tr>
+<tr><td class="lvl">03</td><td>1.100 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">04</td><td>2.000 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">05</td><td>3.000 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">06</td><td>4.100 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">07</td><td>5.300 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">08</td><td>6.600 xp</td><td>2 pontos de atributo</td></tr>
+<tr><td class="lvl">09</td><td>8.000 xp</td><td>2 pontos de atributo</td></tr>
+<tr class="highlight"><td class="lvl">10</td><td>10.000 xp</td><td><strong>4 pontos de atributo</strong></td></tr>
+</tbody>
+</table>
+</div>
+<!-- TABELA 2: Custo e conversão de atributos -->
+<div class="sys-block">
+<div class="sys-block-title">Tabela de Conversão — Custo dos Atributos</div>
+<p>Cada ponto de atributo custa 1 ponto e converte em valores diferentes dependendo do atributo escolhido. Planeje bem sua distribuição!</p>
+<table class="data-table">
+<thead>
+<tr>
+<th>Atributo</th>
+<th>Custo</th>
+<th>Valor de Conversão</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>ATK</strong></td><td>1 ponto de atributo</td><td>+10 ATK</td></tr>
+<tr><td><strong>DEF</strong></td><td>1 ponto de atributo</td><td>+10 DEF</td></tr>
+<tr><td><strong>HP</strong></td><td>1 ponto de atributo</td><td>+30 HP</td></tr>
+<tr><td><strong>Taxa Crit.</strong></td><td>1 ponto de atributo</td><td>+10% Taxa Crit.</td></tr>
+<tr><td><strong>Dano Crit.</strong></td><td>1 ponto de atributo</td><td>+10% Dano Crit.</td></tr>
+<tr><td><strong>SPD</strong></td><td>1 ponto de atributo</td><td>+3 SPD</td></tr>
+</tbody>
+</table>
+</div>
+<!-- TABELA 3: Atributos base por nível -->
+<div class="sys-block">
+<div class="sys-block-title">Tabela de Atributos Base por Nível</div>
+<p>Estes são os valores base de cada personagem ao subir de nível, <strong>antes</strong> de aplicar os pontos de atributo distribuídos.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>Rolagem Padrão</th>
+<th>HP</th>
+<th>ATK</th>
+<th>DEF</th>
+<th>Taxa Crit.</th>
+<th>Dano Crit.</th>
+<th>SPD</th>
+<th>MANA</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="lvl">01</td><td>10 dados dif. 8</td><td>60</td><td>15</td><td>15</td><td>0%</td><td>50%</td><td>100</td><td>200</td></tr>
+<tr><td class="lvl">02</td><td>10 dados dif. 7</td><td>110</td><td>20</td><td>20</td><td>0%</td><td>50%</td><td>100</td><td>250</td></tr>
+<tr><td class="lvl">03</td><td>10 dados dif. 7</td><td>160</td><td>25</td><td>25</td><td>0%</td><td>50%</td><td>100</td><td>300</td></tr>
+<tr><td class="lvl">04</td><td>10 dados dif. 6</td><td>200</td><td>35</td><td>35</td><td>0%</td><td>50%</td><td>100</td><td>350</td></tr>
+<tr><td class="lvl">05</td><td>10 dados dif. 6</td><td>240</td><td>45</td><td>45</td><td>0%</td><td>50%</td><td>100</td><td>400</td></tr>
+<tr><td class="lvl">06</td><td>10 dados dif. 5</td><td>280</td><td>60</td><td>60</td><td>0%</td><td>50%</td><td>100</td><td>450</td></tr>
+<tr><td class="lvl">07</td><td>10 dados dif. 5</td><td>320</td><td>70</td><td>70</td><td>10%</td><td>60%</td><td>100</td><td>500</td></tr>
+<tr><td class="lvl">08</td><td>10 dados dif. 4</td><td>380</td><td>80</td><td>80</td><td>10%</td><td>60%</td><td>110</td><td>550</td></tr>
+<tr><td class="lvl">09</td><td>11 dados dif. 4</td><td>420</td><td>100</td><td>100</td><td>10%</td><td>60%</td><td>120</td><td>600</td></tr>
+<tr class="highlight"><td class="lvl">10</td><td>12 dados dif. 3</td><td>500</td><td>130</td><td>130</td><td>10%</td><td>70%</td><td>130</td><td>800</td></tr>
+</tbody>
+</table>
+</div>
+<div class="table-obs">
+<strong>OBS¹:</strong> Filhos dos três grandes (Zeus/Júpiter, Hades/Plutão e Poseidon/Netuno) possuem +30 HP e 10% taxa crit. a mais que o normal. <span class="alert"><strong>Atenção:</strong> não altera a quantidade que aumentar por nível — no nível 02 um semideus normal teria 60 HP, o filho dos grandes terá 110.</span><br/>
+<strong>OBS²:</strong> Os filhos dos deuses que se revelarem Perpétuos terão direito ao bônus dos filhos dos grandes, além de: +200 de mana a mais que o normal e +10 SPD.
+            </div>
+</div>
+<div class="tip">
+<div class="tip-label">Dica do Mestre</div>
+<p>Fique atento aos poderes em negrito na sua lista — alguns escalam com atributos específicos. Investir nos atributos certos pode ser muito mais vantajoso do que distribuir pontos aleatoriamente.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. SISTEMA DE COMBATE -->
+<div class="acc-item" id="acc3">
+<div class="acc-header" onclick="toggle('acc3')">
+<div class="acc-left">
+<div class="acc-num">III</div>
+<div>
+<div class="acc-title">Sistema de Combate</div>
+<div class="acc-tag">Dados, dano, crítico, SPD e DEF</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<div class="sys-block">
+<div class="sys-block-title" style="color:#e05050;">Como rolar dados</div>
+<p>Toda ação de combate é resolvida por rolagem de dados no Discord. Você tem um canal exclusivo com o número da sua ficha. A rolagem determina os <strong>sucessos</strong> da ação — quem tiver mais sucessos vence a disputa.</p>
+<div class="steps">
+<div class="step">
+<div class="step-num" style="color:rgba(224,80,80,0.5);">1</div>
+<div class="step-body">
+<div class="step-title">Acesse seu canal no Discord</div>
+<div class="step-text">Na aba "rolador" do servidor, encontre o canal com o número da sua ficha.</div>
+</div>
+</div>
+<div class="step">
+<div class="step-num" style="color:rgba(224,80,80,0.5);">2</div>
+<div class="step-body">
+<div class="step-title">Identifique personagem e ação</div>
+<div class="step-text">Informe o nome do personagem e o motivo — ex: <em>"Shen — Ataque"</em>.</div>
+</div>
+</div>
+<div class="step">
+<div class="step-num" style="color:rgba(224,80,80,0.5);">3</div>
+<div class="step-body">
+<div class="step-title">Digite o comando e a rolagem</div>
+<div class="step-text">Use <strong>/roll</strong> e informe dados e dificuldade. Exemplo: 10 dados com dificuldade 5.</div>
+<span class="step-code">/roll → 10d10 t5</span>
+</div>
+</div>
+<div class="step">
+<div class="step-num" style="color:rgba(224,80,80,0.5);">4</div>
+<div class="step-body">
+<div class="step-title">Leia os sucessos e compare</div>
+<div class="step-text">O bot retorna os sucessos. O atacante precisa de <strong>mais sucessos que o defensor</strong> para a ação acertar. Empate = falha.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:#e05050;">Calculando o dano</div>
+<p>Antes de tudo: para causar dano você precisa <strong>vencer a disputa de dados</strong>. Só depois calculamos o quanto de dano foi causado.</p>
+<p style="margin-top:1rem;border-left:3px solid rgba(212,175,55,0.4);padding-left:1rem;"><strong>Combate Clássico</strong> — sem poderes ativos (soco, arma, ataque básico):</p>
+<div class="formula">ATK do atacante − DEF do defensor = Dano Sofrido<small>Se o resultado for negativo, não há dano.</small></div>
+<p style="margin-top:1.5rem;border-left:3px solid rgba(107,47,160,0.5);padding-left:1rem;"><strong>Combate com Poderes</strong> — quando você usa uma habilidade ativa. O crítico e o bônus de dano <em>só se aplicam nesse modo</em>:</p>
+<div class="formula" style="border-left-color:rgba(107,47,160,0.6);">(Nível + [ATK × 1]) × Crítico + Bônus de Dano = Dano Real<small>Base ATK — usa 100% do atributo</small></div>
+<div class="formula" style="border-left-color:rgba(107,47,160,0.6);">(Nível + [DEF × 0.6]) × Crítico + Bônus de Dano = Dano Real<small>Base DEF — usa 80% do atributo</small></div>
+<div class="formula" style="border-left-color:rgba(107,47,160,0.6);">(Nível + [HP × 0.4]) × Crítico + Bônus de Dano = Dano Real<small>Base HP — usa 50% do atributo</small></div>
+<div class="tip" style="margin-top:1.2rem;">
+<div class="tip-label" style="color:rgba(160,100,220,0.8);">O que é o Bônus de Dano?</div>
+<p>O <strong>Bônus de Dano</strong> é um valor fixo somado ao final da fórmula de dano composto. Funciona como um dano crítico, mas <strong>não precisa de Taxa Crítica para ativar</strong> — ele sempre soma ao resultado, independente de qualquer rolagem. Poderes, armas e artefatos podem conceder esse bônus.</p>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:#e05050;">Crítico — só funciona com poderes</div>
+<p>O <strong>Dano Crítico</strong> é um multiplicador do dano composto — só se aplica quando você usa um poder ativo, nunca no combate clássico. Para calcular:</p>
+<p>Você rola um dado extra de crítico partindo de <strong>0 dados com dificuldade 10</strong>.</p>
+<div class="tier-list">
+<div class="tier"><div class="tier-val" style="color:rgba(212,175,55,0.8);">Taxa Crit.</div><div class="tier-desc">Cada 10% reduz −1 de dificuldade na rolagem de crítico (mínimo: dif. 1)</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(212,175,55,0.8);">Dano Crit.</div><div class="tier-desc">Cada 10% adiciona +1 dado na rolagem de crítico (sem limite)</div></div>
+</div>
+<div class="formula">Sucessos de crítico ÷ 10 + 1.0 = Multiplicador<small>0 sucessos = ×1.0 · 1 sucesso = ×1.1 · 5 sucessos = ×1.5 · 10 sucessos = ×2.0</small></div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(29,158,117,0.9);">Redução de Dano (RD) — como funciona</div>
+<p>A RD é um benefício para personagens que investem muito em DEF. Ela <strong>mitiga uma porcentagem do dano antes de bater na DEF</strong>. A ordem de cálculo é sempre:</p>
+<div class="formula" style="border-left-color:rgba(29,158,117,0.6);color:rgba(93,202,165,0.9);">Dano recebido → aplica % de RD → aplica DEF → HP perdido<small>Exemplo: 5.000 de dano com 70% RD e 950 DEF → 5.000 × 30% = 1.500 → 1.500 − 950 = 550 de dano final</small></div>
+<div class="tier-list">
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">250 DEF</div><div class="tier-desc">+60 HP bônus e +10% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">350 DEF</div><div class="tier-desc">+120 HP bônus e +20% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">450 DEF</div><div class="tier-desc">+180 HP bônus e +30% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">550 DEF</div><div class="tier-desc">+240 HP bônus e +40% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">650 DEF</div><div class="tier-desc">+300 HP bônus e +50% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">750 DEF</div><div class="tier-desc">+360 HP bônus e +60% RD</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(29,158,117,0.8);">850 DEF</div><div class="tier-desc">+420 HP bônus e +70% RD — limite máximo do jogo</div></div>
+</div>
+<div class="tip" style="background:rgba(158,42,42,0.15);border-left-color:rgba(192,57,43,0.5);">
+<div class="tip-label" style="color:rgba(220,90,70,0.8);">Atenção</div>
+<p>Os marcos não são acumulativos. O valor indicado é o <strong>total</strong> naquele ponto. Quem tem 850 DEF tem 70% RD — não 70% + 60% + 50%... etc.</p>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(55,138,221,0.9);">Velocidade (SPD) — ordem de ação</div>
+<p>Em eventos e campanhas a ordem de ação é definida pelo SPD. Quem tem mais age primeiro. Por padrão cada personagem tem <strong>2 ações por turno</strong>.</p>
+<div class="tier-list">
+<div class="tier"><div class="tier-val" style="color:rgba(55,138,221,0.8);">100 SPD</div><div class="tier-desc">Valor base de todos os personagens</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(55,138,221,0.8);">200 SPD</div><div class="tier-desc">+1 surto de ação extra por turno</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(55,138,221,0.8);">300 SPD</div><div class="tier-desc">+2 surtos de ação extra por turno</div></div>
+<div class="tier"><div class="tier-val" style="color:rgba(55,138,221,0.8);">300+ SPD</div><div class="tier-desc">Para cada +10 SPD acima de 300: +5 ATK passivo</div></div>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(160,100,220,0.9);">Consumo de Mana</div>
+<p>Todo poder ativo tem um custo de mana. Sempre registre o valor atual no turno — antes e depois de usar qualquer poder.</p>
+<div class="formula" style="border-left-color:rgba(107,47,160,0.5);text-align:left;font-size:0.82rem;">
+<em style="color:var(--whisper);">Exemplo de registro correto:</em><br/>
+              OFF PERSONAGEM: Mana: 100/100<br/>
+<span style="color:var(--silver);">→ usa Poder X (−20 de mana)</span><br/>
+              OFF PERSONAGEM: Mana: 80/100 | Poder Usado: Poder X (−20)
+            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. ATRIBUTOS & BONIFICAÇÕES -->
+<div class="acc-item" id="acc4">
+<div class="acc-header" onclick="toggle('acc4')">
+<div class="acc-left">
+<div class="acc-num">IV</div>
+<div>
+<div class="acc-title">Atributos &amp; Bonificações</div>
+<div class="acc-tag">O que muda sua rolagem e níveis interpretativos</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<p class="sys-intro">Bonificações e atributos são elementos que alteram diretamente a rolagem, o resultado ou as consequências das jogadas. Podem ser concedidos por poderes, magias, itens ou armas.</p>
+<!-- TABELA BUFF/DEBUFF/UTILITÁRIOS -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(29,158,117,0.9);">Buffs — Facilitadores</div>
+<p>Bônus que potencializam as ações do seu personagem ou aliados.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead><tr><th>Tipo de Bônus</th><th>O que faz</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>ATK Adicional</strong></td><td style="text-align:left;">Aumenta o potencial de uma determinada ação. Representa aumento de força física.</td><td>+10 de ATK</td></tr>
+<tr><td><strong>HP Adicional</strong></td><td style="text-align:left;">Adiciona pontos de vida ao número padrão do jogador. Ex: Fortificação Biológica, Gigantismo.</td><td>+30 HP total</td></tr>
+<tr><td><strong>DEF Adicional</strong></td><td style="text-align:left;">Altera seu estado físico tornando-o mais capaz de suportar danos. Ex: Armadura, escudo, manto elemental.</td><td>+10 de DEF</td></tr>
+<tr><td><strong>Taxa Crit. Adicional</strong></td><td style="text-align:left;">Aumenta a chance de um surto de explosão físico/mágica. Ex: Aumento da sorte, Perícias, Proficiência.</td><td>+10% de Taxa Crit.</td></tr>
+<tr><td><strong>Dano Crit. Adicional</strong></td><td style="text-align:left;">Aumenta o dano de um surto de explosão físico/mágica. Ex: Aumento da sorte, Perícias, Proficiência.</td><td>+10% de Dano Crit.</td></tr>
+<tr><td><strong>Dano Real Adicional</strong></td><td style="text-align:left;">Gera mudança do dano final causado — somado no final da fórmula de dano composto. Ex: Explosão, amplificação, acerto garantido.</td><td>+1 Bônus de Dano</td></tr>
+<tr><td><strong>Sucesso Adicional</strong></td><td style="text-align:left;">Afeta a essência da ação ou as leis celestiais da física. Ex: Magia do caos, manipulação da probabilidade.</td><td>+1 Sucesso na ação<br/><small>ou +1 no resultado de 1 dado</small></td></tr>
+<tr><td><strong>Escudo</strong></td><td style="text-align:left;">Gera uma aura que mitiga uma quantidade de dano, escalando com DEF. Transforma o status em HP fixo baseado no tipo de dano. Ex: Aura, Manto.</td><td>Escudo 50 HP<br/><small style="color:rgba(220,90,70,0.8);">Não se aplica às fórmulas de dano</small></td></tr>
+<tr><td><strong>Defesa Absoluta</strong></td><td style="text-align:left;">Garante uma defesa perfeita contra a ação em questão.</td><td>Defesa perfeita</td></tr>
+<tr><td><strong>Mana Total</strong></td><td style="text-align:left;">Aumenta o valor total de energia do personagem. Ex: Aprimoramento Mágico, Apogeu Arcano.</td><td>+10 Mana total<br/>×2 de Mana total</td></tr>
+<tr><td><strong>Redução do Consumo de Mana</strong></td><td style="text-align:left;">Reduz ou abate parte do consumo de energia das ações. Ex: Joia de Energia, Aprimoramento Mágico.</td><td>−10 do consumo<br/>−½ do consumo</td></tr>
+<tr><td><strong>Regeneração de Mana</strong></td><td style="text-align:left;">Regenera a energia perdida após ações que a consomem. Ex: Absorção de energia elemental.</td><td>+10 (50/100 → 60/100)</td></tr>
+<tr><td><strong>Regeneração de HP</strong></td><td style="text-align:left;">Regenera tecidos, ferimentos ou fraturas provocados em combate. Ex: Cura.</td><td>+10 HP (450/500 → 460/500)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(220,90,70,0.9);">Debuffs — Penalizadores</div>
+<p>Bônus que prejudicam as ações do oponente.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead><tr><th>Tipo de Bônus</th><th>O que faz</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Redução de Sucessos</strong></td><td style="text-align:left;">Diminui o potencial de uma ação do oponente. Ex: Sono, manipulação do tempo.</td><td>−1 Sucesso</td></tr>
+<tr><td><strong>Alteração de Dificuldade</strong></td><td style="text-align:left;">Torna uma determinada ação mais difícil. Ex: Manipulação da gravidade, neblina.</td><td>+1 de Dificuldade</td></tr>
+<tr><td><strong>Redução de Dados</strong></td><td style="text-align:left;">Reduz as chances de uma ação ser efetuada com sucesso. Ex: Aumento da velocidade.</td><td>−1 Dado</td></tr>
+<tr><td><strong>Redução ATK</strong></td><td style="text-align:left;">Reduz o potencial de ataque de uma ação. Ex: Redução de força física.</td><td>−10 de ATK</td></tr>
+<tr><td><strong>Redução HP Total</strong></td><td style="text-align:left;">Reduz o potencial de HP para causar dano. Ex: Redução de tamanho fisiológico.</td><td>−30 HP total</td></tr>
+<tr><td><strong>Redução DEF</strong></td><td style="text-align:left;">Reduz o potencial de DEF para causar dano. Ex: Redução de resistência.</td><td>−10 de DEF</td></tr>
+<tr><td><strong>Redução Taxa Crit.</strong></td><td style="text-align:left;">Reduz a chance de um surto de explosão físico/mágica. Ex: Redução de sorte.</td><td>−10% de Taxa Crit.</td></tr>
+<tr><td><strong>Redução Dano Crit.</strong></td><td style="text-align:left;">Reduz o dano presumível de um surto de explosão. Ex: Redução de sorte.</td><td>−10% de Dano Crit.</td></tr>
+<tr><td><strong>Redução de Dano Real</strong></td><td style="text-align:left;">Reduz a mudança do dano final causado — somado no final da fórmula de dano composto. Ex: Manipulação do destino.</td><td>−1 Bônus de Dano</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(186,117,23,0.9);">Utilitários</div>
+<p>Bônus especiais com efeitos únicos e condicionais.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead><tr><th>Tipo de Bônus</th><th>O que faz</th><th>Exemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Surto de Sorte</strong></td><td style="text-align:left;">Você pode rodar duas vezes para todas ou uma ação, escolhendo o resultado mais conveniente. Ex: Magia do caos, manipulação do tempo.</td><td>+1 Sucesso na ação<br/>ou +1 Sucesso no resultado final</td></tr>
+<tr><td><strong>Bônus de Condição</strong></td><td style="text-align:left;">Concede outro bônus baseado em um valor que escala. Ex: Vampirismo.</td><td>+x bônus a cada 3x perdidos/causados/ganhos<br/>+x bônus a cada 5x perdidos/causados/ganhos</td></tr>
+<tr><td><strong>Energia Infinita</strong></td><td style="text-align:left;">Deve ser aplicado a uma condição específica, como não consumir energia sob condições especiais. Ex: Reconhecimento de um deus, trono do Cairo.</td><td>—</td></tr>
+<tr><td><strong>+1 Individualidade por nível</strong></td><td style="text-align:left;">Algo raro concedido em eventos nível de missão. Ex: Reconhecimento de um deus.</td><td>+1 individualidade por nível para as listas</td></tr>
+<tr><td><strong>+1 Lista Divina</strong></td><td style="text-align:left;">Algo raro concedido em eventos nível de missão. Pode-se seguir outra lista de deus com 3 individualidades à escolha. Ex: Reconhecimento de um deus/apadrinhamento.</td><td>+3 individualidades por nível da lista de escolha</td></tr>
+<tr><td><strong>Reduzir Resfriados</strong></td><td style="text-align:left;">Quando você está em condição tão íntima com seu pai/mãe divino ao ponto dos resfriados dos poderes que advêm dele podem ser quebrados pela metade. Ex: Reconhecimento Divino.</td><td>Reduz pela metade o tempo de espera para usar o mesmo poder novamente (sempre arredonda para baixo/menos)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- TABELA BONIFICAÇÃO INTERPRETATIVA -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(160,100,220,0.9);">Bonificação Interpretativa — Níveis de Controle</div>
+<p>Todo prêmio tem um <strong>nível interpretativo</strong> que define o grau de controle sobre o poder concedido. Ele aparece no final da descrição entre colchetes — ex: <strong>[2M | 1F]</strong>.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead><tr><th>Nível do Poder</th><th>Descrição do Controle</th><th>Conversão</th></tr></thead>
+<tbody>
+<tr>
+<td><strong style="color:rgba(93,202,165,0.9);">Brando</strong></td>
+<td style="text-align:left;">Controle quase inconsciente. Consegue controlar pequenas quantidades da natureza de sua individualidade. <em>Ex: aquecer a mão, atirar bolas de fogo.</em></td>
+<td>Não pode ser convertido.</td>
+</tr>
+<tr>
+<td><strong style="color:rgba(212,175,55,0.9);">Moderado</strong></td>
+<td style="text-align:left;">Consegue controlar quantidades consideráveis da natureza de sua individualidade. <em>Ex: Envolver-se em chama, produzir rajadas de fogo ou colunas.</em></td>
+<td>Pode ser convertido para 2 Brandos.</td>
+</tr>
+<tr>
+<td><strong style="color:rgba(239,159,39,0.9);">Forte</strong></td>
+<td style="text-align:left;">Consegue controlar boa parte da própria natureza de sua individualidade e seus derivados. <em>Ex: Iniciar incêndios, cuspir grandes rajadas de fogo, se imunizar do mesmo.</em></td>
+<td>Pode ser convertido para:<br/>2 Moderados<br/>1 Moderado e 2 Brandos<br/>4 Brandos</td>
+</tr>
+<tr>
+<td><strong style="color:rgba(220,90,70,0.9);">Perfeito</strong></td>
+<td style="text-align:left;">Encarna a verdadeira essência de sua individualidade, com uma série de trunfos. <em>Ex: Criar formas vivas de fogo, ou além incluir características únicas como apagar quando for do desejo do jogador.</em></td>
+<td>Pode ser convertido para:<br/>2 Fortes<br/>1 Forte e 2 Moderados<br/>1 Forte, 1 Moderado e 2 Brandos<br/>4 Moderados<br/>3 Moderados e 2 Brandos<br/>2 Moderados e 4 Brandos<br/>1 Moderado e 6 Brandos<br/>8 Brandos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(55,138,221,0.9);">Custos &amp; Limites dos Bônus Determinantes</div>
+<p>Cada bônus tem um custo em atributos e um limite máximo que pode ser acumulado. Atributos especiais têm peso maior que atributos comuns.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Atributo / Bônus</th>
+<th>Modalidade</th>
+<th>Custo &amp; Limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2"><strong>Atributo Base</strong><br/><small style="color:var(--whisper);">(ATK, DEF e HP)</small></td>
+<td>+10 ATK; +10 DEF; +30 HP</td>
+<td>1 atributo</td>
+</tr>
+<tr>
+<td>+10% ATK; +10% DEF; +10% HP</td>
+<td>3 atributos ou 1 atributo especial</td>
+</tr>
+<tr>
+<td><strong>Redução de Atributos Base</strong></td>
+<td>−10 ATK; −10 DEF; −30 HP</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: é possível deixar o alvo com até a metade do atributo original</small></td>
+</tr>
+<tr>
+<td><strong>Bônus de Dano</strong></td>
+<td>+1 de bônus de dano</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: +30 bônus de dano</small></td>
+</tr>
+<tr>
+<td rowspan="2"><strong>Velocidade (SPD)</strong></td>
+<td>+3 SPD<br/><small style="color:rgba(220,90,70,0.8);">OBS: Em missões vermelhas ou da trama será dobrado</small></td>
+<td>1 atributo</td>
+</tr>
+<tr>
+<td>+10% SPD</td>
+<td>3 atributos ou 1 atributo especial</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>Mana Total</strong></td>
+<td>+20 de Mana Total</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: +200 de Mana Total</small></td>
+</tr>
+<tr>
+<td>×2 de Mana Total</td>
+<td>12 atributos ou 4 atributos especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: ×2 de Mana Total</small></td>
+</tr>
+<tr>
+<td rowspan="2"><strong>Redução do Consumo de Mana</strong></td>
+<td>−10 do consumo de mana</td>
+<td>2 atributos<br/><small style="color:rgba(220,90,70,0.8);">Limite: −80 de consumo de mana</small></td>
+</tr>
+<tr>
+<td>−½ do consumo de mana</td>
+<td>12 atributos ou 4 atributos especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: −½ de consumo de mana</small></td>
+</tr>
+<tr>
+<td><strong>Regeneração de Mana Ativa</strong></td>
+<td>10% do ATK ou DEF; 5% do HP<br/><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>2 atributos<br/><small style="color:rgba(220,90,70,0.8);">Limite: 50% se ATK ou DEF; 30% se HP</small></td>
+</tr>
+<tr>
+<td><strong>Regeneração de Mana Passiva</strong></td>
+<td>+10 de mana</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: +50 de mana</small></td>
+</tr>
+<tr>
+<td><strong>Taxa Crítico (TAXA CRIT)</strong></td>
+<td>+10% TAXA CRIT</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: 400% TAXA CRIT</small></td>
+</tr>
+<tr>
+<td><strong>Dano Crítico (DANO CRIT)</strong></td>
+<td>+10% DANO CRIT</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: 800% DANO CRIT</small></td>
+</tr>
+<tr>
+<td><strong>Ataque Absoluto</strong></td>
+<td>Ataca 1x sem chance de defesa<br/><small style="color:rgba(220,90,70,0.8);">OBS: apenas defesa absoluta defende</small></td>
+<td>6 atributos ou 2 especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: 2 defesas absolutas</small></td>
+</tr>
+<tr>
+<td><strong>Regeneração de HP Passivo</strong></td>
+<td>+10 HP por turno</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: +100 HP por turno</small></td>
+</tr>
+<tr>
+<td><strong>Regeneração de HP Ativo</strong></td>
+<td>10% de ATK ou DEF como cura de HP; 5% de HP como escudo<br/><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: 100% se ATK ou DEF; 60% se HP</small></td>
+</tr>
+<tr>
+<td><strong>Eficiência de Cura</strong></td>
+<td>5% de Eficiência de Cura<br/><small style="color:rgba(220,90,70,0.8);">OBS: se aplica a poderes de cura já existente</small></td>
+<td>2 atributos<br/><small style="color:rgba(220,90,70,0.8);">Limite: +100% eficiência de cura</small></td>
+</tr>
+<tr>
+<td><strong>Geração de Escudo</strong></td>
+<td>10% de ATK ou DEF como escudo; 5% de HP como escudo<br/><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: 100% se ATK ou DEF; 60% se HP</small></td>
+</tr>
+<tr>
+<td><strong>Eficiência de Escudo</strong></td>
+<td>5% de Eficiência de Escudo<br/><small style="color:rgba(220,90,70,0.8);">OBS: se aplica a poderes de escudo já existente</small></td>
+<td>2 atributos<br/><small style="color:rgba(220,90,70,0.8);">Limite: +100% eficiência de escudo</small></td>
+</tr>
+<tr>
+<td><strong>Defesa Absoluta</strong></td>
+<td>Defende 1x qualquer ataque</td>
+<td>6 atributos ou 2 especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: 2 defesas absolutas</small></td>
+</tr>
+<tr>
+<td><strong>Redução de Dano (RD)</strong></td>
+<td>5% RD</td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 70% RD</small></td>
+</tr>
+<tr>
+<td><strong>Redução de Dano Verdadeiro</strong></td>
+<td>−1 bônus de dano</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: −20 bônus de dano</small></td>
+</tr>
+<tr>
+<td><strong>Multiplicador de DOT</strong></td>
+<td>2% DOT baseado em ATK ou DEF; 1% DOT baseado em HP</td>
+<td>1 atributo<br/><small style="color:rgba(220,90,70,0.8);">Limite: 20% se ATK ou DEF; 10% se HP</small></td>
+</tr>
+<tr>
+<td><strong>Eficiência de DOT</strong></td>
+<td>+1% DOT</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 20% se ATK ou DEF; 10% se HP</small></td>
+</tr>
+<tr>
+<td><strong>Dano Total de DOT</strong></td>
+<td>+5% Dano final em DOT</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 75% final em DOT</small></td>
+</tr>
+<tr>
+<td><strong>Sucesso em teste específico</strong></td>
+<td>+1 sucesso ou −1 sucesso em teste de x [carisma, vontade, etc]</td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: +5 ou −5 Sucessos</small></td>
+</tr>
+<tr>
+<td><strong>Sucesso em qualquer testes</strong></td>
+<td>+1 sucesso ou −1 sucesso em testes</td>
+<td>2 atributos especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: +5 ou −5 Sucessos</small></td>
+</tr>
+<tr>
+<td><strong>Sucessos em combate</strong></td>
+<td>+1 sucesso ou −1 sucesso</td>
+<td>2 atributos especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: +10 ou −6 Sucessos</small></td>
+</tr>
+<tr>
+<td><strong>Dados</strong></td>
+<td>+1 dado ou −1 dado</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: +13 [25 dados] ou −10 dados [10 dados]</small></td>
+</tr>
+<tr>
+<td><strong>Alteração de Dificuldade</strong></td>
+<td>+1 de dificuldade ou −1 de dificuldade</td>
+<td>1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: −6 [2 dificuldade] ou +5 [8 dificuldade]</small></td>
+</tr>
+<tr>
+<td rowspan="2"><strong>Reduzir Cooldown</strong></td>
+<td>−1 turno de cooldown</td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: −4 cooldown</small></td>
+</tr>
+<tr>
+<td>Quebra o cooldown pela metade (−½)</td>
+<td>12 atributos ou 4 atributos especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: −½ de cooldown</small></td>
+</tr>
+<tr>
+<td><strong>Energia Infinita</strong></td>
+<td><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>6 atributos especial</td>
+</tr>
+<tr>
+<td><strong>Roubo de Vida</strong></td>
+<td>5% do dano causado como HP<br/><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 50% do dano causado</small></td>
+</tr>
+<tr>
+<td><strong>Roubo de Mana</strong></td>
+<td>5% do dano causado como Mana<br/><small style="color:rgba(220,90,70,0.8);">OBS: será tratado como um poder novo, não podendo ser combinado com outro</small></td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 50% do dano causado</small></td>
+</tr>
+<tr>
+<td><strong>Transferência de Atributos [PET &amp; Invocação]</strong></td>
+<td>10% dos atributos totais</td>
+<td>3 atributos ou 1 atributo especial<br/><small style="color:rgba(220,90,70,0.8);">Limite: 100% dos atributos</small></td>
+</tr>
+<tr>
+<td><strong>Aumento de individualidades</strong></td>
+<td>+1 individualidade por nível</td>
+<td>4 atributos especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: +3 individualidades por nível</small></td>
+</tr>
+<tr>
+<td><strong>Dobro de Poderes</strong></td>
+<td>Dobrar o poder interpretativo e bônus da sua lista de individualidades/magias</td>
+<td>4 atributos especiais<br/><small style="color:rgba(220,90,70,0.8);">Limite: ×2 power</small></td>
+</tr>
+<tr>
+<td><strong>Aumentar o Inventário</strong></td>
+<td>+1 Slot de bênção<br/><small style="color:rgba(220,90,70,0.8);">OBS: bênção, arma ou pet</small></td>
+<td>3 perfeitos<br/><small style="color:rgba(220,90,70,0.8);">Limite: Até +2 Slots</small></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(212,175,55,0.9);">Classificação das Premiações</div>
+<div class="star-tier">
+<div class="star-tier-header"><div class="stars">✩✩✩✩</div><div class="star-tier-title">4 Estrelas</div></div>
+<div class="star-tier-desc">Prêmios com potencial interpretativo forte. Grandes mudanças ou elevação do nível do personagem. Bênçãos com 6 atributos (1 Forte + 1 Mediano). Armas com 4 atributos (2 Medianos).</div>
+</div>
+<div class="star-tier">
+<div class="star-tier-header"><div class="stars">✩✩✩✩✩</div><div class="star-tier-title">5 Estrelas</div></div>
+<div class="star-tier-desc">Potencial no mínimo perfeito. Trazem o ápice da natureza do poder. Bênçãos com 10–12 atributos. Podem ser melhorados por eventos.</div>
+</div>
+<div class="star-tier">
+<div class="star-tier-header"><div class="stars">✩✩✩✩✩✩</div><div class="star-tier-title">6 Estrelas — Raro</div></div>
+<div class="star-tier-desc">Prêmios únicos obtidos apenas em eventos especiais. Atípicos, singulares, podem fugir dos limites padrão. <strong>Não podem ser melhorados ou refinados.</strong></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. SISTEMA DE EVENTOS -->
+<div class="acc-item" id="acc5">
+<div class="acc-header" onclick="toggle('acc5')">
+<div class="acc-left">
+<div class="acc-num">V</div>
+<div>
+<div class="acc-title">Sistema de Eventos</div>
+<div class="acc-tag">Tipos, perigo e premiações</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<p class="sys-intro">Eventos são narrações organizadas pela ADM, Deuses e Instrutores. Podem ocorrer livremente com até <strong>2 eventos simultâneos</strong>. Desafios, mini-missões e missões precisam ser solicitados na Central. O nível de perigo é sinalizado por cores — e pode escalar ao longo do evento, afetando diretamente a premiação.</p>
+<div class="sys-block">
+<div class="sys-block-title">Nível de perigo</div>
+<div class="danger-row">
+<div class="danger-badge verde"><div class="danger-dot"></div><div><div class="danger-label">Verde</div><div class="danger-sub">Pouco perigo · Ideal para iniciantes</div></div></div>
+<div class="danger-badge amarelo"><div class="danger-dot"></div><div><div class="danger-label">Amarelo</div><div class="danger-sub">Perigo considerável · Prepare-se bem</div></div></div>
+<div class="danger-badge vermelho"><div class="danger-dot"></div><div><div class="danger-label">Vermelho</div><div class="danger-sub">Muito perigoso · Risco de baixa</div></div></div>
+</div>
+</div>
+<!-- TABELA DE TIPOS DE EVENTOS -->
+<div class="sys-block">
+<div class="sys-block-title">Tipos de Eventos &amp; Recompensas</div>
+<!-- NARRAÇÃO -->
+<div class="evento-card">
+<div class="evento-header">
+<div class="evento-tipo et-narracao">Narração</div>
+<div class="evento-body">
+<div class="evento-desc">
+<p>Eventos curtos administrados por um narrador, geralmente acontecem em um único dia e ocupam pouco tempo, a fim de desenvolver algo simples e mais objetivo.</p>
+<p><strong class="v-verde">Variante Verde:</strong> Quando não oferece risco e é menos elaborada, com objetivo de ser simples.</p>
+<p><strong class="v-amarelo">Variante Amarelo:</strong> Quando é mais elaborada, longa e oferece risco moderado aos participantes.</p>
+<p><strong class="v-vermelho">Variante Vermelho:</strong> Quando oferece risco de morte ou de sequelas severas, é muito elaborada e bem desenvolvida.</p>
+</div>
+<div class="evento-reward">
+<div class="reward-line">Recompensas</div>
+<div class="reward-item">XP: 400 – 500 – 600 xp</div>
+<div class="reward-item">Gold: 100 – 200 – 300$</div>
+<div class="reward-danger verde">● Verde e Amarelo (1 prêmio)</div>
+<div class="reward-sub">Espólios, apenas simbólicos</div>
+<div class="reward-danger vermelho">● Vermelho (1 prêmio)</div>
+<div class="reward-sub">1x artefato roletável</div>
+</div>
+</div>
+</div>
+</div>
+<!-- DESAFIO -->
+<div class="evento-card" style="margin-top:1px;">
+<div class="evento-header">
+<div class="evento-tipo et-desafio">Desafio</div>
+<div class="evento-body">
+<div class="evento-desc">
+<p>Eventos que se assimilam com uma tarefa a ser cumprida. O narrador pode narrar em determinado local comunicando o desafio e permitindo que os participantes o executem no mesmo ou até mesmo por meio de DOCS. Podem ser algo sucinto ou mais elaborado, como sobreviver a uma prova de resistência por dias, ou participar de um torneio.</p>
+<p><strong class="v-verde">Variante Verde:</strong> Sem risco, produzido em um único turno ou DOCS a parte.</p>
+<p><strong class="v-amarelo">Variante Amarelo:</strong> Mais elaborada, longa e com risco moderado, exercida em um ou mais turnos ou DOCS.</p>
+<p><strong class="v-vermelho">Variante Vermelho:</strong> Oferece risco de morte ou sequelas severas. Muito elaborada e bem desenvolvida. Demanda comprometimento e tempo, como torneios ou competições.</p>
+</div>
+<div class="evento-reward">
+<div class="reward-line">Recompensas</div>
+<div class="reward-item">XP: 600 – 700 – 800 xp</div>
+<div class="reward-item">Gold: 150$ <em>se amarelo</em>, 300$ <em>se vermelho</em></div>
+<div class="reward-danger verde">● Verde e Amarelo (1x prêmio)</div>
+<div class="reward-sub">2x artefatos roletáveis</div>
+<div class="reward-danger vermelho">● Vermelho (2x prêmios)</div>
+<div class="reward-sub">2x artefatos roletáveis</div>
+<div class="reward-sub">1x arma <span class="stars-purple">✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-purple">✩✩✩✩</span></div>
+<div class="reward-sub">1x bênção <span class="stars-purple">✩✩✩✩</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- MINI-MISSÃO -->
+<div class="evento-card" style="margin-top:1px;">
+<div class="evento-header">
+<div class="evento-tipo et-minimissao">Mini‑missão</div>
+<div class="evento-body">
+<div class="evento-desc">
+<p>Eventos que demandam a exclusividade dos jogadores, oferecem algum tipo de risco e são pertencentes a alguma trama particular do Narrador. Possuem prazo mínimo de 1 semana e máximo de 2 semanas.</p>
+<p><strong class="v-verde">Variante Verde:</strong> Risco moderado, executados com prazo curto e pouca participação.</p>
+<p><strong class="v-amarelo">Variante Amarelo:</strong> Risco de morte ou sequelas severas, ocupam prazo longo e possuem boa participação dos jogadores.</p>
+<p><strong class="v-vermelho">Variante Vermelho:</strong> Risco de morte ou sequelas severas, ocupam prazo longo e possuem grande participação.</p>
+</div>
+<div class="evento-reward">
+<div class="reward-line">Recompensas</div>
+<div class="reward-item">XP: 700 – 800 – 900 xp</div>
+<div class="reward-item">Gold: 200 – 300 – 400$</div>
+<div class="reward-danger verde">● Verde e Amarelo (2x prêmio)</div>
+<div class="reward-sub">2x artefatos roletáveis</div>
+<div class="reward-sub">1x arma <span class="stars-purple">✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-purple">✩✩✩✩</span></div>
+<div class="reward-danger vermelho">● Vermelho (2x prêmios)</div>
+<div class="reward-sub">4x artefatos roletáveis</div>
+<div class="reward-sub">1x artefato customizado <span class="stars-purple">✩✩✩✩</span></div>
+<div class="reward-sub">1x arma <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x bênção <span class="stars-gold">✩✩✩✩✩</span></div>
+</div>
+</div>
+</div>
+</div>
+<!-- MISSÃO / CAMPANHA -->
+<div class="evento-card" style="margin-top:1px;">
+<div class="evento-header">
+<div class="evento-tipo et-missao">Missão<br/><small style="font-size:0.7rem;opacity:0.7;">(Campanha)</small></div>
+<div class="evento-body">
+<div class="evento-desc">
+<p>Eventos que demandam a exclusividade dos jogadores, oferecem risco de morte e sequelas obrigatoriamente. São pertencentes a alguma trama particular do narrador e só podem ser feitos por Deuses e a própria ADM. Ocupam prazo mínimo de 2 semanas, podendo se estender até 1 mês.</p>
+<p><strong class="v-verde">Variante Verde:</strong> Executados com prazo curto e pouca participação.</p>
+<p><strong class="v-amarelo">Variante Amarelo:</strong> Ocupam prazo longo e possuem boa participação dos jogadores.</p>
+<p><strong class="v-vermelho">Variante Vermelho:</strong> Ocupam prazo longo e possuem grande participação.</p>
+</div>
+<div class="evento-reward">
+<div class="reward-line">Recompensas</div>
+<div class="reward-item">XP: 1.000 – 1.500 – 2.000 xp</div>
+<div class="reward-item">Gold: 400 – 600 – 800$</div>
+<div class="reward-danger verde">● Verde (2x prêmio)</div>
+<div class="reward-sub">4x artefatos roletáveis</div>
+<div class="reward-sub">1x artefato customizado <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x arma <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x bênção <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-danger amarelo">● Amarelo (3x prêmio)</div>
+<div class="reward-sub">5x artefatos roletáveis</div>
+<div class="reward-sub">1x artefato customizado <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x arma <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-sub">1x bênção <span class="stars-gold">✩✩✩✩✩</span></div>
+<div class="reward-danger vermelho">● Vermelho (4x prêmios)</div>
+<div class="reward-sub">6x artefatos roletáveis</div>
+<div class="reward-sub">1x artefato customizado <span class="stars-red">✩✩✩✩✩✩</span></div>
+<div class="reward-sub">1x arma <span class="stars-red">✩✩✩✩✩✩</span></div>
+<div class="reward-sub">1x pet suporte <span class="stars-red">✩✩✩✩✩✩</span></div>
+<div class="reward-sub">1x bênção <span class="stars-red">✩✩✩✩✩✩</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sys-block">
+<div class="sys-block-title">Tipos de premiação</div>
+<div class="award-grid">
+<div class="award-card"><span class="award-icon">⚗️</span><div class="award-name">Artefatos</div><div class="award-desc">Itens e amuletos sem função de arma. Oferecem poder interpretativo ao usuário.</div></div>
+<div class="award-card"><span class="award-icon">⚔️</span><div class="award-name">Armas</div><div class="award-desc">Objetos físicos ou não destinados ao combate. Espadas, grimórios, armaduras e muito mais.</div></div>
+<div class="award-card"><span class="award-icon">🐾</span><div class="award-name">Pet Suporte</div><div class="award-desc">Criaturas que buffam aliados e debuffam inimigos. Consome 1 do limite de 3 criaturas.</div></div>
+<div class="award-card"><span class="award-icon">🐉</span><div class="award-name">Pet de Combate</div><div class="award-desc">Criaturas que lutam em seu lugar. Focadas em batalha com atributos próprios.</div></div>
+<div class="award-card"><span class="award-icon">✨</span><div class="award-name">Bênçãos</div><div class="award-desc">Poderes únicos concedidos pelo narrador. Podem amplificar poderes existentes ou criar novos.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. CUSTOS & LIMITES -->
+<div class="acc-item" id="acc6">
+<div class="acc-header" onclick="toggle('acc6')">
+<div class="acc-left">
+<div class="acc-num">VI</div>
+<div>
+<div class="acc-title">Custos &amp; Limites</div>
+<div class="acc-tag">O que você pode ter e quanto custa</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<p class="sys-intro">Cada bônus e melhoria tem um custo e um limite. Conhecer essas regras evita punições e garante que sua build seja válida.</p>
+<div class="sys-block">
+<div class="sys-block-title">Regras de otimização</div>
+<div class="rule-list" style="margin-bottom:2rem;">
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Refinamentos custam 50 golds</strong> por trabalho realizado, independente do nível de refino. Não pode ser feito gratuitamente — sujeito a punição.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Melhoria da mesma natureza:</strong> qualquer objeto criado ou melhorado por um tipo de artesão só pode ser melhorado pela mesma especialidade mais uma vez. Ex: uma arma criada por um forjador pode ser upada apenas mais 1 vez por meio de forja.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Buff de prêmio já obtido:</strong> recebe metade dos atributos do prêmio usado como buff. Os valores interpretativos não mudam (se tinha 2 Fortes, continua 2 Fortes).</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Limite de criaturas:</strong> máximo de 3 criaturas simultâneas entre pets, clones e invocações.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Prêmios 6 estrelas</strong> não podem ser upados nem refinados de maneira nenhuma.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n">★</div>
+<div class="rule-text"><strong>Eventos:</strong> premiações em eventos podem ser utilizadas para melhorar objetos e pets sem limite de quantidade.</div>
+</div>
+</div>
+<div class="sys-block-title" style="color:rgba(55,138,221,0.9);margin-bottom:0.8rem;">Limites dos Fabricantes &amp; Suas Otimizações</div>
+<p style="font-size:0.95rem;font-style:italic;color:var(--whisper);margin-bottom:1.2rem;">A coluna <strong style="color:var(--bone);font-style:normal;">Quem pode upar</strong> indica quem pode melhorar o item que já foi criado ou upado pelo criador em questão.</p>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Criador</th>
+<th>Nível</th>
+<th>Quem pode upar</th>
+<th>Limite</th>
+</tr>
+</thead>
+<tbody>
+<!-- FORJADOR -->
+<tr>
+<td rowspan="4"><strong>Forjador</strong></td>
+<td>Iniciante</td>
+<td>Forjadores de nível maior e encantadores</td>
+<td><strong>Até 4 atributos</strong></td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Forjadores de nível maior e outros criadores</td>
+<td><strong>Até 6 atributos</strong></td>
+</tr>
+<tr>
+<td>Mestre</td>
+<td>Forjadores de nível supremo e outros criadores</td>
+<td><strong>Até 7 atributos</strong></td>
+</tr>
+<tr>
+<td>Supremo</td>
+<td>Outros criadores supremos</td>
+<td><strong>Até 9 atributos</strong></td>
+</tr>
+<!-- ENCANTADOR -->
+<tr style="border-top:1px solid rgba(212,175,55,0.15);">
+<td rowspan="4"><strong>Encantador</strong></td>
+<td>Iniciante</td>
+<td>Encantadores Mestre ou Supremo</td>
+<td><strong>Até 4 atributos</strong></td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Encantadores Supremo</td>
+<td><strong>Até 6 atributos</strong></td>
+</tr>
+<tr>
+<td>Mestre</td>
+<td>Encantadores Supremo</td>
+<td><strong>Até 7 atributos</strong></td>
+</tr>
+<tr>
+<td>Supremo</td>
+<td>Ninguém</td>
+<td><strong>Até 9 atributos</strong></td>
+</tr>
+<!-- BOTICÁRIO -->
+<tr style="border-top:1px solid rgba(212,175,55,0.15);">
+<td rowspan="4"><strong>Boticário</strong></td>
+<td>Iniciante</td>
+<td>Boticários Mestre ou Supremo</td>
+<td><strong>Até 4 atributos</strong></td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Boticários Supremo</td>
+<td><strong>Até 4 atributos</strong></td>
+</tr>
+<tr>
+<td>Mestre</td>
+<td>Boticários Supremo</td>
+<td><strong>Até 5 atributos</strong></td>
+</tr>
+<tr>
+<td>Supremo</td>
+<td>Ninguém</td>
+<td><strong>Até 5 atributos</strong></td>
+</tr>
+<!-- MANIPULADOR -->
+<tr style="border-top:1px solid rgba(212,175,55,0.15);">
+<td rowspan="4"><strong>Manipulador</strong></td>
+<td>Iniciante</td>
+<td>Manipuladores de nível maior</td>
+<td rowspan="4" style="font-size:0.85rem;font-style:italic;color:var(--whisper);">Só podem ser upados uma única vez caso já possuam rolagem, ou tenham vindo a obtê-la por mutação.</td>
+</tr>
+<tr>
+<td>Intermediário</td>
+<td>Manipuladores de nível maior</td>
+</tr>
+<tr>
+<td>Mestre</td>
+<td>Manipuladores Supremo</td>
+</tr>
+<tr>
+<td>Supremo</td>
+<td>Manipuladores Supremo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 7. SISTEMA DE CRIAÇÃO -->
+<div class="acc-item" id="acc7">
+<div class="acc-header" onclick="toggle('acc7')">
+<div class="acc-left">
+<div class="acc-num">VII</div>
+<div>
+<div class="acc-title">Sistema de Criação</div>
+<div class="acc-tag">Forja, encantamento, boticário e manipulação</div>
+</div>
+</div>
+<div class="acc-arrow">▼</div>
+</div>
+<div class="acc-body">
+<div class="acc-inner">
+<p class="sys-intro">Alguns personagens têm o poder de <strong>criar e aprimorar</strong> armas, artefatos, poções e pets. Cada especialidade tem suas regras, custos e quem pode exercê-la.</p>
+<!-- ── FORJA ── -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(239,159,39,0.9);">🔨 Forja &amp; Fabricação</div>
+<div class="criacao-who" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,175,55,0.5);margin-bottom:1.2rem;">Filhos de Hefesto/Vulcano · Atena · Saus</div>
+<p class="sys-block">Os forjadores são personagens capacitados com o poder de criar instrumentos mecânicos capazes de assumir grandes papéis na evolução de personagens. São capazes de criar <strong>armas, itens, autômatos e shabits</strong>.</p>
+<div class="rule-list" style="margin-bottom:1.5rem;">
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(239,159,39,0.4);">⚙</div>
+<div class="rule-text"><strong>Poderes interpretativos:</strong> Capacidades mecanicamente possíveis atribuídas por meio de forjas — ex: lança-chamas integrado, compartimentos ocultos.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(239,159,39,0.4);">⚙</div>
+<div class="rule-text"><strong>Bonificações:</strong> Alteradores na rolagem de dados ao uso das criações, conforme explicado no sistema de premiações.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(239,159,39,0.4);">⚙</div>
+<div class="rule-text"><strong>Autômatos:</strong> Robôs com inteligência artificial atribuída pelos poderes do forjador.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(239,159,39,0.4);">⚙</div>
+<div class="rule-text"><strong>Shabits:</strong> Bonecos de argila vivos feitos pelos egípcios. Moldados com argila e transformados em esculturas de bolso. Ativados por comando de voz definido na criação — ao término, voltam à forma retrátil. Precisam ser reparados após dano severo.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(239,159,39,0.4);">⚙</div>
+<div class="rule-text"><strong>Nível 10+:</strong> Estar no nível 10 e ganhar reconhecimento do pai/mãe e da ADM na forma de uma bênção de ascensão.</div>
+</div>
+</div>
+<div class="sys-block-title" style="color:rgba(239,159,39,0.7);font-size:0.72rem;margin-bottom:0.8rem;">Requisitos de Material</div>
+<div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;">
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(239,159,39,0.08);border:1px solid rgba(239,159,39,0.2);color:var(--bone);">Armas P <span style="color:rgba(239,159,39,0.8);">· 3kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(239,159,39,0.08);border:1px solid rgba(239,159,39,0.2);color:var(--bone);">Armas M <span style="color:rgba(239,159,39,0.8);">· 7kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(239,159,39,0.08);border:1px solid rgba(239,159,39,0.2);color:var(--bone);">Armas G <span style="color:rgba(239,159,39,0.8);">· 15–30kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(106,60,201,0.15);border:1px solid rgba(107,47,160,0.25);color:var(--bone);">Shabit comum <span style="color:rgba(160,100,220,0.8);">· 1kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(106,60,201,0.15);border:1px solid rgba(107,47,160,0.25);color:var(--bone);">Shabit combate P <span style="color:rgba(160,100,220,0.8);">· 2kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(106,60,201,0.15);border:1px solid rgba(107,47,160,0.25);color:var(--bone);">Shabit combate M <span style="color:rgba(160,100,220,0.8);">· 3kg</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(158,42,42,0.15);border:1px solid rgba(192,57,43,0.25);color:var(--bone);">Shabit G <span style="color:rgba(220,90,70,0.8);">· 4kg ⚠ vetado Supremos</span></span>
+<span style="font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.08em;padding:0.4rem 0.9rem;background:rgba(158,42,42,0.15);border:1px solid rgba(192,57,43,0.25);color:var(--bone);">Clone perfeito <span style="color:rgba(220,90,70,0.8);">· 5kg ⚠ vetado Supremos</span></span>
+</div>
+<div class="sys-block-title" style="color:rgba(239,159,39,0.7);font-size:0.72rem;margin-bottom:0.8rem;">Capacidades por Nível de Forjador</div>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>Poderes Interpretativos</th>
+<th>Atributos</th>
+<th>Autômatos / Shabits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Forjador Iniciante</strong><br/><small style="color:var(--whisper);">[níveis 3 e 4]</small></td>
+<td>1 Brando</td>
+<td>1 atributo</td>
+<td>Sem capacidade combativa</td>
+</tr>
+<tr>
+<td><strong>Forjador Intermediário</strong><br/><small style="color:var(--whisper);">[níveis 5 e 6]</small></td>
+<td>2 Brandos</td>
+<td>2 atributos</td>
+<td>Status de um semideus nível 4</td>
+</tr>
+<tr>
+<td><strong>Forjador Mestre</strong><br/><small style="color:var(--whisper);">[nível 7]</small></td>
+<td>1 Moderado + 1 Brando</td>
+<td>3 atributos</td>
+<td>Status de um semideus nível 8</td>
+</tr>
+<tr class="highlight">
+<td><strong>Forjador Supremo</strong><br/><small style="color:var(--whisper);">[nível 10+]</small></td>
+<td>1 Forte</td>
+<td>4 atributos</td>
+<td>Status de um semideus nível 10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip" style="margin-top:1.2rem;background:rgba(158,42,42,0.15);border-left-color:rgba(192,57,43,0.5);">
+<div class="tip-label" style="color:rgba(220,90,70,0.8);">Importante</div>
+<p>Refinamentos devem ser cobrados a custo de <strong>50 golds por trabalho realizado</strong>, independente do nível de refino. Não pode ser feito de graça — sujeito a punição.</p>
+</div>
+</div>
+<!-- ── ENCANTAMENTO ── -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(160,100,220,0.9);">🔮 Encantamento de Objetos</div>
+<div class="criacao-who" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(160,100,220,0.45);margin-bottom:1.2rem;">Filhos de Hécate/Trívia · Circe · Utgardlok · Loki · Gullveig · Saus</div>
+<p>Os encantamentos são a perícia de criação que permite aos criadores acrescentarem magias em determinados objetos, fortificando-os. Os encantamentos são baseados nas magias que possuem em seus grimórios/othila/shesh — não é cópia e cola, são a base e o tema de onde vão costurar o que querem dar ao item. Sujeito a nerf com o nível interpretativo do encantador.</p>
+<div class="rule-list" style="margin-top:1rem;margin-bottom:1.5rem;">
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(160,100,220,0.4);">✦</div>
+<div class="rule-text"><strong>Poderes interpretativos:</strong> São a interpretação dos atributos aplicados — resistência, cinesias, telepatias, clarividências limitadas, etc.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(160,100,220,0.4);">✦</div>
+<div class="rule-text"><strong>Origem:</strong> Os encantamentos são baseados nas magias do grimório/othila/shesh do encantador. Sujeito a nerf com o nível interpretativo do encantador.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(160,100,220,0.4);">✦</div>
+<div class="rule-text"><strong>Encantadores podem refinar Bênçãos do Banner Sazonal.</strong> Cobrar <strong>50 golds por trabalho realizado</strong>, independente do nível de refino. Não pode ser feito de graça — sujeito a punição.</div>
+</div>
+</div>
+<div class="sys-block-title" style="color:rgba(160,100,220,0.7);font-size:0.72rem;margin-bottom:0.8rem;">Capacidades por Nível de Encantador</div>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>Descrição</th>
+<th>Poderes Interpretativos</th>
+<th>Atributos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Encantador Iniciante</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Neste nível se mostram apenas capazes de adicionar forma retráteis e a capacidade de melhorar um pouco as habilidades que um item já possui.</td>
+<td>1 Brando</td>
+<td>1 atributo</td>
+</tr>
+<tr>
+<td><strong>Encantador Intermediário</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Adquirem a capacidade de atribuir habilidades novas a um artefato — restrito ao seu grimório de magias.</td>
+<td>1 Moderado</td>
+<td>2 atributos</td>
+</tr>
+<tr>
+<td><strong>Encantador Mestre</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Adquirem a capacidade de imbuir ainda mais habilidades novas a um artefato ou arma — restrito ao seu grimório de magias.</td>
+<td>2 Moderados + 1 Brando</td>
+<td>3 atributos</td>
+</tr>
+<tr class="highlight">
+<td><strong>Encantador Supremo</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Em sua máxima são capazes de melhorar qualquer tipo de objeto. A depender de sua bênção poderá ter formas alternativas de fonte para os seus buffs — podendo buscar poderes de outros lugares a depender da bênção, como sangue de semideuses, materiais, etc.</td>
+<td>1 Forte + 1 Moderado</td>
+<td>4 atributos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ── BOTICÁRIO ── -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(29,158,117,0.9);">⚗️ Boticário &amp; Alquimia</div>
+<div class="criacao-who" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(29,158,117,0.45);margin-bottom:1.2rem;">Filhos de Deméter/Ceres · Perséfone/Proserpina · Asclépio/Esculápio · Circe · Hécate/Trívia · Loki · Gullveig · Sunus</div>
+<p>Os boticários demonstram habilidades para a criação de <strong>venenos, poções e remédios</strong>. Quando derivada de Alquimia, as produções podem conter as magias do grimório/othila/shesh do criador — sujeito a nerf com o nível interpretativo do alquimista.</p>
+<div class="rule-list" style="margin-top:1rem;margin-bottom:1.5rem;">
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(29,158,117,0.4);">✦</div>
+<div class="rule-text"><strong>Uso único:</strong> as criações do boticário assim que utilizadas devem ser excluídas da ficha — só podem ser usadas uma vez.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(29,158,117,0.4);">✦</div>
+<div class="rule-text"><strong>Poderes interpretativos:</strong> Venenos, curas e outras capacidades químicas possíveis por meio de soluções.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(29,158,117,0.4);">✦</div>
+<div class="rule-text"><strong>Alquimia:</strong> Quando derivada de Alquimia e não dos meios convencionais, as produções podem conter as magias do grimório/othila/shesh do criador. Sujeito a nerf com o nível interpretativo do alquimista.</div>
+</div>
+</div>
+<div class="sys-block-title" style="color:rgba(29,158,117,0.7);font-size:0.72rem;margin-bottom:0.8rem;">Capacidades por Nível de Boticário</div>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>Descrição</th>
+<th>Poderes Interpretativos</th>
+<th>Atributos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Boticário Iniciante</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Capazes de fazer pequenas soluções e alguns remédios que podem ajudar na cicatrização mais rápida de ferimentos. <span style="color:rgba(220,90,70,0.8);font-style:normal;">[USO ÚNICO]</span></td>
+<td>1 Brando</td>
+<td>2 atributos</td>
+</tr>
+<tr>
+<td><strong>Boticário Intermediário</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Suas criações começam a demonstrar maior potencial — agora capazes de criar tanto remédios quanto venenos se possuírem os materiais corretos. <span style="color:rgba(220,90,70,0.8);font-style:normal;">[USO ÚNICO]</span></td>
+<td>1 Moderado</td>
+<td>3 atributos</td>
+</tr>
+<tr>
+<td><strong>Boticário Mestre</strong></td>
+<td style="text-align:left;font-size:0.85rem;">Sua capacidade aumenta, sendo agora capaz de criar soluções que têm como função o melhoramento das condições físicas de quem as ingere. <span style="color:rgba(220,90,70,0.8);font-style:normal;">[USO ÚNICO]</span> Ou então atribuir essas soluções a instrumentos e armas.</td>
+<td>1 Forte</td>
+<td>4 atributos</td>
+</tr>
+<tr class="highlight">
+<td><strong>Boticário Supremo</strong></td>
+<td style="text-align:left;font-size:0.85rem;">No ápice do seu poder, suas soluções podem atribuir poderes de outros semideuses e magos, desde que haja manipulação de material genético suficiente de outro personagem. <span style="color:rgba(220,90,70,0.8);font-style:normal;">[USO ÚNICO]</span></td>
+<td>1 Perfeito</td>
+<td>5 atributos</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- ── MANIPULAÇÃO GENÉTICA ── -->
+<div class="sys-block">
+<div class="sys-block-title" style="color:rgba(55,138,221,0.9);">🧬 Manipulação Genética</div>
+<div class="criacao-who" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(55,138,221,0.4);margin-bottom:1.2rem;">Filhos de Asclépio/Esculápio · Sunu</div>
+<p>Mutações específicas que um número muito restrito de personagens consegue exercer, em prol de melhorar pets — atribuindo rolagem padrão caso não a possuam, bonificações e poderes interpretativos. Exige <strong>amostras genéticas de criaturas</strong> que tenham o poder a ser concebido. Sujeito a nerf com o nível interpretativo do manipulador.</p>
+<div class="rule-list" style="margin-top:1rem;margin-bottom:1.5rem;">
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(55,138,221,0.4);">✦</div>
+<div class="rule-text"><strong>Limite:</strong> a mutação deve escolher entre dar rolagem com poderes OU atribuir bonificação e poderes — jamais as duas.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(55,138,221,0.4);">✦</div>
+<div class="rule-text"><strong>Poderes interpretativos:</strong> Capacidades biologicamente possíveis por meio de mutações — ex: lança-chamas de um dragão.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(55,138,221,0.4);">✦</div>
+<div class="rule-text"><strong>Origem:</strong> São necessárias amostras genéticas de criaturas que tenham o poder a ser concebido. Sujeito a nerf com o nível interpretativo do manipulador.</div>
+</div>
+<div class="rule-item">
+<div class="rule-n" style="color:rgba(55,138,221,0.4);">✦</div>
+<div class="rule-text"><strong>Manipuladores podem refinar Pets de combate e Pets suporte do Banner Sazonal.</strong> Cobrar <strong>50 golds por trabalho realizado</strong>, independente do nível de refino. Não pode ser feito de graça — sujeito a punição.</div>
+</div>
+</div>
+<div class="sys-block-title" style="color:rgba(55,138,221,0.7);font-size:0.72rem;margin-bottom:0.8rem;">Capacidades por Nível de Manipulador</div>
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead>
+<tr>
+<th>Nível</th>
+<th>Poderes Interpretativos</th>
+<th>Atributos</th>
+<th>Atributo Raro</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manipulador Iniciante</strong></td>
+<td>1 Brando</td>
+<td>1 atributo</td>
+<td>+1 dado</td>
+</tr>
+<tr>
+<td><strong>Manipulador Intermediário</strong></td>
+<td>1 Moderado</td>
+<td>2 atributos</td>
+<td>+1 dado</td>
+</tr>
+<tr>
+<td><strong>Manipulador Mestre</strong></td>
+<td>1 Forte</td>
+<td>3 atributos</td>
+<td>+1 dado e −1 dificuldade</td>
+</tr>
+<tr class="highlight">
+<td><strong>Manipulador Supremo</strong></td>
+<td>1 Perfeito</td>
+<td>4 atributos</td>
+<td>+2 dados e −1 dificuldade</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tip">
+<div class="tip-label">Regra Geral</div>
+<p>Qualquer serviço de criação ou refinamento <strong>deve ser cobrado 50 golds</strong>. Fazê-lo gratuitamente é sujeito a punição. Isso se aplica a todos os tipos de fabricação sem exceção.</p>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /accordion -->
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="ambientacao.html">Ambientação</a>
+<a href="missoes.html">Missões Fixas</a>
+<a href="fichas.html">Fichas</a>
+<a href="empyrean.html">Empyrean</a>
+<a href="empyrean-missoes.html">Empyrean: Missões</a>
+<a href="fate.html">Fate / Guerra de Londres</a>
+<a href="fate-missoes.html">Fate: Missões</a>
+<a href="banners.html">Banner Ativo</a>
+<a href="mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+
+
+<script defer="" src="assets/js/main.js"></script></body>
+</html>

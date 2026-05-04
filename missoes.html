@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Missões Fixas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><meta content="NEOTHEON — Missões Fixas" property="og:title"/><meta content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/preview.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="assets/css/pages/missoes.css" rel="stylesheet"/><link href="assets/css/style.css" rel="stylesheet"/><link href="assets/img/favicon.png" rel="icon"/><link href="assets/img/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<div aria-label="Carregando NEOTHEON" aria-live="polite" class="neotheon-loader" id="neotheon-loader" role="status">
+<div aria-hidden="true" class="loader-orbit">
+<span class="loader-ring r1"></span>
+<span class="loader-ring r2"></span>
+<span class="loader-core">✦</span>
+</div>
+<div class="loader-title">NEOTHEON</div>
+<div class="loader-subtitle">Abrindo o véu entre mundos</div>
+<div aria-hidden="true" class="loader-bar"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<nav aria-label="Navegação principal"><a class="nav-logo" href="index.html">NEOTHEON</a><ul class="nav-links"><li><a href="ambientacao.html">Ambientação</a></li><li><a href="regras.html">Regras</a></li><li><a href="individualidades.html">Individualidades</a></li><li><a aria-current="page" class="active" href="missoes.html">Missões</a></li><li><a href="fichas.html">Fichas</a></li><li class="has-dropdown"><a href="empyrean.html">Empyrean<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="empyrean.html">Visão geral</a><a href="empyrean-missoes.html">Missões</a></div></li><li class="has-dropdown"><a href="fate.html">Fate<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="fate.html">Guerra de Londres</a><a href="fate-missoes.html">Missões</a></div></li><li><a href="banners.html">Banners</a></li><li><a href="mesticos.html">Mestiços</a></li></ul><a class="nav-discord" href="https://yoble.com.br/Community/305387" rel="noopener noreferrer" target="_blank">Comunidade</a></nav><span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-glow"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewBox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">A Égide de Avalon · Atividades Permanentes</div>
+<div class="sigil-row"><div class="s-line"></div><span class="s-sym">⚔</span><div class="s-line r"></div></div>
+<h1 class="hero-title">Missões Fixas</h1>
+<div class="hero-sub">Farm diário · XP · Golds · Reputação</div>
+<p class="hero-lore">Atividades que <strong>nunca mudam</strong> — inspiradas nos ofícios da Égide. Fundamentais para rotina, ascensão de classe e geração de recursos. Faça as suas e avance na hierarquia.</p>
+</div>
+<!-- STAT BANNER -->
+<div class="stat-banner">
+<div class="stat-item"><div class="stat-val">10</div><div class="stat-lbl">Missões disponíveis</div></div>
+<div class="stat-item"><div class="stat-val">3×</div><div class="stat-lbl">Por semana cada</div></div>
+<div class="stat-item"><div class="stat-val">3</div><div class="stat-lbl">Turnos por entrega</div></div>
+<div class="stat-item"><div class="stat-val">8</div><div class="stat-lbl">Linhas mínimas por turno</div></div>
+<div class="stat-item"><div class="stat-val">10xp</div><div class="stat-lbl">A cada 40 palavras (turno livre)</div></div>
+</div>
+<!-- MISSÕES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2rem;">
+<span class="section-tag">Atividades da Égide</span>
+<h2 class="section-title">Missões Semanais</h2>
+</div>
+<div class="missoes-grid reveal" style="transition-delay:.1s">
+<!-- 1 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">01</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Patrulha da Névoa no Tâmisa</div>
+<div class="missao-local">📍 Docks de Londres · Margens do Tâmisa</div>
+<div class="missao-desc">As margens do Tâmisa são vigiadas há séculos, mas a névoa não guarda apenas ladrões comuns. Patrulhar essa região é percorrer pontes onde o Véu precisa ser constantemente reforçado. Exige silêncio, disciplina e atenção a sinais sutis — um reflexo que não deveria estar ali, uma sombra que caminha sobre a corrente.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 2 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">02</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Ronda em Whitechapel</div>
+<div class="missao-local">📍 Whitechapel · Leste de Londres</div>
+<div class="missao-desc">Os becos estreitos de Whitechapel são terreno fértil para crimes, mas também para rumores de coisas mais antigas. Gangues mortais disputam território com cultos menores. O verdadeiro trabalho é impedir que o caos mortal se torne brecha para o divino se manifestar em plena rua.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 3 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">03</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Baixo combate</span>
+</div>
+</div>
+<div class="missao-title">Acalmar os Espíritos do Cemitério de Highgate</div>
+<div class="missao-local">📍 Highgate Cemetery · Norte de Londres</div>
+<div class="missao-desc">Entre esculturas góticas e mausoléus cobertos de hera, o silêncio é interrompido por murmúrios de outro tempo. O Véu enfraquece com facilidade aqui, e espíritos inquietos exigem intervenção. Missão de contenção — exige sensibilidade para não despertar o que prefere dormir.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 4 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">04</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Varredura nos Esgotos Antigos</div>
+<div class="missao-local">📍 Rede de Esgotos Romanos e Vitorianos</div>
+<div class="missao-desc">Sob as ruas iluminadas por néon, os corredores úmidos guardam segredos antigos. A missão é caminhar entre túneis romanos, limpando marcas de rituais e rastreando infiltrações de cultistas. O cheiro de enxofre denuncia quando algo além do humano está por perto.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip">60 Golds</span>
+</div>
+</div>
+<!-- 5 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">05</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Risco moderado</span>
+</div>
+</div>
+<div class="missao-title">Rastreio de Cultos no Soho</div>
+<div class="missao-local">📍 Soho · West End de Londres</div>
+<div class="missao-desc">O Soho pulsa com casas noturnas e teatros, mas por trás do brilho existem portas que não aparecem em mapas. Cultos menores infiltram esses espaços para mascarar rituais. Infiltrar, observar, identificar líderes — e só então agir. Mas há noites em que a fumaça no teto não é mais humana.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 6 -->
+<div class="missao-card dif-alto">
+<div class="missao-header">
+<div class="missao-num">06</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-alto">● Alto risco</span>
+</div>
+</div>
+<div class="missao-title">Caçada na Linha do Metrô Abandonada</div>
+<div class="missao-local">📍 Estação Aldwych · Trechos lacrados do metrô</div>
+<div class="missao-desc">Trechos do metrô londrino foram lacrados após acidentes inexplicáveis. Criaturas atraídas pelos labirintos de ferro vagam por ali. Em raros casos, minotauros deslocados de seus labirintos tornam a tarefa quase suicida. Exploração de túneis apagados com instalação de selos de contenção.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">350 XP</span>
+<span class="reward-chip">100 Golds</span>
+<span class="reward-chip rep">50 Reputação</span>
+</div>
+</div>
+<!-- 7 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">07</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Tensão diplomática</span>
+</div>
+</div>
+<div class="missao-title">Proteção de Diplomacia Oculta</div>
+<div class="missao-local">📍 Locais neutros de encontro · Escolhidos pela Torre</div>
+<div class="missao-desc">Reuniões secretas entre facções divinas e representantes da Égide ocorrem em porões de igrejas, salões privados ou templos escondidos. O trabalho é assegurar que a diplomacia siga seu curso. Combate não é esperado — mas sempre possível quando emissários rivais preferem a força ao diálogo.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 8 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">08</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Investigativo</span>
+</div>
+</div>
+<div class="missao-title">Investigação de Profecias no Museu Britânico</div>
+<div class="missao-local">📍 Museu Britânico · Setor de Antiguidades</div>
+<div class="missao-desc">Algumas peças em exposição carregam mais do que história. Inscrições roubadas da Biblioteca de Alexandria reaparecem disfarçadas de artefatos acadêmicos. Análise discreta, identificação de riscos e impedimento de que manuscritos sejam levados — seguido de perseguições pelos becos vizinhos.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">200 XP</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 9 -->
+<div class="missao-card dif-alto">
+<div class="missao-header">
+<div class="missao-num">09</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-alto">● Alto risco · Esquadrão</span>
+</div>
+</div>
+<div class="missao-title">Caçada às Keres no Tâmisa Noturno</div>
+<div class="missao-local">📍 Trechos do Tâmisa · Noites sem lua</div>
+<div class="missao-desc">Bandos de Keres surgem sobre a água como pássaros negros de carne rasgada, atacando tudo que se move. Missão de alto risco para esquadrões preparados e coordenados. A caçada ocorre sempre sob névoa espessa, onde os gritos são abafados pelo rio. Enfrentar essas criaturas é encarar a morte em sua forma mais voraz.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">400 XP</span>
+<span class="reward-chip">200 Golds</span>
+<span class="reward-chip rep">60 Reputação</span>
+</div>
+</div>
+<!-- 10 -->
+<div class="missao-card dif-normal">
+<div class="missao-header">
+<div class="missao-num">10</div>
+<div class="missao-badges">
+<span class="badge semanal">Até 3× por semana</span>
+<span class="badge dif-normal">● Baixo risco</span>
+</div>
+</div>
+<div class="missao-title">Patrulha no Hyde Park</div>
+<div class="missao-local">📍 Hyde Park · Clareiras internas</div>
+<div class="missao-desc">Durante o dia, o parque é refúgio de tranquilidade. À noite, sua natureza muda. Cultos pequenos utilizam clareiras para rituais — cinzas ainda quentes, sangue fresco em pedras, símbolos gravados em árvores. A maior ameaça costuma ser o acúmulo de energia mágica fora de controle.</div>
+<div class="missao-entrega">Entrega: 3 turnos · mínimo 8 linhas cada</div>
+<div class="missao-reward">
+<span class="reward-chip">100 XP</span>
+<span class="reward-chip">50 Golds</span>
+</div>
+</div>
+</div>
+<!-- TURNO LIVRE -->
+<div class="turno-card reveal" style="transition-delay:.12s">
+<div>
+<div class="turno-title">Turnos Aleatórios</div>
+<div class="turno-desc">Escreva livremente — qualquer narração, interação ou cena do personagem conta. Não há tema fixo nem ofício exigido. Ideal para quem quer desenvolver relações, backstory ou simplesmente se ambientar no mundo.</div>
+</div>
+<div class="turno-reward">
+<div class="turno-xp">10 xp</div>
+<div class="turno-lbl">a cada 40 palavras</div>
+<div class="turno-lbl" style="margin-top:0.3rem;">Entrega: por turno</div>
+</div>
+</div>
+<!-- OBS -->
+<div class="obs-box reveal" style="transition-delay:.15s">
+<div class="obs-label">Observação importante</div>
+<div class="obs-text">Se o turno tiver mais linhas do que a atividade pede, ele poderá ser considerado como mais de um turno. Por exemplo: se a atividade pede <strong>3 turnos de 8 linhas</strong> e você escrever <strong>1 turno com 24 linhas</strong>, não precisará realizar a escrita de mais dois turnos separados.</div>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="ambientacao.html">Ambientação</a>
+<a href="regras.html">Regras &amp; Sistemas</a>
+<a href="individualidades.html">Individualidades</a>
+<a href="fichas.html">Fichas</a>
+<a href="empyrean.html">Empyrean</a>
+<a href="fate.html">Fate / Guerra de Londres</a>
+<a href="banners.html">Banner Ativo</a>
+<a href="mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+
+
+<script defer="" src="assets/js/main.js"></script></body>
+</html>

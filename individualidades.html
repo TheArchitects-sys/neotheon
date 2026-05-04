@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEOTHEON — Individualidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
+
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><meta content="NEOTHEON — Individualidades" property="og:title"/><meta content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/preview.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="assets/css/pages/individualidades.css" rel="stylesheet"/><link href="assets/css/style.css" rel="stylesheet"/><link href="assets/img/favicon.png" rel="icon"/><link href="assets/img/favicon.png" rel="apple-touch-icon"/></head>
+<body>
+<div aria-label="Carregando NEOTHEON" aria-live="polite" class="neotheon-loader" id="neotheon-loader" role="status">
+<div aria-hidden="true" class="loader-orbit">
+<span class="loader-ring r1"></span>
+<span class="loader-ring r2"></span>
+<span class="loader-core">✦</span>
+</div>
+<div class="loader-title">NEOTHEON</div>
+<div class="loader-subtitle">Abrindo o véu entre mundos</div>
+<div aria-hidden="true" class="loader-bar"><span></span></div>
+</div>
+<a class="skip-link" href="#conteudo">Pular para conteúdo</a>
+<canvas aria-hidden="true" id="cosmos"></canvas>
+<nav aria-label="Navegação principal"><a class="nav-logo" href="index.html">NEOTHEON</a><ul class="nav-links"><li><a href="ambientacao.html">Ambientação</a></li><li><a href="regras.html">Regras</a></li><li><a aria-current="page" class="active" href="individualidades.html">Individualidades</a></li><li><a href="missoes.html">Missões</a></li><li><a href="fichas.html">Fichas</a></li><li class="has-dropdown"><a href="empyrean.html">Empyrean<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="empyrean.html">Visão geral</a><a href="empyrean-missoes.html">Missões</a></div></li><li class="has-dropdown"><a href="fate.html">Fate<span aria-hidden="true" class="nav-arrow">▾</span></a><div class="nav-dropdown"><a href="fate.html">Guerra de Londres</a><a href="fate-missoes.html">Missões</a></div></li><li><a href="banners.html">Banners</a></li><li><a href="mesticos.html">Mestiços</a></li></ul><a class="nav-discord" href="https://yoble.com.br/Community/305387" rel="noopener noreferrer" target="_blank">Comunidade</a></nav><span aria-hidden="true" id="conteudo"></span>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-glow"></div>
+<div class="fog-base"></div>
+<svg class="penta" fill="none" viewBox="0 0 500 500">
+<circle cx="250" cy="250" r="242" stroke="#c8bfb0" stroke-width="0.5"></circle>
+<circle cx="250" cy="250" r="198" stroke="#c8bfb0" stroke-width="0.3"></circle>
+<polygon fill="none" points="250,28 463,184 380,432 120,432 37,184" stroke="#c8bfb0" stroke-width="0.5"></polygon>
+<polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
+</svg>
+<div class="hero-eyebrow">Os Celestiais Não Escolhem · São Parte de Você</div>
+<div class="sigil-row"><div class="s-line"></div><span class="s-sym">⛧</span><div class="s-line r"></div></div>
+<h1 class="hero-title">Individualidades</h1>
+<div class="hero-sub">Eles governam os céus, mares e o inferno — agora, governam você</div>
+<p class="hero-lore">Cada nome, cada fúria, cada maldição vive agora entre as vielas de Londres. Os poderes dos deuses correm em seu sangue — ou foram gravados em sua alma por pacto. <strong>Escolha com sabedoria.</strong></p>
+</div>
+<!-- COMO FUNCIONA -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+<span class="section-tag">Entenda o Sistema</span>
+<h2 class="section-title">Como Funcionam as Individualidades</h2>
+</div>
+<div class="info-grid reveal" style="transition-delay:.08s">
+<div class="info-block">
+<div class="info-block-icon">🧬</div>
+<div class="info-block-title">Semideuses</div>
+<div class="info-block-text">Filhos de um deus e um humano. Têm acesso às individualidades da lista do deus correspondente. Podem escolher <strong>3 individualidades por nível</strong> (até o nível 7 da lista).</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">🔮</div>
+<div class="info-block-title">Semideuses Bruxos / Arcanos</div>
+<div class="info-block-text">Filhos de deuses da magia. Têm acesso à lista de individualidades <strong>e</strong> à lista de magias da etnia. Escolhem <strong>2 individualidades + 2 magias por nível</strong>. Magias precisam de comando vocal.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">🤝</div>
+<div class="info-block-title">Afiliações Divinas</div>
+<div class="info-block-text">Personagens sem vínculo de sangue que aceitam um pacto com uma divindade. Recebem as individualidades dessa divindade, alterando seu código genético. Grupos divinos têm regras próprias.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">⚖️</div>
+<div class="info-block-title">Grupos Divinos</div>
+<div class="info-block-text">Organizações regidas por entidades específicas. Membros escolhem <strong>2 individualidades nos níveis 3, 5 e 7</strong> — a custo de <strong>1 individualidade da lista original</strong> em cada nível.</div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">⚡</div>
+<div class="info-block-title">Poderes de Continuidade</div>
+<div class="info-block-text">Poderes divididos em etapas (I, II, Final). Para ter "Umbracinese II" precisa ter escolhido "Umbracinese I" antes. <strong>Não é possível pular etapas.</strong></div>
+</div>
+<div class="info-block">
+<div class="info-block-icon">📋</div>
+<div class="info-block-title">Regra de Ordem</div>
+<div class="info-block-text">Não é possível escolher individualidades de níveis anteriores ao que alcançou, nem escolher em ordem diferente da lista. As listas são divididas em <strong>7 níveis</strong>.</div>
+</div>
+</div>
+</section>
+<!-- TRÊS GRANDES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">⚡</span><div class="div-line"></div></div>
+<section>
+<div class="reveal">
+<span class="section-tag">Greco-Romanos</span>
+<h2 class="section-title">Os Três Grandes</h2>
+<p class="section-desc">Os mais poderosos do Olimpo. Seus filhos recebem +30 HP e +10% Taxa Crítica a mais que os demais semideuses.</p>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.08s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQsoMr1DLDPfpgOOa65HQbm8UOWXSALAkZHYBq_Ct_owT1dkqsM0NF3dx054qdkaFse86fRyphXS6dJ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUC2vzX1NQAVS-tQTLKEJzpjfJGg11Y0mdWR5e_FgBgxyYDD03pne16poRxcij-A15wx0MtsJayoWRVx26iCoi62nUJ2fri719_io4mo5VXnF4Ox_V4ByJTcc_fDef639SZZglxKksI5pWoIP3OB7ofxSWrQJXbicEitrhLOnJhYLW29-FCJby-1sL0s5laKKF-8rIXK3ya7e8DaqvTt6fuT7OdcZL9xEPkxIkk=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Zeus / Júpiter</div>
+<div class="god-title">Rei do Olimpo</div>
+<div class="god-domain">Céu, trovão, relâmpago, realeza, honra e justiça</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRgEKHcKdeGywUecc-42MEvJW7_VCjMBFc3FEfdEoJvuDU4FEboUgv-6bFhw8wS3N6_z4tgY6S62Zc6/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUC2vzX1NQAVS-tQTLKEJzpjfJGg11Y0mdWR5e_FgBgxyYDD03pne16poRxcij-A15wx0MtsJayoWRVx26iCoi62nUJ2fri719_io4mo5VXnF4Ox_V4ByJTcc_fDef639SZZglxKksI5pWoIP3OB7ofxSWrQJXbicEitrhLOnJhYLW29-FCJby-1sL0s5laKKF-8rIXK3ya7e8DaqvTt6fuT7OdcZL9xEPkxIkk=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Poseidon / Netuno</div>
+<div class="god-title">Rei dos Mares</div>
+<div class="god-domain">Tempestades e catástrofes naturais</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSLUuwikQ6x_cWpyTq1FkErFrhSOul7FS5lXMflB3Dio4U12DaUWW6g1pmxHOhjU1th2X62ZZaXAPfS/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hades / Plutão</div>
+<div class="god-title">Rei do Submundo</div>
+<div class="god-domain">Mortos e riquezas</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- MONARQUIA OLIMPIANA -->
+<div class="cat-header reveal">
+<div class="cat-title">Monarquia Olimpiana</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQWhyTfd_tsVdTrx2p_4pP6KvRJXuOdWpMkiNcxwvLSzJz428JMxvudDt4kfxn0LjhuDFMEh2cuVFNB/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hera / Juno</div>
+<div class="god-title">Rainha dos Deuses</div>
+<div class="god-domain">Mulheres, casamento, parto e amor familiar</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSD3KxbPjlVdnWTUxr_r5m7DAO4gLXDLVL1BkxOjomz8F1kIAJPpdmdZ7CFZ6R4yKr4VdcY1IrnEjOS/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Deméter / Ceres</div>
+<div class="god-title">Deusa da Natureza</div>
+<div class="god-domain">Agricultura, colheita e estações</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vR6Rr0xeJkeuslf_1ZW5me_l62LWDYYhC3wJ4-i7Try4Ww3YfkkXlftgb0VKZ_3TWdluwlKXEmMORRa/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Héstia / Vesta</div>
+<div class="god-title">Deusa do Lar</div>
+<div class="god-domain">Lar, fogo, calor e família</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTpKP7vu7v_uItArXqpDauYQKA8cp6lwbOxXfeerDzxMXVFZ-RM_cJGfv0N8rv8A46JVE537wUs_KTJ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Afrodite / Vênus</div>
+<div class="god-title">Deusa do Amor</div>
+<div class="god-domain">Beleza, amor, desejo, paixão, prazer e fertilidade</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTqh51T4jqnydYgM7Ia4TR7wiFI4l6Xsx9Nmow9rZgtlR21oc3I0qMcOytKEuzYN_4eAqsUj8hO0v8T/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://postimg.cc/DWmks9vd')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Apolo / Phoebus</div>
+<div class="god-title">Deus do Sol</div>
+<div class="god-domain">Sol, medicina, arte, arco e flecha, conhecimento e profecias</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRv7Z_IjxLm1Igp_0fCJD-eHByhLEhqjfO4CB4pMDf7jGLaVJik8Mh65ArM3Yi8tbjVYSH38urzZX7m/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDhZLEXRb3DaW-ouwA9rW2RbdJuleUyVchSa3hy0IgSOa2ELJkyMn-1b9Ae_lspymsGB-jDM5aKD83HoFb_1R_2164yV3gqzzqlGQyZ7Ro2Ur-tj6PqICX1OKvIU_NRCNtZSL52sVmH4nIFa_53ybpSbAjKHMMkLzTpRpwZ6W_XsDWh4OE2F8my1-ymKKtNT1aO9GbeUzHl37TB-CRDdOpk60K8ElqF-mE1lx0=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Ares / Marte</div>
+<div class="god-title">Deus da Guerra</div>
+<div class="god-domain">Guerra e masculinidade</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSun9-QVWS6k--N0OD969QFrjnLOnA7cekZfO9frS4LswPa5ajrf4kCg8Eq6f_QHweLJnmw2H7z0Bfz/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBx6sBb0G5RIi9Zh9R9Lz52pcqHnR8zrfXetLgIyBosG-Y9cKj3YMfSa6wYhrMY6MzhzJxKtAibBE08USPgBA9DcQZV_GQ7Jwd_vS03HohLbZtXbepq67wAu-uBEgc0sENAYmST1-3-brsp67gdlAodEs5fUk7FJa9TzW_pquJhUFRPHcZ70UHc9mhYXpf3Cp8NqAJRVTSjzMaHGXJiL8B56jLaOXCSCtEF=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Artêmis / Diana</div>
+<div class="god-title">Deusa da Lua</div>
+<div class="god-domain">Lua, caça, arco e flecha, natureza selvagem, animais e florestas</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQUw15zSg5HCdLeY0yneonoVdBsuqtdygG3Ad33nl8IRQRfqQb-pf9e3Yegqba53ltadMdgRE6ZyeyQ/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBx6sBb0G5RIi9Zh9R9Lz52pcqHnR8zrfXetLgIyBosG-Y9cKj3YMfSa6wYhrMY6MzhzJxKtAibBE08USPgBA9DcQZV_GQ7Jwd_vS03HohLbZtXbepq67wAu-uBEgc0sENAYmST1-3-brsp67gdlAodEs5fUk7FJa9TzW_pquJhUFRPHcZ70UHc9mhYXpf3Cp8NqAJRVTSjzMaHGXJiL8B56jLaOXCSCtEF=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Atena / Minerva</div>
+<div class="god-title">Deusa da Sabedoria</div>
+<div class="god-domain">Sabedoria, tecelãs, inteligência e estratégia em batalha</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRlU_LRh2p9mQqlOqze1XuMs6uc5vPlcNKestmhhb-_9OKrTCJoiGWZfYpgNCc7dYz8IvDWpjKv4atT/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDZ2riPo6zCVaxxwIKxa_t0yaUxNnwK5ZmP7tt_gJ4eiU6rbBJwS90u97auA2Z8Ae0abOCP26G-VJHQFFRYaJbb4SWmko0dnPE2Z3HCnxondPbhTdtnkZ58xRM71erz2pekq_ieij3aem_Z_jNHI4VMEdwS08AIJMI8Wz5ukS9ize5tN3P8xCBq8GXdbC7qgUh30-iyWZY3vCarn6vGgki-oSu2wvxb6ukkyx8=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hermes / Mercúrio</div>
+<div class="god-title">Deus das Viagens</div>
+<div class="god-domain">Viagens, atletas, diplomacia, oradores, ladrões, comércio e invenções</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSHIv1uKqswxdCRkSzQ1dKryS1D_HW3TmrCP6Hv4xgzm2JL-jR7U7jUO-KdaNTI7dFHRFEsLyM39fKG/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hefesto / Vulcano</div>
+<div class="god-title">Deus das Forjas</div>
+<div class="god-domain">Forjas, fogo, tecnologia, artesãos, vulcões e ferreiros</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSspnjyVmx-E8cp0qX-3lr0bpxfYMZ6yKZ73FWNuaBZuORNmheiJ2H283p-2ruPbDFA7eHECdbMyvyN/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Dionísio / Baco</div>
+<div class="god-title">Deus do Vinho</div>
+<div class="god-domain">Vinho, fertilidade, loucura, festas, êxtase religioso e teatro</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- MONARQUIA INFERNAL -->
+<div class="cat-header reveal">
+<div class="cat-title">Monarquia Infernal — Ctônicos</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSIXyEfmFMbFYeHYBzAHytwF3DecAnlCvMCdmHC7O5EN_BFK-UlTAGR9xxZ4G3xcQ46S2xn0rCdmdqe/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Perséfone / Proserpina</div>
+<div class="god-title">Rainha do Submundo</div>
+<div class="god-domain">Primavera</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRhJ30AvnbeqnIJ1C51QypeVkn5Y1R9ljl-Yg5ZPZm2PP6ogF3fJzQcFxbKk0BflZRx7Lp6Vvs3LgJg/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAEdAKtcBQPtRAyXUaihY2Or_GXiXp-ouWZeufSTF56AyQE9Y2Y9eev9_yPK16BBha9QY-lnKvHL08-FxTMt7v2KhXDlF55iDK_hgh2eiKZb7BIr9dgLM3E_peIsYF6E3d5zi4XErxvl16H5IOM5IK1tiJlHiJSS7S6dugby4BQlwUlS0yXSiVBJEhMMZvzcDiQ_MiEpUesagwDfaD9cEsAm17HQTmG-0X3oLI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hécate / Trívia</div>
+<div class="god-title">Senhora de Erebos</div>
+<div class="god-domain">Magia, encruzilhadas, ciclos da vida, noite e lua</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAs67H5rc0cVje8opi3FoUx7ZsWL1huIy5XD_otYdyQmr_oNKvryXZWfzA5emG4buPQed9JFNr9dfy4SiwH9UXqszVlZ9HviTdxSJiasD6Es8QUUDwxNAT8WzP_4FC9Rmwy6ORqt6TKxygKi_2KAC5UYHl37o9z0t_paXGDFfm7tHybegQjESwZ9RrZtblCN06NCU0zLyMdanoDzwe3mc3IEo-sdYCCw6EQ=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Macária / Suda</div>
+<div class="god-title">Princesa dos Elísios</div>
+<div class="god-domain">Boa morte</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTzTAJMx2OVTOj_8Txj0FuMMGfg1mC76JsJjdXOfrnxYlqm9O4k5Ndp_P9LiNqJhFyI71c78UsvWyZ6/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUD8FMMj3DnaTd7l7aElEzrGSF0wwT-E8QWhpLmQhLppUnMBRIai6_lFSjcOZyjZqKedhRa3Cy0KXW4pRw5SzjOzufxyvwQsSMWW1bp-Tjlo7jjkej2d_zUGWHiy6bIjonAyqs7hNDPn9XYiK9k1muj19qrm-yxdKRXINzLFiwiGkg-5_iiOPzXY_K3Ebcek5r_GEOLINIlQqlP6TTCqATQI2F7oeplON6oC=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Melinoe / Phantessa</div>
+<div class="god-title">Princesa dos Perdidos</div>
+<div class="god-domain">Fantasmas e ritos funerários</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDv6I50ASppIkldj6O0KdotTTkrwZ0TwEyOpI5MU64SVJuPyES5XE8vqIwIgaTYj3SiqcBEELM4tw_v8vlZG3ca3a0tljRTzx3t0dprerE_5ibSlgOYWNYJ6zu_81V5_m33_vtMiltP-fBH8-3rTeK0Y4JXLDP43-WWCTY5KkUjhwceKjtc4kkKxM9vmiHuYoEckireP2hJ-rlx-ynlsZV2zD5Ap55IHy2C=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Zagreu / Zagreus</div>
+<div class="god-title">Príncipe do Limiar</div>
+<div class="god-domain">Rios infernais, travessia, juramento e negação</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDv6I50ASppIkldj6O0KdotTTkrwZ0TwEyOpI5MU64SVJuPyES5XE8vqIwIgaTYj3SiqcBEELM4tw_v8vlZG3ca3a0tljRTzx3t0dprerE_5ibSlgOYWNYJ6zu_81V5_m33_vtMiltP-fBH8-3rTeK0Y4JXLDP43-WWCTY5KkUjhwceKjtc4kkKxM9vmiHuYoEckireP2hJ-rlx-ynlsZV2zD5Ap55IHy2C=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Oberon / Tenebrus</div>
+<div class="god-title">Príncipe do Tártaro</div>
+<div class="god-domain">Sombras</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRQMmqEiYFfw00_IEOK1A77DQvhrMpSMqI6E7ziLedOuNkCX5-JNzgngoZ9wH5iiaKpeCsY6ikyCLfr/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5HzJtwko03b2bp5H1ieHXt37XSfSwIv4Us3T_DvzYteUAlO_dxNwEgUviIJqnzBfpHzbqaOpRd7E2_U3JNlh0B8EqEYfO3dym6nnbHysbssxcg8m2w9wIlS-1TB4u8SxlhQsXytz_cXc82gEbXhaVhtKgR4dT8piav286m3URIjwDi0pZzHYsFzYZJGfWV-NGBNorMRZ8aqhSO-_YCBON23ERa68BpV_4jT0=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Tânatos / Letus</div>
+<div class="god-title">Personificação da Morte</div>
+<div class="god-domain">A morte</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vQRDMcFbbtI39gJNZ_azZOcuEKLnGx9Fo9EI1kvrMIQMfGar3F3cr8f-8XrU4fIA4MAfDkd8q45uxAg/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Hipnos / Somnus</div>
+<div class="god-title">Personificação do Sono</div>
+<div class="god-domain">O sono</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTQmRWw4y7E7Vphq6pG9IVr93DDkZ136mCnCn_Pz3SEbf4LtlV-Fh1W6CRqUHEXqtDweENsN5XJNIyP/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Morfeu / Somnia</div>
+<div class="god-title">Líder dos Oneiros</div>
+<div class="god-domain">Sonhos</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vT39piSY62DBuFruxrDLp2eIdujvnZ9Zks4Fi9PFkqMUXr8XBppqfpLzZ-3XhcAriuLYVJ6pBwIySj0/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUAKwZW35FREDtL-gE9ee8-gdRgFh-8AA1ZYRHByaD-je5bTevaG6IbvanJlCVRI_zP8ckwjaXPXIEcdrCSUBswQsoPfbZRwFTDtFisxP-XpA1aAArJwt58_jGeSYRNM8f1RinBgkJzN6ZHQJ4xwtNvZoHnlJjvrIyfoDvi5O2kpdSv-O6zW-DO_bfdhirxzmEwGtgJ-3OgJ4nU6az1__Rn97HgeYhEf8MzD=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Paraphronia / Delírio</div>
+<div class="god-title">Deusa da Irrealidade</div>
+<div class="god-domain">Irrealidade e caos mental</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- CTÔNICOS MENORES -->
+<div class="cat-header reveal">
+<div class="cat-title">Ctônicos Menores</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vTb7vTEKpm4F0PBVOH-PPMAQLpQ__MIxUuRDYEsr7l0x1uEHVZHSmrLCznCl-Lzr7UqE8RbLbs2lZRK/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBaF8y2cjzh98eZBDrsl67PCQZOEafoSLS1fPedvioR4_d1wClVth6fm_nSgo5xqAefuuweUgQzl6gTCfw6xS30Y23MI9GsADLZgaIOskAyvZJTCxSC-M5EEq15ofS4TQs6jGslrBSWXTKTZhfnFYXxZqQuGkFwMPY-_YiK7cXCWifDyyM6wMXfVIJnKZr9mfaSX0sFhFC1OHFtu1Awx4kNIg8saZiAUtpLuZc=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Circe</div>
+<div class="god-title">Deusa das Poções</div>
+<div class="god-domain">Poções, circenses, trapaça e magia sombria</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- OLIMPIANOS MENORES -->
+<div class="cat-header reveal">
+<div class="cat-title">Olimpianos Menores</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUCoVp7Yzw6rxUAynEmFBW69Kg9tij4u9JuC6iOkWpPxQyTDceoHYhj6mDE0QnvQkaF7bujtHCoKaH2PHkeCStZcW04YOKdnrgTOuvboaAgBy2YoFlTHNA8pitv486zpu5gQ3GZvl2Crdq4iLU_CipG3ztR7TC1aOBv9ZPqM6l2-YweKZY10cqHN2l4Z-Ms1HQKElkwQZ5QKJ1qD7xf5phscINdfrpeH5BI6=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Ênio / Belona</div>
+<div class="god-title">Deusa da Destruição</div>
+<div class="god-domain">Destruição e fúria em batalha</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDRsB-3xjNeLWDug9pkqsSkoB2qqbEPDN2JnRrnaFr42Y6PfHvMa_uV8HoxvEn9elpFKS-7FmU5jyOjTG_e6Yj-AM2a_TQMxssbLRPlHN4WluFFuNvX11XRbcHfg6BqZVAu2WcUfPGp1mmxTsVcpNpp_4zePUpfKIhtoI52gOLoh1sNP5wEEdXYVHDSFHwReJKzMX0CyefXjtWWtAfk22Hvyof1kF1M61Vw2BM=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Harmonia / Concordia</div>
+<div class="god-title">Deusa da Harmonia</div>
+<div class="god-domain">Harmonia, paz e concórdia</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDRsB-3xjNeLWDug9pkqsSkoB2qqbEPDN2JnRrnaFr42Y6PfHvMa_uV8HoxvEn9elpFKS-7FmU5jyOjTG_e6Yj-AM2a_TQMxssbLRPlHN4WluFFuNvX11XRbcHfg6BqZVAu2WcUfPGp1mmxTsVcpNpp_4zePUpfKIhtoI52gOLoh1sNP5wEEdXYVHDSFHwReJKzMX0CyefXjtWWtAfk22Hvyof1kF1M61Vw2BM=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Orfeu</div>
+<div class="god-title">Deus da Música</div>
+<div class="god-domain">Música</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5Gu-Utvy974Q4OZSZsOXbd9Zvs4WLFcwXIjiAYN8lVg8IyO5W-Wr7EbGHBVaTbHNqoIL52d--PMrrElL3Cimdg0_ezxWe0WmmLlxKbmorBN7CJYvmNLtJmHR3xCyF-AiRSCROchDuh2IsXkR3vvwEZygFkpYahmA6WJmmsZGmsDQ6OUwkk2PlBY9lzWJl6yKxrcK9ao1MeYRp0Jswyvvb_hV6aoLgegTK=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Psiquê / Cibele</div>
+<div class="god-title">Deusa da Alma</div>
+<div class="god-domain">Alma e mente</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vSXpLoh9qAhDhLVT-u-On6Cey-PeFthcTm6ApLpqBeigvuj--3v2m1HpIO9FUm6MG7WT2TRaQRNh1rT/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUA5Gu-Utvy974Q4OZSZsOXbd9Zvs4WLFcwXIjiAYN8lVg8IyO5W-Wr7EbGHBVaTbHNqoIL52d--PMrrElL3Cimdg0_ezxWe0WmmLlxKbmorBN7CJYvmNLtJmHR3xCyF-AiRSCROchDuh2IsXkR3vvwEZygFkpYahmA6WJmmsZGmsDQ6OUwkk2PlBY9lzWJl6yKxrcK9ao1MeYRp0Jswyvvb_hV6aoLgegTK=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Tique / Fortuna</div>
+<div class="god-title">Deusa da Sorte</div>
+<div class="god-domain">Sorte e jogos de azar</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+</div>
+<!-- ORGANIZAÇÕES & RAÇAS -->
+<div class="cat-header reveal">
+<div class="cat-title">Organizações &amp; Raças</div>
+<div class="cat-line"></div>
+</div>
+<div class="gods-grid reveal" style="transition-delay:.06s">
+<a class="god-card" href="https://docs.google.com/document/d/1llHzlI1vwSlz0_U83TPSjdrGBjtbL75fAJeSWvZNNcE/preview" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUDALKwhYKVAPykJYgm-XcQV99VOTcvqlQY5UNxXj7jxQVkWmGsKLBY7cA88vLDS-UtI_upE6loldhbyS_UvosR1p2ZXS4aYSQy4Bh5nytSR6BwxRyCMrIRxeSPnwtunu4iNDQ8I4ABtHaKl9GL3CvDDQqmxNh5TCBIARrtEPFWVV4F7lGkfBOYPBWbj7emsktfINOB9wJU3jdcVq53H8fjju1GfxEcWiLJoCqg=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Torre do Relógio</div>
+<div class="god-title">Associação dos Magos</div>
+<div class="god-domain">A ordem dos magistas de Londres</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/e/2PACX-1vRxwTF98BMZOzVW05lPkqay9HW95AAm_P-PWO8vDX3U8SvgiIDAhO528o-dZ6aZ7HXEZQGs7D2C5b28/pub" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUBCG-tmnkmWvAr3pDesWUZg6eUaRyJYAXEDb0JyvIV4UFlR8J1MEzMKh4EBMw5mdq7XlJTroQtAh2xO67oE3zfRBfJguPt1DTsOOGTy9mNj6Lfq6Z71qs0ZLGjy4izebM9fbaibXAb3ocy7dsC65-fp_qZNEYVcu4I2DPThExNBKB47gXxkc5bHQblytkLpby6TzQECRp8n6t5eSzgVhL917qg0JbGV0x6F=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Vampiros</div>
+<div class="god-title">Os Apóstolos Mortos</div>
+<div class="god-domain">A raça dos não-mortos de Londres</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<a class="god-card" href="https://docs.google.com/document/d/1A0YUP_AV6og5zRyBydGJ4eUUUYgTIxk3djMLtfPiPUU/preview" rel="noopener noreferrer" target="_blank">
+<div class="god-img" style="background-image:url('https://lh3.googleusercontent.com/sitesv/AA5AbUCWI-t9_VYfMZG12gTOQTXFsy019qZu4AckUgYXH-8VEnKgxErjxSq3AApFBDdz7ArozcW5aSIZ73453w223yi8mL56JfxbT8LBvaAqrlu6pi3HN-KVL9y3gFaU4rYtexi_Y-3AC1hpadZePr0ciUvWoF1-2zNJ5-FW9ar6n5W05N9J878J-_nfd8Ykq2TTb-O14PlhGHiIw4FCmpfZb14gA0lucK2Itzh55NI=w1280')"></div>
+<div class="god-grad"></div>
+<div class="god-content">
+<div class="god-name">Igreja</div>
+<div class="god-title">Os Guardiões do Equilíbrio</div>
+<div class="god-domain">Aqueles que mantêm o equilíbrio</div>
+<span class="god-link">Ver lista de poderes →</span>
+</div>
+</a>
+<div class="god-card no-link">
+<div class="god-img" style="background-image:url('https://postimg.cc/758nS0x4')"></div>
+<div class="god-grad"></div>
+<div class="god-soon">Em breve</div>
+<div class="god-content">
+<div class="god-name">Congregação das Bruxas</div>
+<div class="god-title">Organização</div>
+<div class="god-domain">A congregação das feiticeiras de Londres</div>
+<span class="god-link">Lista em desenvolvimento</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AS CLASSES -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">⚡</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+<span class="section-tag">Os Perpétuos</span>
+<h2 class="section-title">As Classes &amp; Os Princípios Celestiais</h2>
+<p class="section-desc">Forças cósmicas acima dos próprios deuses. Todo semideus é compatível com até <strong>2 classes</strong> — isso determina quais bênçãos poderá usar e define o foco da sua build.</p>
+</div>
+<div class="classes-grid reveal" style="transition-delay:.08s">
+<div class="class-card destruicao">
+<div class="class-icon">💥</div>
+<div class="class-name">Destruição</div>
+<div class="class-focus">Foco: ATK e Crítico</div>
+<div class="class-desc">Semideuses que escalam com poder de ataque puro e explosão crítica. Máximo dano em cada golpe.</div>
+</div>
+<div class="class-card destino">
+<div class="class-icon">🛡️</div>
+<div class="class-name">Destino</div>
+<div class="class-focus">Foco: DEF e Crítico</div>
+<div class="class-desc">Guerreiros que convertem resistência em poder ofensivo. Quanto mais aguentam, mais machucam.</div>
+</div>
+<div class="class-card morte">
+<div class="class-icon">💀</div>
+<div class="class-name">Morte</div>
+<div class="class-focus">Foco: HP e Crítico</div>
+<div class="class-desc">Tanques que escalam com vida. Sua sobrevivência se converte em força destrutiva.</div>
+</div>
+<div class="class-card sonho">
+<div class="class-icon">🌙</div>
+<div class="class-name">Sonho</div>
+<div class="class-focus">Foco: Buffs poderosos</div>
+<div class="class-desc">Potencializadores de aliados. Concedem bônus únicos e transformam o resultado de batalhas sem atacar diretamente.</div>
+</div>
+<div class="class-card desespero">
+<div class="class-icon">🩸</div>
+<div class="class-name">Desespero</div>
+<div class="class-focus">Foco: Debuffs e DOT</div>
+<div class="class-desc">Controladores que enfraquecem inimigos e causam dano ao longo do tempo. Lentos e inevitáveis.</div>
+</div>
+<div class="class-card desejo">
+<div class="class-icon">✨</div>
+<div class="class-name">Desejo</div>
+<div class="class-focus">Foco: Curas e buffs/debuffs menores</div>
+<div class="class-desc">Curadores e suportes. Mantêm aliados em pé com bênçãos de restauração e proteção.</div>
+</div>
+<div class="class-card delirio">
+<div class="class-icon">🌀</div>
+<div class="class-name">Delírio</div>
+<div class="class-focus">Foco: Invocações e pets de combate</div>
+<div class="class-desc">Invocadores que amplificam pets e criaturas. Seu exército é sua força.</div>
+</div>
+</div>
+<div class="tip reveal" style="transition-delay:.15s;background:rgba(158,42,42,0.15);border-left-color:rgba(192,57,43,0.5);">
+<div class="tip-label" style="color:rgba(220,90,70,0.8);">Atenção</div>
+<p>Não é possível usar bênçãos de uma classe que não pertença à sua lista. Se sua lista for compatível com Desespero e Morte, não poderá usar Destino, Destruição, etc. <strong>Toda e qualquer lista tem compatibilidade com até 2 perpétuos.</strong></p>
+</div>
+</section>
+<!-- FAQ -->
+<div class="section-divider"><div class="div-line"></div><span class="div-icon">✦</span><div class="div-line"></div></div>
+<section>
+<div class="reveal" style="text-align:center;margin-bottom:2rem;">
+<span class="section-tag">Dúvidas Frequentes</span>
+<h2 class="section-title">Perguntas &amp; Respostas</h2>
+</div>
+<div class="faq-list reveal" style="transition-delay:.08s">
+<div class="faq-item">
+<div class="faq-q">Posso escolher qualquer individualidade em qualquer ordem?</div>
+<div class="faq-a">Não. Deve-se escolher somente a quantidade determinada e <strong>na ordem de nível correspondente</strong>. Não é possível escolher individualidades de níveis anteriores ao que alcançou.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Como funcionam os poderes de continuidade (I, II, Final)?</div>
+<div class="faq-a">São poderes que evoluem em etapas. Para ter "Umbracinese II" precisa ter escolhido "Umbracinese I" antes. <strong>Nunca é possível pular etapas.</strong> O mesmo vale para "Final" ou "III".</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Se nenhuma individualidade do meu nível me agradar, posso pegar de nível anterior?</div>
+<div class="faq-a">Não. Você pode escolher <strong>apenas individualidades do nível ao qual alcançou</strong>, sem exceções.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Como funcionam as afiliações divinas em comparação com a filiação?</div>
+<div class="faq-a"><strong>Filiação</strong> é ser filho de sangue de um deus. <strong>Afiliação</strong> é aceitar um pacto com uma divindade — sem vínculo de sangue, mas com um ritual de iniciação que altera geneticamente o personagem, concedendo as individualidades da divindade escolhida.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q">O que são os Perpétuos e como afetam meu personagem?</div>
+<div class="faq-a">São forças cósmicas acima dos deuses. Todo semideus é compatível com até <strong>2 classes de perpétuos</strong>, determinando quais bênçãos poderá equipar. Isso define totalmente a build do personagem — escolha com cuidado.</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer-logo">NEOTHEON</div>
+<p class="footer-text">Os deuses observam. A Égide julga. Escolha seu destino.</p>
+<nav class="footer-nav">
+<a href="index.html">Home</a>
+<a href="ambientacao.html">Ambientação</a>
+<a href="regras.html">Regras &amp; Sistemas</a>
+<a href="missoes.html">Missões Fixas</a>
+<a href="fichas.html">Fichas</a>
+<a href="empyrean.html">Empyrean</a>
+<a href="fate.html">Fate / Guerra de Londres</a>
+<a href="banners.html">Banner Ativo</a>
+<a href="mesticos.html">Mestiço</a>
+</nav>
+<div class="footer-disclaimer">
+    Neotheon é um projeto de RPG colaborativo sem fins lucrativos, criado para entretenimento entre amigos.<br/>
+    Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
+  </div>
+</footer>
+
+
+<script defer="" src="assets/js/main.js"></script></body>
+</html>
