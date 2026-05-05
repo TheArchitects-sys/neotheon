@@ -145,7 +145,7 @@ body::before{
 .banner-item{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(260px,380px);
+  grid-template-columns:minmax(0,1fr) minmax(240px,360px);
   gap:clamp(1.5rem,4vw,3.4rem);
   align-items:start;
   margin:0 0 3rem;
@@ -165,10 +165,18 @@ body::before{
   border:1px solid rgba(241,210,122,.06);
   transform:translate(8px,8px);
 }
-.banner-item.is-flipped{grid-template-columns:minmax(260px,380px) minmax(0,1fr);}
+.banner-item.is-flipped{grid-template-columns:minmax(240px,360px) minmax(0,1fr);}
 .banner-item.is-flipped .item-copy{grid-column:2;grid-row:1;}
 .banner-item.is-flipped .item-art{grid-column:1;grid-row:1;}
 .item-copy{position:relative;z-index:1;}
+.item-details{
+  position:relative;
+  z-index:1;
+  grid-column:1 / -1;
+  width:100%;
+  display:grid;
+  gap:1rem;
+}
 .item-copy h3{
   margin:0 0 1rem;
   font-family:'Cinzel',serif;
@@ -186,7 +194,7 @@ body::before{
   line-height:1.78;
 }
 .effect-box,.rank-box{
-  margin-top:1.45rem;
+  margin-top:0;
   padding:1.15rem 1.25rem;
   border-left:2px solid var(--gold);
   background:rgba(0,0,0,.24);
@@ -216,10 +224,10 @@ body::before{
 .item-art{
   position:relative;
   z-index:1;
-  margin:0;
+  margin:clamp(1.25rem,2vw,2.1rem) 0 0;
   justify-self:center;
   align-self:start;
-  width:min(100%,360px);
+  width:min(100%,340px);
   aspect-ratio:4 / 5;
   overflow:hidden;
   border:1px solid rgba(212,175,55,.13);
@@ -238,6 +246,7 @@ body::before{
   width:100%;height:100%;
   min-height:0;
   object-fit:cover;
+  object-position:center 58%;
   transition:transform .7s ease,filter .7s ease;
 }
 .banner-item:hover .item-art img{transform:scale(1.025);filter:saturate(1.08) contrast(1.04);}
@@ -273,7 +282,7 @@ body::before{
 @media (max-width:1050px){
   .banner-item,.banner-item.is-flipped{grid-template-columns:1fr;}
   .banner-item.is-flipped .item-copy,.banner-item.is-flipped .item-art{grid-column:auto;grid-row:auto;}
-  .item-art{width:min(100%,380px);aspect-ratio:4 / 5;}
+  .item-art{width:min(100%,340px);aspect-ratio:4 / 5;margin:1rem auto 0;}
   .item-art img{height:100%;min-height:0;object-fit:cover;}
 }
 @media (max-width:700px){
@@ -283,6 +292,6 @@ body::before{
   .category-heading{margin-top:3rem;gap:.75rem;}
   .category-heading h2{letter-spacing:.04em;}
   .banner-item{padding:1rem;margin-bottom:2rem;}
-  .item-art{width:min(100%,320px);}
+  .item-art{width:min(100%,300px);margin:.75rem auto 0;}
   .effect-box,.rank-box{padding:1rem;margin-top:1rem;}
 }
