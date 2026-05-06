@@ -117,7 +117,7 @@ body.layout-codex .quick-nav a{
 }
 
 /* NAVEGAÇÃO: desktop vira um índice lateral de dossiês */
-@media (min-width:1101px){
+@media (min-width:981px){
   body.layout-codex{padding-left:var(--rail-w)!important;}
   body.layout-codex nav[aria-label="Navegação principal"]{
     position:fixed!important;
@@ -243,8 +243,8 @@ body.layout-codex .quick-nav a{
   body.layout-codex footer{margin-left:0!important;}
 }
 
-/* Mobile conserva nav superior, mas troca a linguagem visual */
-@media (max-width:1100px){
+/* Mobile conserva nav superior apenas abaixo de 981px */
+@media (max-width:980px){
   body.layout-codex nav[aria-label="Navegação principal"]{
     background:rgba(6,5,13,.94)!important;
     border-bottom:1px solid rgba(214,182,98,.2)!important;
@@ -630,3 +630,195 @@ body.layout-codex .footer-nav a:hover{color:var(--aether)!important;}
   .dossier-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   body.home .resources-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;}
 }
+
+/* =========================================================
+   PATCH DE ESTABILIDADE — versão pós-feedback
+   ========================================================= */
+
+/* Desktop/tablet largo: a navegação é SOMENTE lateral. */
+@media (min-width:981px){
+  body.layout-codex{
+    padding-left:var(--rail-w)!important;
+    --nav-h:0px;
+  }
+  body.layout-codex nav[aria-label="Navegação principal"]{
+    top:0!important;
+    left:0!important;
+    right:auto!important;
+    bottom:0!important;
+    width:var(--rail-w)!important;
+    height:100dvh!important;
+    min-height:0!important;
+    max-height:none!important;
+    padding:1.65rem 1.05rem!important;
+    border-top:0!important;
+    border-bottom:0!important;
+    border-right:1px solid rgba(214,182,98,.18)!important;
+  }
+  body.layout-codex .mobile-nav-toggle{display:none!important;}
+  body.layout-codex .nav-links{
+    position:static!important;
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    height:auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+    padding:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  body.layout-codex .nav-discord{display:flex!important;}
+}
+
+/* Home: o nome do RPG nunca quebra linha. */
+body.home .hero-title{
+  white-space:nowrap!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  text-wrap:nowrap!important;
+  max-width:100%!important;
+  font-size:clamp(3.4rem,7.4vw,7.45rem)!important;
+  letter-spacing:.015em!important;
+  line-height:.9!important;
+}
+body.home .hero{
+  grid-template-columns:minmax(0,1.22fr) minmax(260px,.78fr)!important;
+}
+
+/* Texto longo justificado em todo o site. */
+body.layout-codex p,
+body.layout-codex .section-intro,
+body.layout-codex .section-desc,
+body.layout-codex .hero-lore,
+body.layout-codex .hero-desc,
+body.layout-codex .lore-text,
+body.layout-codex .desc,
+body.layout-codex .rule-card p,
+body.layout-codex .mission-desc,
+body.layout-codex .resource-card-desc,
+body.layout-codex .destaque-sub,
+body.layout-codex .endgame-desc,
+body.layout-codex .ato-desc,
+body.layout-codex .trial-desc,
+body.layout-codex .info-block-text,
+body.layout-codex .item-text,
+body.layout-codex .item-lore,
+body.layout-codex .item-effect,
+body.layout-codex .mechanic-text,
+body.layout-codex .effect-copy,
+body.layout-codex .banner-copy,
+body.layout-codex .ficha-desc,
+body.layout-codex .footer-text,
+body.layout-codex .footer-disclaimer{
+  text-align:justify!important;
+  text-justify:inter-word;
+  hyphens:auto;
+}
+body.layout-codex .section-header p,
+body.layout-codex .hero-lore,
+body.layout-codex .hero-desc{
+  text-align:justify!important;
+}
+
+/* Remove películas/linhas bege que pareciam artefatos nos painéis. */
+body.home .resources-grid,
+body.layout-codex .resources-grid,
+body.layout-codex .endgame-grid,
+body.layout-codex .destaques-grid{
+  background:transparent!important;
+  gap:1rem!important;
+}
+body.home .resource-card::after,
+body.layout-codex .resource-card::after,
+body.layout-codex .resource-card::before,
+body.layout-codex .dossier-card::after,
+body.layout-codex .destaque-card::after,
+body.layout-codex .endgame-card::after{
+  content:none!important;
+  display:none!important;
+}
+body.home .resource-card,
+body.layout-codex .resource-card{
+  background:
+    radial-gradient(circle at 80% 10%,rgba(114,215,226,.08),transparent 38%),
+    linear-gradient(145deg,rgba(17,16,29,.82),rgba(6,5,13,.66))!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.22)!important;
+}
+body.home .resource-card .rc-content{
+  margin-top:auto!important;
+  padding:1.3rem!important;
+}
+
+/* Endgame ganha zona vermelha de perigo. */
+body.home .endgame-zone{
+  position:relative;
+  isolation:isolate;
+  margin-top:2rem;
+  padding:2.5rem 0 4.5rem;
+}
+body.home .endgame-zone::before{
+  content:'';
+  position:absolute;
+  z-index:-2;
+  inset:-8rem -3rem -2rem -3rem;
+  background:
+    radial-gradient(circle at 50% 12%,rgba(220,38,38,.30),transparent 28%),
+    radial-gradient(circle at 82% 42%,rgba(130,15,28,.34),transparent 38%),
+    radial-gradient(circle at 18% 58%,rgba(90,10,18,.36),transparent 42%),
+    linear-gradient(180deg,rgba(6,5,13,0) 0%,rgba(78,11,18,.32) 24%,rgba(24,4,8,.78) 72%,rgba(6,5,13,.94) 100%);
+  pointer-events:none;
+}
+body.home .endgame-zone::after{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:-3rem 0 0;
+  border-top:1px solid rgba(229,57,53,.32);
+  border-bottom:1px solid rgba(229,57,53,.16);
+  background:
+    linear-gradient(90deg,rgba(229,57,53,.04) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(229,57,53,.035) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,transparent,black 14%,black 86%,transparent);
+  pointer-events:none;
+}
+body.home .endgame-section{
+  background:linear-gradient(145deg,rgba(38,5,10,.68),rgba(9,5,10,.52))!important;
+  border-color:rgba(229,57,53,.18)!important;
+  box-shadow:0 0 100px rgba(136,19,31,.18), inset 0 0 90px rgba(229,57,53,.045)!important;
+}
+body.home .endgame-section::before{
+  border-color:rgba(229,57,53,.2)!important;
+  background:linear-gradient(135deg,rgba(120,18,28,.24),rgba(10,5,10,.1) 55%,transparent)!important;
+}
+body.home .endgame-warning,
+body.home .endgame-tag{color:#ff5a52!important;}
+body.home .endgame-title{color:#ffd0a1!important;}
+body.home .endgame-card{
+  border-color:rgba(229,57,53,.20)!important;
+  background:linear-gradient(145deg,rgba(43,7,13,.78),rgba(7,5,12,.68))!important;
+  box-shadow:0 20px 70px rgba(105,9,18,.22)!important;
+}
+body.home .eg-grad{
+  background:linear-gradient(to top,rgba(9,5,10,.96) 0%,rgba(130,15,28,.36) 58%,rgba(9,5,10,.16) 100%)!important;
+}
+body.home .endgame-card:hover{
+  border-color:rgba(255,90,82,.42)!important;
+  box-shadow:0 28px 90px rgba(160,20,32,.28), inset 0 0 45px rgba(229,57,53,.08)!important;
+}
+
+/* Mobile: título da home ainda precisa caber sem quebrar. */
+@media (max-width:980px){
+  body.home .hero-title{
+    font-size:clamp(2.7rem,13vw,5rem)!important;
+    letter-spacing:.005em!important;
+    white-space:nowrap!important;
+  }
+  body.home .hero{grid-template-columns:1fr!important;}
+}
+@media (max-width:460px){
+  body.home .hero-title{font-size:clamp(2.2rem,11.5vw,3.3rem)!important;}
+}
+
