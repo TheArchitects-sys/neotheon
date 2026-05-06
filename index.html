@@ -5,10 +5,9 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>NEOTHEON</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cinzel:wght@400;600;700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;display=swap" rel="stylesheet"/>
-
-<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><meta content="NEOTHEON" property="og:title"/><meta content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/preview.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="assets/css/pages/index.css" rel="stylesheet"/><link href="assets/css/style.css" rel="stylesheet"/><link href="assets/img/favicon.png" rel="icon"/><link href="assets/img/favicon.png" rel="apple-touch-icon"/></head>
-<body>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Marcellus+SC&amp;family=Spectral:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<meta content="NEOTHEON — portal de RPG narrativo com ambientação, regras, missões e facções em um universo místico e sombrio." name="description"/><meta content="#0b0a14" name="theme-color"/><meta content="NEOTHEON" property="og:title"/><meta content="Portal de RPG narrativo sombrio com ambientação, regras, missões, fichas e facções." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/img/preview.jpg" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="assets/css/pages/index.css" rel="stylesheet"/><link href="assets/css/style.css" rel="stylesheet"/><link href="assets/css/neotheon-redesign.css" rel="stylesheet"/><link href="assets/img/favicon.png" rel="icon"/><link href="assets/img/favicon.png" rel="apple-touch-icon"/></head>
+<body class="layout-codex home page-home">
 <div aria-label="Carregando NEOTHEON" aria-live="polite" class="neotheon-loader" id="neotheon-loader" role="status">
 <div aria-hidden="true" class="loader-orbit">
 <span class="loader-ring r1"></span>
@@ -35,10 +34,10 @@
 <polygon fill="none" points="250,472 37,316 120,68 380,68 463,316" stroke="#c8bfb0" stroke-width="0.3"></polygon>
 <circle cx="250" cy="250" fill="#c8bfb0" opacity="0.2" r="3"></circle>
 </svg>
-<div class="orb" style="width:3px;height:3px;background:rgba(212,175,55,0.62);top:20%;left:15%;--dur:7s;--tx:14px;--ty:-18px;"></div>
-<div class="orb" style="width:2px;height:2px;background:rgba(200,191,176,0.45);top:32%;left:80%;--dur:9s;--tx:-10px;--ty:14px;"></div>
-<div class="orb" style="width:4px;height:4px;background:rgba(107,21,21,0.6);top:70%;left:10%;--dur:11s;--tx:16px;--ty:-12px;"></div>
-<div class="orb" style="width:2px;height:2px;background:rgba(212,175,55,0.42);top:75%;left:88%;--dur:6s;--tx:-14px;--ty:9px;"></div>
+
+
+
+
 <div class="hero-eyebrow">Londres · 2047 · Além do Véu</div>
 <div class="rune-divider">
 <div class="rune-line"></div>
@@ -46,7 +45,7 @@
 <div class="rune-line r"></div>
 </div>
 <h1 class="hero-title">NEOTHEON</h1>
-<div class="hero-subtitle">Os Deuses Nunca Caíram · Apenas Subiram</div>
+<div class="hero-subtitle">Um arquivo vivo de mitos, pactos e horrores sob néon</div>
 <p class="hero-lore">
     No coração de Londres, entre as torres que tocam os céus envenenados,
     antigos mitos respiram sob novas formas. Sob o néon e a névoa do Tâmisa,
@@ -56,12 +55,33 @@
 <div class="hero-ctas">
 <a class="btn-primary" href="regras.html">Primeiros Passos</a>
 <a class="btn-secondary" href="fichas.html">Ver Fichas</a>
+</div><aside aria-label="Resumo do portal" class="hero-oracle-panel">
+<div class="oracle-kicker">Arquivo vivo da Égide</div>
+<div class="oracle-title">Sobrenatural · Mitologia · Fantasia Urbana</div>
+<p>Um quadro narrativo para agentes, semideuses, mestiços e pactuados que caminham entre Londres e os domínios que sangram por trás do véu.</p>
+<div class="oracle-marks">
+<span>2047</span><span>Avalon</span><span>Além do Véu</span>
 </div>
+</aside>
 <div class="scroll-indicator">
 <span>Descer</span>
 <div class="scroll-arrow"></div>
 </div>
 </div>
+<section class="veil-dossiers reveal" id="dossies-do-veu">
+<div class="section-header">
+<span class="section-tag">Escolha uma trilha</span>
+<h2 class="section-title">Dossiês do Véu</h2>
+<p class="section-desc">Em vez de um portal comum, NEOTHEON agora se organiza como um arquivo sobrenatural: cada página é um dossiê aberto pela Égide.</p>
+</div>
+<div class="dossier-grid">
+<a class="dossier-card" data-mark="I" href="ambientacao.html"><span>O Mundo</span><strong>Ambientação</strong><em>Avalon, Londres e o equilíbrio entre deuses e homens.</em></a>
+<a class="dossier-card" data-mark="II" href="regras.html"><span>O Codex</span><strong>Regras</strong><em>Como os agentes crescem, lutam e pagam o preço.</em></a>
+<a class="dossier-card" data-mark="III" href="individualidades.html"><span>O Sangue</span><strong>Individualidades</strong><em>Heranças divinas, pactos e manifestações míticas.</em></a>
+<a class="dossier-card" data-mark="IV" href="missoes.html"><span>O Campo</span><strong>Missões</strong><em>Chamados, expedições e trabalhos da Égide.</em></a>
+</div>
+</section>
+
 <!-- EVENTOS -->
 <div class="section-divider" style="padding-top:1rem">
 <div class="div-line"></div><span class="div-icon">★</span><div class="div-line"></div>
@@ -75,20 +95,20 @@
 <div class="eventos-wrapper reveal" style="transition-delay:.1s">
 <div class="eventos-track" id="eventosTrack">
 <!-- ═══ EVENTO 1 ═══ -->
-<a class="evento-slide evento-slide-banner" href="banners.html#ultima-luz" aria-label="Ver banner do evento A Última Luz do Universo">
-<img src="assets/img/evento-a-ultima-luz-do-universo.png" alt="Banner do evento A Última Luz do Universo: uma dívida de sangue deverá ser paga."/>
+<a aria-label="Ver banner do evento A Última Luz do Universo" class="evento-slide evento-slide-banner" href="banners.html#ultima-luz">
+<img alt="Banner do evento A Última Luz do Universo: uma dívida de sangue deverá ser paga." src="assets/img/evento-a-ultima-luz-do-universo.png"/>
 </a>
 <!-- ═══ EVENTO 2 ═══ -->
-<a class="evento-slide evento-slide-banner" href="banners.html#doce-sonho" aria-label="Ver banner do evento Sonho, Dissolvendo-se, como Orvalho">
-<img src="assets/img/evento-sonho-dissolvendo-se-como-orvalho.png" alt="Banner do evento Sonho, Dissolvendo-se, como Orvalho: e que seria do inferno se os demônios não pudessem sonhar com o paraíso."/>
+<a aria-label="Ver banner do evento Sonho, Dissolvendo-se, como Orvalho" class="evento-slide evento-slide-banner" href="banners.html#doce-sonho">
+<img alt="Banner do evento Sonho, Dissolvendo-se, como Orvalho: e que seria do inferno se os demônios não pudessem sonhar com o paraíso." src="assets/img/evento-sonho-dissolvendo-se-como-orvalho.png"/>
 </a>
 <!-- ═══ EVENTO 3 ═══ -->
-<a class="evento-slide evento-slide-banner" href="fate.html" aria-label="Ver página Fate do evento Guerra do Santo Graal">
-<img src="assets/img/evento-guerra-do-santo-graal.png" alt="Banner do evento Guerra do Santo Graal — Fate: a jornada do mestre."/>
+<a aria-label="Ver página Fate do evento Guerra do Santo Graal" class="evento-slide evento-slide-banner" href="fate.html">
+<img alt="Banner do evento Guerra do Santo Graal — Fate: a jornada do mestre." src="assets/img/evento-guerra-do-santo-graal.png"/>
 </a>
 </div>
-<button class="ev-arrow left" id="evPrev" type="button" aria-label="Banner anterior">←</button>
-<button class="ev-arrow right" id="evNext" type="button" aria-label="Próximo banner">→</button>
+<button aria-label="Banner anterior" class="ev-arrow left" id="evPrev" type="button">←</button>
+<button aria-label="Próximo banner" class="ev-arrow right" id="evNext" type="button">→</button>
 <div class="ev-dots" id="evDots"></div>
 </div>
 </section>
@@ -98,65 +118,65 @@
 </div>
 <section>
 <div class="section-header reveal">
-<span class="section-tag">Tome as Rédeas do Destino</span>
-<h2 class="section-title">Recursos Importantes</h2>
-<p class="section-desc">Tudo o que você precisa para adentrar o mundo de Neotheon</p>
+<span class="section-tag">Documentos da Égide</span>
+<h2 class="section-title">Arquivos Operacionais</h2>
+<p class="section-desc">Acesso rápido aos materiais que movem o RPG</p>
 </div>
 <div class="resources-grid">
 <!-- CARD 1 — Primeiros Passos
          Imagem: coloque o arquivo como "rc-primeiros-passos.jpg" na mesma pasta do HTML
          Dimensões ideais: 480x640px -->
-<a class="resource-card reveal" href="#" style="transition-delay:.05s">
-<div class="rc-img" style="background-image:url('https://i.postimg.cc/ZKHZFKzr/ron-dark-gothic-London-streets-at-night-fog-mysterious-doorwa-adfb0908-27c2-4489-a67e-488f627dd8f4-1.png')"></div>
+<a class="resource-card reveal" data-glyph="✦" href="ambientacao.html" style="transition-delay:.05s">
+<div class="rc-img" style=""></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
-<div class="resource-card-title">Primeiros Passos</div>
-<div class="resource-card-desc">Descubra o mundo de Avalon e entenda as regras que regem deuses e mortais</div>
-<div class="resource-card-arrow">Explorar →</div>
+<div class="resource-card-title">Ambientação</div>
+<div class="resource-card-desc">O quadro do mundo: Londres, Avalon, deuses e aquilo que existe atrás do véu.</div>
+<div class="resource-card-arrow">Abrir dossiê →</div>
 </div>
 </a>
 <!-- CARD 2 — Loja Divina
          Imagem: "rc-loja-divina.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="#" style="transition-delay:.1s">
-<div class="rc-img" style="background-image:url('https://i.postimg.cc/nzb6f6fg/imagem-2026-04-14-221918767.png')"></div>
+<a class="resource-card reveal" data-glyph="⚔" href="regras.html" style="transition-delay:.1s">
+<div class="rc-img" style=""></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
-<div class="resource-card-title">Loja Divina</div>
-<div class="resource-card-desc">Adquira armas, artefatos e relíquias sagradas com suas moedas celestiais</div>
-<div class="resource-card-arrow">Entrar →</div>
+<div class="resource-card-title">Regras &amp; Sistemas</div>
+<div class="resource-card-desc">A base mecânica para fichas, progressão, combate e consequências.</div>
+<div class="resource-card-arrow">Consultar codex →</div>
 </div>
 </a>
 <!-- CARD 3 — Seres Fantásticos
          Imagem: "rc-seres-fantasticos.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="#" style="transition-delay:.15s">
-<div class="rc-img" style="background-image:url('https://i.postimg.cc/X77tWftW/imagem-2026-04-14-222027514.png')"></div>
+<a class="resource-card reveal" data-glyph="☉" href="individualidades.html" style="transition-delay:.15s">
+<div class="rc-img" style=""></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
-<div class="resource-card-title">Seres Fantásticos</div>
-<div class="resource-card-desc">Controle e domine criaturas do Além com os contratos corretos</div>
-<div class="resource-card-arrow">Estudar →</div>
+<div class="resource-card-title">Individualidades</div>
+<div class="resource-card-desc">Poderes, heranças divinas e manifestações que moldam cada personagem.</div>
+<div class="resource-card-arrow">Mapear sangue →</div>
 </div>
 </a>
 <!-- CARD 4 — Guia de Materiais
          Imagem: "rc-guia-materiais.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="#" style="transition-delay:.2s">
-<div class="rc-img" style="background-image:url('https://i.postimg.cc/50Skdy3H/imagem-2026-04-14-222144989.png')"></div>
+<a class="resource-card reveal" data-glyph="⌖" href="missoes.html" style="transition-delay:.2s">
+<div class="rc-img" style=""></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
-<div class="resource-card-title">Guia de Materiais</div>
-<div class="resource-card-desc">Alquimia, forja e magia: os materiais que moldam o destino</div>
-<div class="resource-card-arrow">Consultar →</div>
+<div class="resource-card-title">Missões Fixas</div>
+<div class="resource-card-desc">Chamados permanentes, expedições e oportunidades para personagens ativos.</div>
+<div class="resource-card-arrow">Ir a campo →</div>
 </div>
 </a>
 <!-- CARD 5 — Eventos Sazonais
          Imagem: "rc-eventos-sazonais.jpg" — Dimensões: 480x640px -->
-<a class="resource-card reveal" href="#" style="transition-delay:.25s">
-<div class="rc-img" style="background-image:url('https://i.postimg.cc/cH0XmZSL/imagem-2026-04-14-222335169.png')"></div>
+<a class="resource-card reveal" data-glyph="◆" href="banners.html" style="transition-delay:.25s">
+<div class="rc-img" style=""></div>
 <div class="rc-grad"></div>
 <div class="rc-content">
-<div class="resource-card-title">Eventos Sazonais</div>
-<div class="resource-card-desc">Oportunidades únicas que surgem com as estações e os caprichos dos deuses</div>
-<div class="resource-card-arrow">Ver →</div>
+<div class="resource-card-title">Banners Ativos</div>
+<div class="resource-card-desc">Eventos temporários, moedas específicas e aquisições especiais do RPG.</div>
+<div class="resource-card-arrow">Ver banners →</div>
 </div>
 </a>
 </div>
@@ -333,8 +353,5 @@
     Todo o conteúdo é ficcional e funciona como uma fanfic interativa. Nenhum conteúdo possui fins comerciais.
   </div>
 </footer>
-
-
-
 <script defer="" src="assets/js/main.js"></script></body>
 </html>
