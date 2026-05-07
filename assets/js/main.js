@@ -14,9 +14,9 @@
       setTimeout(() => { loader.style.display = 'none'; }, 850);
     }
   };
-  if(document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(finishLoading, 900);
-  else window.addEventListener('load', () => setTimeout(finishLoading, 900), {once:true});
-  setTimeout(finishLoading, 2600);
+  if(document.readyState === 'complete' || document.readyState === 'interactive') setTimeout(finishLoading, 250);
+  else window.addEventListener('load', () => setTimeout(finishLoading, 250), {once:true});
+  setTimeout(finishLoading, 800);
 
   const nav = document.querySelector('nav');
   let backdrop = document.querySelector('.nav-backdrop');
@@ -273,5 +273,55 @@
       resize(); draw();
       window.addEventListener('resize', () => { cancelAnimationFrame(raf); resize(); draw(); }, {passive:true});
     }
+  }
+
+
+  // === Global toggle helpers (sinetes / regras / missões) ===
+  window.toggleS = window.toggleS || function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var parent = el.parentElement;
+    var wasOpen = el.classList.contains('open');
+    if(parent){
+      parent.querySelectorAll(':scope > .sinete-acc-item.open, :scope > .acc-item.open').forEach(function(x){
+        if(x !== el) x.classList.remove('open');
+      });
+    }
+    el.classList.toggle('open', !wasOpen);
+  };
+  window.toggle = window.toggle || function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.classList.toggle('open');
+  };
+  window.toggleMission = window.toggleMission || function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var open = el.classList.toggle('open');
+    var btn = el.querySelector('.mission-toggle');
+    if(btn) btn.textContent = open ? 'Recolher missão' : 'Ver missão completa';
+  };
+
+  // Ensure body has sidenav layout class
+  document.body.classList.add('has-sidenav');
+
+  // Sidenav toggle (mobile)
+  var sideToggle = document.querySelector('.sidenav-toggle');
+  var sideNav = document.querySelector('nav[aria-label="Navegação principal"]');
+  if(sideToggle && sideNav){
+    sideToggle.addEventListener('click', function(){
+      var open = sideNav.classList.toggle('sidenav-open');
+      document.body.classList.toggle('sidenav-open', open);
+      sideToggle.setAttribute('aria-expanded', String(open));
+    });
+    sideNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        if(window.matchMedia('(max-width:980px)').matches){
+          sideNav.classList.remove('sidenav-open');
+          document.body.classList.remove('sidenav-open');
+          sideToggle.setAttribute('aria-expanded','false');
+        }
+      });
+    });
   }
 })();
