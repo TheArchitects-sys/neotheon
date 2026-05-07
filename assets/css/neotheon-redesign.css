@@ -118,15 +118,15 @@ body.layout-codex .quick-nav a{
 
 /* NAVEGAÇÃO: desktop vira um índice lateral de dossiês */
 @media (min-width:981px){
-  body.layout-codex{padding-left:var(--rail-w)!important;}
+  /* padding-left da sidebar removido */
   body.layout-codex nav[aria-label="Navegação principal"]{
     position:fixed!important;
-    top:0!important;left:0!important;right:auto!important;bottom:0!important;
-    width:var(--rail-w)!important;height:100dvh!important;min-height:0!important;
-    display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;
+    top:0!important;left:0!important;right:0!important;bottom:auto!important;
+    width:auto!important;height:auto!important;min-height:0!important;
+    display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;
     gap:1.15rem!important;
     padding:2rem 1.15rem!important;
-    border-bottom:0!important;border-right:1px solid rgba(214,182,98,.18)!important;
+    border-bottom:1px solid rgba(214,182,98,.18)!important;border-right:0!important;
     background:
       linear-gradient(180deg,rgba(8,7,14,.97),rgba(14,11,23,.92)),
       radial-gradient(circle at 50% 0%,rgba(114,215,226,.12),transparent 45%)!important;
